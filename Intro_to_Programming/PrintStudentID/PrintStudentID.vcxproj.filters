@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Scoping.cpp">
+    <ClCompile Include="..\Intro_to_Programming\PrintStudentID.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
