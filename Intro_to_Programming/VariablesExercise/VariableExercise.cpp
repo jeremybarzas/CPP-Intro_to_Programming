@@ -136,5 +136,7 @@ int main()
 
 	system("pause");
 
+	// 7. 
+	// 97-122 is lowercase
 	return 0;
 }
