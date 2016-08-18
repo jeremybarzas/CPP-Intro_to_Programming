@@ -43,7 +43,7 @@ int main()
 
 	if (a < b)
 	{
-		cout << "The second number of " << b << " is larger than the first number of " << b << endl;
+		cout << "The second number of " << b << " is larger than the first number of " << a << endl;
 		printf("\n");
 	}
 
