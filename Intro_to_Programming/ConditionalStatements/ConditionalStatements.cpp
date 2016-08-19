@@ -1,6 +1,6 @@
 #include <iostream>
+#include <string>
 using namespace std;
-
 
 void ConditionalsQuestion1()
 {
@@ -189,7 +189,8 @@ void ConditionalsQuestion6()
 void ConditionalsQuestion7()
 {
 	int numMonth = 0;
-	int numDays;
+	int numDays = 0;
+	string month = "fuckign nothing";
 
 	cout << "Enter a month by the number of month is it in the year." << endl;
 	cin >> numMonth;
@@ -198,107 +199,98 @@ void ConditionalsQuestion7()
 	{
 	case 1:
 		numDays = 31;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was January." << "It has " << numDays << "days in it." << endl;
+		month = "January";
+		break;
 
 	case 2:
 		numDays = 28;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was Febuary." << "It has " << numDays << "days in it." << endl;
+		month ="Febuary";
+		break;
 
 	case 3:
 		numDays = 31;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was March." << "It has " << numDays << "days in it." << endl;
+		month = "March";
+		break;
 
 	case 4:
 		numDays = 30;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was April." << "It has " << numDays << "days in it." << endl;
+		month = "April";
+		break;
 
 	case 5:
 		numDays = 31;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was May." << "It has " << numDays << "days in it." << endl;
+		month = "May";
+		break;
 
 	case 6:
 		numDays = 30;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was June." << "It has " << numDays << "days in it." << endl;
+		month = "June";
+		break;
 
 	case 7:
 		numDays = 31;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was July." << "It has " << numDays << "days in it." << endl;
+		month = "July";
+		break;
 
 	case 8:
 		numDays = 31;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was August." << "It has " << numDays << "days in it." << endl;
+		month = "August";
+		break;
 
 	case 9:
 		numDays = 3;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was September." << "It has " << numDays << "days in it." << endl;
+		month = "September";
+		break;
 
 	case 10:
 		numDays = 31;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was October." << "It has " << numDays << "days in it." << endl;
+		month = "October";
+		break;
 
 	case 11:
 		numDays = 30;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was November." << "It has " << numDays << "days in it." << endl;
+		month = "November";
+		break;
 
 	case 12:
 		numDays = 30;
-		cout << "The month chosen" << " (" << numMonth << ") " << "was December." << "It has " << numDays << "days in it." << endl;
+		month = "December";
+		break;
 	}
+
+	cout << "The month chosen" << " (" << numMonth << ") " << "was " << month << " it has " << numDays << " days in it." << endl;
+	printf("\n");
 }
 
 int main()
 {
-	int input;
-	// 1. Write a statement that assigns 100 to x when y is equal to zero.
-	cout << "Pick an Example...\n";
-
-	cin >> input;
+	char input = 0;
+	
 	while (input != 'q')
 	{
+		cout << "Pick an Example... or press q to quit.\n";
+
+		cin >> input;
+
 		switch (input)
 		{
-		case 1: ConditionalsQuestion1(); break;
-		case 2: ConditionalsQuestion2(); break;
-		case 4: ConditionalsQuestion4(); break;
-		case 5: ConditionalsQuestion5(); break;
-		case 6: ConditionalsQuestion6(); break;
-		case 7: ConditionalsQuestion7(); break;
+		case '1': ConditionalsQuestion1(); break;
+		
+		case '2': ConditionalsQuestion2(); break;
+		
+		case '4': ConditionalsQuestion4(); break;
+		
+		case '5': ConditionalsQuestion5(); break;
+		
+		case '6': ConditionalsQuestion6(); break;
+		
+		case '7': ConditionalsQuestion7(); break;
+
+		case 'q': break;
+		
 		default: break;
 		}
-		printf("%c", '\a');
-		cout << "Pick an Example... or press q to quit \n";
-		cin >> input;
 	}
-	/*
-	ConditonalsQuestion1();
 
-	// 2. Write a program that ask the user for two numbers then display the large number to the console.
-
-	ConditonalsQuestion2();
-
-	// 3. Write a program that accepts and displays 5 numbers in ascending order is the sum of the 5 numbers is postive and in desxceneding order if the sum is negative.
-	// if the sum is equal to zero then the program must display the numbers in the same order that they were entered.
-
-
-	// 4. Convert the following code into a switch statement.
-
-	ConditonalsQuestion4();
-
-	// 5. Convert the following if statement into a ternary operator.
-
-	ConditonalsQuestion5();
-
-	// 6. Write a program that accepts from the user two numbers and a mathematical operation character. Preform the appropriate maths base on which character is input.
-
-	ConditonalsQuestion6();
-
-	// 7. Write a program that accepts an integer that represents the month of the year.
-	// it should then display the number of days in that month. If a number that doesn't 
-	// correspond to a month is entered the the program should display an error message.
-
-	ConditonalsQuestion7();
-
-	system("pause");
-	*/
 	return 0;
 }
