@@ -53,6 +53,192 @@ int main()
 		printf("\n");
 	}
 
+	// 3. Write a program that accepts and displays 5 numbers in ascending order is the sum of the 5 numbers is postive and in desxceneding order if the sum is negative.
+	// if the sum is equal to zero then the program must display the numbers in the same order that they were entered.
+
+	int num1;
+	int num2;
+	int num3;
+	int num4;
+	int num5;
+	int numSize1 = 0;
+	int numSize2 = 0;
+	int numSize3 = 0;
+	int numSize4 = 0;
+	int numSize5 = 0;
+	int sum;
+
+	cout << "Enter the first number." << endl;
+	cin >> num1;
+	printf("\n");
+
+	cout << "Enter the second number." << endl;
+	cin >> num2;
+	printf("\n");
+
+	cout << "Enter the third number." << endl;
+	cin >> num3;
+	printf("\n");
+
+	cout << "Enter the fourth number." << endl;
+	cin >> num4;
+	printf("\n");
+
+	cout << "Enter the fifth number." << endl;
+	cin >> num5;
+	printf("\n");
+
+	sum = num1 + num2 + num3 + num4 + num5;
+
+	// Checking for and assigning the largest number.
+	if ((num1 > num2) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize1 = num1;
+	}
+
+	else if ((num2 > num1) && (num2 > num3) && (num2 > num4) && (num2 > num5))
+	{
+		numSize1 = num2;
+	}
+
+	else if ((num3 > num1) && (num3 > num2) && (num3 > num4) && (num3 > num5))
+	{
+		numSize1 = num3;
+	}
+
+	else if ((num4 > num1) && (num4 > num2) && (num4 > num3) && (num4 > num5))
+	{
+		numSize1 = num4;
+	}
+
+	else if ((num5 > num1) && (num5 > num2) && (num5 > num3) && (num5 > num4))
+	{
+		numSize1 = num5;
+	}
+	
+	// Checking for and assigning the second largest number.
+	else if ((num1 < numSize1) && (num1 > num2) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize2 = num1;
+	}
+
+	else if ((num2 < numSize1) && (num2 > num1) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize2 = num2;
+	}
+
+	else if ((num3 < numSize1) && (num3 > num1) && (num1 > num2) && (num3 > num4) && (num3 > num5))
+	{
+		numSize2 = num3;
+	}
+
+	else if ((num4 < numSize1) && (num4 > num1) && (num4 > num2) && (num4 > num3) && (num4 > num5))
+	{
+		numSize2 = num4;
+	}
+
+	else if ((num5 < numSize1) && (num5 > num1) && (num5 > num2) && (num5 > num3) && (num5> num4))
+	{
+		numSize2 = num5;
+	}
+
+	// Checking for and assigning the third largest number.
+	else if ((num1 < numSize1) && (num1 < numSize2) && (num1 > num2) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize3 = num1;
+	}
+
+	else if ((num2 < numSize1) && (num2 < numSize2) && (num2 > num1) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize3 = num2;
+	}
+
+	else if ((num3 < numSize1) && (num3 < numSize2) && (num3 > num1) && (num1 > num2) && (num3 > num4) && (num3 > num5))
+	{
+		numSize3 = num3;
+	}
+
+	else if ((num4 < numSize1) && (num4 < numSize2) && (num4 > num1) && (num4 > num2) && (num4 > num3) && (num4 > num5))
+	{
+		numSize3 = num4;
+	}
+
+	else if ((num5 < numSize1) && (num5 < numSize2) && (num5 > num1) && (num5 > num2) && (num5 > num3) && (num5> num4))
+	{
+		numSize3 = num5;
+	}
+
+	// Checking for and assigning the fourth largest number.
+	else if ((num1 < numSize1) && (num1 < numSize2) && (num1 < numSize3) && (num1 > num2) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize4 = num1;
+	}
+
+	else if ((num2 < numSize1) && (num2 < numSize2) && (num2 < numSize3) && (num2 > num1) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize4 = num2;
+	}
+
+	else if ((num3 < numSize1) && (num3 < numSize2) && (num3 < numSize3) && (num3 > num1) && (num1 > num2) && (num3 > num4) && (num3 > num5))
+	{
+		numSize4 = num3;
+	}
+
+	else if ((num4 < numSize1) && (num4 < numSize2) && (num4 < numSize3) && (num4 > num1) && (num4 > num2) && (num4 > num3) && (num4 > num5))
+	{
+		numSize4 = num4;
+	}
+
+	else if ((num5 < numSize1) && (num5 < numSize2) && (num5 < numSize3) && (num5 > num1) && (num5 > num2) && (num5 > num3) && (num5> num4))
+	{
+		numSize4 = num5;
+	}
+
+	// Checking for and assigning the fifth largest number.
+	else if ((num1 < numSize1) && (num1 < numSize2) && (num1 < numSize3) && (num1 < numSize4) && (num1 > num2) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize5 = num1;
+	}
+
+	else if ((num2 < numSize1) && (num2 < numSize2) && (num2 < numSize3) && (num2 < numSize4) && (num2 > num1) && (num1 > num3) && (num1 > num4) && (num1 > num5))
+	{
+		numSize5 = num2;
+	}
+
+	else if ((num3 < numSize1) && (num3 < numSize2) && (num3 < numSize3) && (num3 < numSize4) && (num3 > num1) && (num1 > num2) && (num3 > num4) && (num3 > num5))
+	{
+		numSize5 = num3;
+	}
+
+	else if ((num4 < numSize1) && (num4 < numSize2) && (num4 < numSize3) && (num4 < numSize4) && (num4 > num1) && (num4 > num2) && (num4 > num3) && (num4 > num5))
+	{
+		numSize5 = num4;
+	}
+
+	else if ((num5 < numSize1) && (num5 < numSize2) && (num5 < numSize3) && (num5 < numSize4) && (num5 > num1) && (num5 > num2) && (num5 > num3) && (num5> num4))
+	{
+		numSize5 = num5;
+	}
+	
+	// Printing out number is certains orders depending on the sum of them all.
+	if (sum = 0)
+	{	
+		cout << "Because sum is equal to zero numbers are in the order they were entered: " << num1 << ", " << num2 << ", " << num3 << ", " << num4 << ", " << num5 << endl;
+		printf("\n");
+	}
+
+	if (sum > 0)
+	{
+		cout << "Because sum is positive the numbers are in ascending order: " << "," << numSize1 << "," << numSize2 << "," << numSize3 << "," << numSize4 << "," << numSize5 << endl;
+		printf("\n");
+	}
+
+	if (sum < 0)
+	{
+		cout << "Because sum is negative the numbers are in decending order: " << "," << numSize5 << "," << numSize4 << "," << numSize3 << "," << numSize2 << "," << numSize1 << endl;
+		printf("\n");
+	}
+
 	// 4. Convert the following code into a switch statement.
 	/*
 		if (choice == 1)
@@ -106,7 +292,7 @@ int main()
 	}
 
 
-	// 6. Write a progrma that accepts form the user two numbers and a mathematical operation character. Preform the appropriate maths base on which character is input.
+	// 6. Write a program that accepts from the user two numbers and a mathematical operation character. Preform the appropriate maths base on which character is input.
 
 	float input1 = 0;
 	float input2 = 0;
