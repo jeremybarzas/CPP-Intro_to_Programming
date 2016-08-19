@@ -85,38 +85,39 @@ int main()
 	std::cout << "second number's new value is: " << swapnum2 << std::endl;
 	printf("\n");
 	
-	// 5. Consider the following code.
-
+	/* 5. Consider the following code.
+	
 	int i = 0;
 	float f = 0;
 	char ch = 'a';
 	std::cin >> i >> ch >> f;
 	std::cout << "i: " << i << "\nch: " << ch << "\nf: " << f << std::endl;
 
-	// a) i: 1
-	//    ch: A
-	//    f: 45
+	 a) i: 1
+	    ch: A
+	    f: 45
 	
-	// b) i: 1
-	//    ch: A
-	//    f: 45
+	 b) i: 1
+	    ch: A
+	    f: 45
 	
-	// c) i: 1
-	//    ch: 9
-	//    f: 45
+	 c) i: 1
+	    ch: 9
+	    f: 45
 	
-	// d) i: 1
-	//    ch: 9
-	//    f: 45
+	 d) i: 1
+	    ch: 9
+	    f: 45
 	
-	// e) i: 0
-	//    ch: a
-	//    f: 0
+	 e) i: 0
+	    ch: a
+	    f: 0
 	
-	// f) i: 1
-	//    ch: B
-	//    f: 0
-
+	 f) i: 1
+	    ch: B
+		f: 0
+	*/
+	
 	// 6. Ask the user for 5 while numbers. Output the average of these numbers.
 
 	int a6;
@@ -134,9 +135,29 @@ int main()
 	std::cout << "The average of the entered numbers is: " << avg << std::endl;
 	printf("\n");
 
-	system("pause");
-
 	// 7. 
 	// 97-122 is lowercase
+	// 65-90 is uppercase
+	// half way between a and z is m
+	// a = 97, z = 90, m = 109
+
+	char letter1;
+	char letter2;
+	char letter3;
+
+	std::cout << "Enter the first letter." << std::endl;
+	std::cin >> letter1;
+	printf("\n");
+
+	std::cout << "Enter the second letter. (Must be the same case as the first number)" << std::endl;
+	std::cin >> letter2;
+	printf("\n");
+
+	letter3 = ((int)letter1 + (int)letter2) / 2;
+
+	std::cout << letter3 << std::endl;
+
+	system("pause");
+
 	return 0;
 }
