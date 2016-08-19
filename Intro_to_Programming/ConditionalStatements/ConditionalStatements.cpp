@@ -257,7 +257,7 @@ int main()
 	{
 		switch (input)
 		{
-		case 1: ConditionalsQuestion1();	break;
+		case 1: ConditionalsQuestion1(); break;
 		case 2: ConditionalsQuestion2(); break;
 		case 4: ConditionalsQuestion4(); break;
 		case 5: ConditionalsQuestion5(); break;
