@@ -16,13 +16,49 @@ void arrayQuestion1()
 
 	cout << "The array of: int blanks[]; is invalid \n \n";
 
-	cout << "The array of: int collection[-20]; invalid \n \n";
-	
-	cout << "The array of: int hours[3] = 8, 12, 16; invalid \n \n";
+	cout << "The array of: int collection[-20]; is invalid \n \n";
+
+	cout << "The array of: int hours[3] = 8, 12, 16; is invalid \n \n";
 }
 
-int main()
+void arrayQuestion2()
 {
+	int values[] = { 2, 6, 10, 14 };
+
+	cout << "The line, cout << values[2], will display:" << values[2] << endl;
+	cout << endl;
+}
+
+void arrayQuestion3()
+{
+
+}
+
+int main(int argc, char*argv[])
+{
+	cout << "number of arguments are " << argc << endl;;
+	cout << "the commands that you entered are " << endl;
+	bool debug;
+	char* words[2] = { "hello", "-d" };
+
+	if (words[1] == "world")
+		printf("FUUUUUUUUUUUUUUUUUUUUUUUUUHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+
+	for (int i = 0; i < argc; ++i)
+	{
+		printf("argv[%i] is %s \n", i, argv[i]);
+		if (argv[i][0] == '-')
+		{
+			printf("it's a dash\n");
+			if (argv[i][1] == 'd')
+				debug = true;
+		}
+	}
+
+	if (debug)
+		printf("mofuckin debug dog....\n");
+
+
 	char input = 0;
 
 	while (input != 'q')
@@ -34,11 +70,15 @@ int main()
 		{
 			case '1': arrayQuestion1();  break;
 
+			case '2': arrayQuestion2();  break;
+
+			case '3': arrayQuestion3();
+
 			default: break;
 		}
 	}
 
 	system("pause");
-	
+
 	return 0;
 }
