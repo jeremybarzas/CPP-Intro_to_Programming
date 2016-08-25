@@ -1,6 +1,8 @@
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 void arrayQuestion1()
 {
@@ -82,27 +84,27 @@ void arrayQuestion5()
 	{
 		cout << "Enter a number to be stored in the array: ";
 		cin >> nums[i];
-		//cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
 	}
 
-	/*if ((nums[0] > nums[1]) && (nums[0] > nums[2]) && (nums[0] > nums[3]) && (nums[0] > nums[4]) && (nums[0] > nums[5]) && (nums[0] > nums[6]) && (nums[0] > nums[7]) && (nums[0] > nums[8]) && (nums[0] > nums[9]))
-	{
-		cout << "The largest value stored is: " << nums[0] << endl;
-	}
-	
-	(nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j])*/
-	
 	for (int i = 0; i <= 9; i++)
 	{
-		if (nums[0] > nums[i])
-		{
-			cout << "The largest value stored is: " << nums[0] << endl;
-		}
-		for (int j = 9; j >= 0; j--)
-		{
-			
-		}
+		cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
 	}
+
+	int largest = nums[0];
+	int smallest = nums[0];
+
+		for (int i = 0; i <= 9; i++)
+		{
+			if (nums[i] > largest)
+				largest = nums[i];
+
+			if (nums[i] < smallest)
+				smallest = nums[i];
+		}
+
+	cout << "The largest number is: " << largest << "\n \n";
+	cout << "The smallest number is: " << smallest << "\n \n";
 }
 
 int main()
@@ -111,7 +113,7 @@ int main()
 
 	while (input != 'q')
 	{
-		cout << "Pick an Question # or press q to quit.\n";
+		cout << "Pick a Question # or press q to quit.\n";
 		cin >> input;
 		cout << endl;
 

@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
-using namespace std;
+
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
 
 void ConditionalsQuestion1()
 {
@@ -51,6 +55,61 @@ void ConditionalsQuestion2()
 	{
 		cout << "The first number of " << a << " is equal to the second number of " << b << endl;
 		printf("\n");
+	}
+}
+
+void ConditionalsQuestion3()
+{
+	int nums[5];
+	int sum;
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Enter a number to be stored in the array: ";
+		cin >> nums[i];
+	}
+
+	for (int i = 0; i <= 4; i++)
+	{
+		cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
+	}
+
+	sum = nums[0] + nums[1] + nums[2] + nums[3] + nums[4];
+	cout << "The sum of the number is: " << sum << "\n \n";
+
+	int temp = 0;
+	bool runloop = true;
+	bool swapped = false;
+
+	if (sum > 0)
+	{
+		for (int i = 0, j = 1; runloop == true; i++, j++)
+		{
+			if (nums[i] > nums[j])
+			{
+				temp = nums[i];
+				nums[i] = nums[j];
+				nums[j] = temp;
+
+				swapped = true;
+			}
+
+			if (i >= 3 )
+			{
+				i = -1;
+				j = 0;
+
+				if (swapped == false)
+					runloop = false;
+
+				swapped = false;
+			}
+		}
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
 	}
 }
 
@@ -204,7 +263,7 @@ void ConditionalsQuestion7()
 
 	case 2:
 		numDays = 28;
-		month ="Febuary";
+		month = "Febuary";
 		break;
 
 	case 3:
@@ -265,7 +324,7 @@ void ConditionalsQuestion7()
 int main()
 {
 	char input = 0;
-	
+
 	while (input != 'q')
 	{
 		cout << "Pick an Example... or press q to quit.\n";
@@ -275,19 +334,21 @@ int main()
 		switch (input)
 		{
 		case '1': ConditionalsQuestion1(); break;
-		
+
 		case '2': ConditionalsQuestion2(); break;
-		
+
+		case '3': ConditionalsQuestion3(); break;
+
 		case '4': ConditionalsQuestion4(); break;
-		
+
 		case '5': ConditionalsQuestion5(); break;
-		
+
 		case '6': ConditionalsQuestion6(); break;
-		
+
 		case '7': ConditionalsQuestion7(); break;
 
 		case 'q': break;
-		
+
 		default: break;
 		}
 	}
