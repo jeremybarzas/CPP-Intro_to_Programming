@@ -25,54 +25,107 @@ void arrayQuestion2()
 {
 	int values[] = { 2, 6, 10, 14 };
 
-	cout << "The line, cout << values[2], will display:" << values[2] << endl;
+	cout << "A) The line, cout << values[2], will not display anything because it is missing a semicolon (;) at the end of it." << endl;
+	cout << endl;
+
+	cout << "B) The line, cout << ++values[0];, will display: " << ++values[0] << endl;
+	cout << endl;
+
+	cout << "C) The line, cout << values[1]++;, will display: " << values[1]++ << endl;
+	cout << endl;
+
+	cout << "D) The line, x = 2; cout << values[++x];, will not diplay anything because the variable 'x' does not have a data type." << endl;
+	cout << endl;
+
+	cout << "E) The line, cout << values[4];, will display: " << values[4] << endl;
 	cout << endl;
 }
 
 void arrayQuestion3()
 {
+	int data[10];
 
-}
-
-int main(int argc, char*argv[])
-{
-	cout << "number of arguments are " << argc << endl;;
-	cout << "the commands that you entered are " << endl;
-	bool debug;
-	char* words[2] = { "hello", "-d" };
-
-	if (words[1] == "world")
-		printf("FUUUUUUUUUUUUUUUUUUUUUUUUUHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-
-	for (int i = 0; i < argc; ++i)
+	for (int i = 10; i >= 0; i--)
 	{
-		printf("argv[%i] is %s \n", i, argv[i]);
-		if (argv[i][0] == '-')
-		{
-			printf("it's a dash\n");
-			if (argv[i][1] == 'd')
-				debug = true;
-		}
+		data[i] = i;
+		cout << "The number in the index of " << i << " is: " << data[i] << "\n";
 	}
 
-	if (debug)
-		printf("mofuckin debug dog....\n");
+	cout << endl;
+}
 
+void arrayQuestion4()
+{
+	int nums[5];
+	int input;
 
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Enter a number to be stored in the array: ";
+		cin >> nums[i];
+		cout << endl;
+	}
+	
+	cout << "The numbers in reverse order are: " << "\n \n";
+
+	for (int i = 4; i >= 0; i--)
+	{
+		cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
+	}
+}
+
+void arrayQuestion5()
+{
+	int nums[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "Enter a number to be stored in the array: ";
+		cin >> nums[i];
+		//cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
+	}
+
+	/*if ((nums[0] > nums[1]) && (nums[0] > nums[2]) && (nums[0] > nums[3]) && (nums[0] > nums[4]) && (nums[0] > nums[5]) && (nums[0] > nums[6]) && (nums[0] > nums[7]) && (nums[0] > nums[8]) && (nums[0] > nums[9]))
+	{
+		cout << "The largest value stored is: " << nums[0] << endl;
+	}
+	
+	(nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j]) && (nums[i] > nums[j])*/
+	
+	for (int i = 0; i <= 9; i++)
+	{
+		if (nums[0] > nums[i])
+		{
+			cout << "The largest value stored is: " << nums[0] << endl;
+		}
+		for (int j = 9; j >= 0; j--)
+		{
+			
+		}
+	}
+}
+
+int main()
+{
 	char input = 0;
 
 	while (input != 'q')
 	{
 		cout << "Pick an Question # or press q to quit.\n";
 		cin >> input;
+		cout << endl;
 
 		switch (input)
 		{
-			case '1': arrayQuestion1();  break;
+			case '1': arrayQuestion1(); break;
 
-			case '2': arrayQuestion2();  break;
+			case '2': arrayQuestion2(); break;
 
-			case '3': arrayQuestion3();
+			case '3': arrayQuestion3(); break;
+
+			case '4': arrayQuestion4(); break;
+
+			case '5': arrayQuestion5(); break;
 
 			default: break;
 		}
