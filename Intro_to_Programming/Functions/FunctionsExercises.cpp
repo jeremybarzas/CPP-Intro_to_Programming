@@ -45,13 +45,13 @@ void functionsQuestion1()
 float functionsQuestion2()
 {
 	float a, b, smaller;
-	
+
 	cout << "Enter the first float value: ";
 	cin >> a;
 
 	cout << "\nEnter the second float value: ";
 	cin >> b;
-	
+
 	smaller = (a < b) ? a : b;
 
 	return smaller;
@@ -69,16 +69,16 @@ int main()
 
 		switch (input)
 		{
-		case '1':
-			functionsQuestion1();  			
+		case '1': 
+			functionsQuestion1();
 			break;
 
 		case '2':
 			float a, b, smaller;
-	
+
 			smaller = functionsQuestion2();
 
-			cout << "The smaller number is: " << smaller; 
+			cout << "The smaller number is: " << smaller;
 			break;
 
 		case 'e':
@@ -89,7 +89,7 @@ int main()
 			cout << "The sum of the numbers you passed as the 2nd and 3rd parameters is: " << sum << "\n \n";
 			break;
 
-		default: 
+		default:
 			break;
 		}
 
