@@ -9,9 +9,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScopingTest", "ScopingTest\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PrintStudentID", "PrintStudentID\PrintStudentID.vcxproj", "{70034528-F9AB-4307-947A-4F3E752DDEB8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VariablesExercise", "VariablesExercise\VariablesExercise.vcxproj", "{00D7C26F-C087-4993-BD89-F23D4D8F32D4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Variables", "VariablesExercise\VariablesExercise.vcxproj", "{00D7C26F-C087-4993-BD89-F23D4D8F32D4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConditionalStatements", "ConditionalStatements\ConditionalStatements.vcxproj", "{1C5DA490-5715-4781-B2CD-B80051987012}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Conditionals", "ConditionalStatements\ConditionalStatements.vcxproj", "{1C5DA490-5715-4781-B2CD-B80051987012}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Loops", "Loops\Loops.vcxproj", "{E04C8828-8DE5-42AD-8968-D07727AB816A}"
 EndProject

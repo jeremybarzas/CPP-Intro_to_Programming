@@ -9,11 +9,11 @@ using std::endl;
 
 float sumArray(float array[], int size)
 {
-	float sum;
+	float sum = 0;
 
 	for (int i = 0; i < size; i++)
 	{
-		sum = array[0] + array[i];
+		sum = sum + array[i];
 	}
 
 	return sum;

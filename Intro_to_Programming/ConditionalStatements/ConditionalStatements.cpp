@@ -321,6 +321,41 @@ void ConditionalsQuestion7()
 	printf("\n");
 }
 
+void ConditionalsQuestion8()
+{
+	//Supposed you have the following declarations:
+	bool flag = true;
+	int numPos = 35, numNeg = -55;
+	char frstChar = 'J', scndChar = 'O';
+	double frstPrice = 5.60;
+
+	// Anything that evaulates to 0 evaluates as false; Anything that does not evaluate to 0 evaluates as true.
+
+	cout << "A) numPos > numNeg, would evaluate to a true statement. \n \n";
+	cout << "B) frstChar > scndChar, would evaluate to a true statement. \n \n";
+	cout << "C) !(numPos + numNeg), would evaluate to a false statement. \n \n"; 
+	cout << "D) (numPos == -30) || (numNeg == -55), would evaluate to a true statement.\n \n";	cout << "E) (frstPrice >= 4.1) && (frstPrice <= 9.9), would evaluate to a true statement.\n \n";
+	cout << "F) !flag &&(scndChar <= ‘R’), would evaluate to a false statement.\n \n";
+	cout << "G) (numPos < 66) || (flag && numPos > 35), would evaluate to a true statement.\n \n";
+	cout << "H) ++numPos == 36, would evaluate to a true statement.\n \n";
+	cout << "I) numPos++ == 36, would evaluate to a true statement.\n \n";
+	cout << "J) (frstChar == ‘j’) || (frstChar == ‘J’), would evaluate to a true statement.\n \n";
+}
+
+void ConditionalsQuestion9()
+{
+	//Evaluate the following logical expressions, where a is equal to true and b is equal to false
+		//a. (a || b) || (a && b)
+		//b. !((!a) && (a)) || (a && b)
+		//c. !((5 || a) || (!b)) && (!(a) && b)
+		//d. a || b && a
+		//e. !a&&b
+	
+	bool a = true;
+	bool b = false;
+			cout << "A) (a || b) || (a && b) evaluates to: " << ((a || b) || (a && b)) << "\n\n";	cout << "B) !((!a) && (a)) || (a && b) evaluates to: " << (!((!a) && (a)) || (a && b)) << "\n\n";	cout << "C) !((5 || a) || (!b)) && (!(a) && b) evaluates to: " << (!((5 || a) || (!b)) && (!(a) && b)) << "\n\n";	cout << "D) a || b && a evaluates to: " << (a || b && a) << "\n\n";	cout << "E) !a&&b evaluates to: " << (!a&&b) << "\n\n";
+}
+
 int main()
 {
 	char input = 0;
@@ -346,6 +381,10 @@ int main()
 		case '6': ConditionalsQuestion6(); break;
 
 		case '7': ConditionalsQuestion7(); break;
+
+		case '8': ConditionalsQuestion8(); break;
+
+		case '9': ConditionalsQuestion9(); break;
 
 		case 'q': break;
 

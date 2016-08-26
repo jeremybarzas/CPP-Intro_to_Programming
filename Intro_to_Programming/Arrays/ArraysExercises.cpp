@@ -1,8 +1,59 @@
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
 
 using std::cout;
 using std::cin;
 using std::endl;
+
+void arrayQuestion1();
+void arrayQuestion2();
+void arrayQuestion3();
+void arrayQuestion4();
+void arrayQuestion5();
+void arrayQuestion6();
+void arrayQuestion7();
+void arrayQuestion8();
+void arrayQuestion9();
+
+int main()
+{
+	char input = 0;
+
+	while (input != 'q')
+	{
+		cout << "Pick a Question # or press q to quit.\n";
+		cin >> input;
+		cout << endl;
+
+		switch (input)
+		{
+			case '1': arrayQuestion1(); break;
+
+			case '2': arrayQuestion2(); break;
+
+			case '3': arrayQuestion3(); break;
+
+			case '4': arrayQuestion4(); break;
+
+			case '5': arrayQuestion5(); break;
+
+			case '6': arrayQuestion6(); break;
+
+			case '7': arrayQuestion7(); break;
+
+			case '8': arrayQuestion8(); break;
+
+			case '9': arrayQuestion9(); break;
+
+			default: break;
+		}
+	}
+
+	system("pause");
+
+	return 0;
+}
 
 void arrayQuestion1()
 {
@@ -67,7 +118,7 @@ void arrayQuestion4()
 		cin >> nums[i];
 		cout << endl;
 	}
-	
+
 	cout << "The numbers in reverse order are: " << "\n \n";
 
 	for (int i = 4; i >= 0; i--)
@@ -94,46 +145,147 @@ void arrayQuestion5()
 	int largest = nums[0];
 	int smallest = nums[0];
 
-		for (int i = 0; i <= 9; i++)
-		{
-			if (nums[i] > largest)
-				largest = nums[i];
+	for (int i = 0; i <= 9; i++)
+	{
+		if (nums[i] > largest)
+			largest = nums[i];
 
-			if (nums[i] < smallest)
-				smallest = nums[i];
-		}
+		if (nums[i] < smallest)
+			smallest = nums[i];
+	}
 
 	cout << "The largest number is: " << largest << "\n \n";
 	cout << "The smallest number is: " << smallest << "\n \n";
 }
 
-int main()
+void arrayQuestion6()
 {
-	char input = 0;
+	//Create a program that creates a small 3x3 array of integers.
+	//Use a nested for loop to initialise the numbers 1 - 9. Output the numbers in a grid format.
 
-	while (input != 'q')
+	int smallArray[3][3];
+
+	for (int i = 0; i < 3; i++)
 	{
-		cout << "Pick a Question # or press q to quit.\n";
+		for (int j = 0; j < 3; j++)
+		{
+			smallArray[i][j] = ((i * j) + (i + j) + 1);
+			cout << "(" << i << ", " << j << ")" << " = " << smallArray[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+void arrayQuestion7()
+{
+	/*An application uses a two dimensional array defined as follows :
+	int days[29][5];
+	Write code that sums each row in the array and displays the results.
+	Write code that sums each column in the array and displays the results.*/
+
+	int days[29][5];
+
+	for (int i = 0; i < 29; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			days[i][j] = ((i * j) + (i + j) + 1);
+			cout << "(" << i << ", " << j << ")" << " = " << days[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	int sumRows = 0;
+	int sumCols = 0;
+
+	for (int i = 0; i < 29; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			sumRows = sumRows + days[i][j];
+		}
+		cout << "row sum" << sumRows << endl;
+		sumRows = 0;
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 29; j++)
+		{
+			sumCols = sumCols + days[j][i];
+		}
+		cout << "coloum sum: " << sumCols << endl;
+		sumRows = 0;
+	}
+}
+
+void arrayQuestion8()
+{
+	/*Create a program that declares an array of 5 integer values. These values will represent the
+	health of 5 characters. Initialise the values all to 100. Your program is to ask the user to
+	enter a number(0 to 4) to select a character that is to be attacked by a monster. Each attack
+	deals 40 damage per attack. If a player’s health gets below 0 then should not be able to be
+	attacked. Your program should simulate 5 attacks. After the attacks have finished, output
+	the parties’ remaining health to the console.
+	CHALLENGE: Research random number generation and modify your program so that random
+	damage is dealt with each attack.*/
+
+	srand(time(NULL));
+	int character[5] = {100, 100, 100, 100, 100};
+	int input;
+	int atkCount = 0;
+	int atkDmg;
+
+	while (atkCount <= 4)
+	{
+		cout << "Enter a number from 0 - 4 to select the character to be attacked." << endl;
 		cin >> input;
 		cout << endl;
 
-		switch (input)
+		if (input > 4 || input < 0)
 		{
-			case '1': arrayQuestion1(); break;
+			cout << "That is not a valid character selection...\n\n";
+		}
 
-			case '2': arrayQuestion2(); break;
-
-			case '3': arrayQuestion3(); break;
-
-			case '4': arrayQuestion4(); break;
-
-			case '5': arrayQuestion5(); break;
-
-			default: break;
+		else if (character[input] > 0)
+		{
+			atkCount = atkCount + 1;
+			atkDmg = rand() % 100 + 1;  //length of 100 starting at 1.
+			character[input] = (character[input] - atkDmg);
+			cout << atkDmg << " Was dealt to character " << input << "...\n\n";
+		}
+		
+		else
+		{
+			cout << "Character " << input << " is dead..." << endl;
 		}
 	}
 
-	system("pause");
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Character " << i << "'s remaining health is: " << character[i] << "\n\n";
+	}
+}
 
-	return 0;
+void arrayQuestion9()
+{
+	/*Daenerys Targaryen wants to keep track of how many kilos of food her three dragons eat
+	each day during a typical week.Write a program that stores this information in a 2
+	dimensional 3 x 7 array, where each row represents a different dragon and each column
+	represents a different day of the week.The program should first have Dany input the user
+	for each dragon.Then it should create a report that includes the following information :
+	-Average amount of food eaten per day by all the dragons together
+	- average amount of food eaten per day by any one dragon
+	- the greatest amount of food eaten during one day and which dragon that was
+	- the least amount of food eaten during one day and which dragon that was*/
+
+	int dragons[3][7];
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			cout << "";
+		}
+	}
 }

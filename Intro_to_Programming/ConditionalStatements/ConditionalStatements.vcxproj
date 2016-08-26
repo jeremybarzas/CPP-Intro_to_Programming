@@ -22,6 +22,7 @@
     <ProjectGuid>{1C5DA490-5715-4781-B2CD-B80051987012}</ProjectGuid>
     <RootNamespace>ConditionalStatements</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>Conditionals</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
