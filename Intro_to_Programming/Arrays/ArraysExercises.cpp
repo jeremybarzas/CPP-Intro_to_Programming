@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
+using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -76,6 +77,16 @@ void arrayQuestion1()
 
 void arrayQuestion2()
 {
+	/*Given the following array definition:
+	int values[] = { 2, 6, 10, 14 };
+	What does each of the following display ?
+		a) cout << values[2]
+		b) cout << ++values[0];
+	c) cout << values[1]++;
+	d) x = 2;
+	cout << values[++x];
+	e) cout << values[4];*/
+
 	int values[] = { 2, 6, 10, 14 };
 
 	cout << "A) The line, cout << values[2], will not display anything because it is missing a semicolon (;) at the end of it." << endl;
@@ -96,6 +107,7 @@ void arrayQuestion2()
 
 void arrayQuestion3()
 {
+	/*Write a for loop to initialize the following array(int data[10]) with the values 10, 9, 8…(Etc)*/
 	int data[10];
 
 	for (int i = 10; i >= 0; i--)
@@ -109,6 +121,9 @@ void arrayQuestion3()
 
 void arrayQuestion4()
 {
+	/*Create a program that asks for 5 numbers from the user, and store them in an array.Print
+		out the numbers in reverse order*/
+
 	int nums[5];
 	int input;
 
@@ -129,6 +144,8 @@ void arrayQuestion4()
 
 void arrayQuestion5()
 {
+	/*Write a program that lets the user enter 10 values into an array.The program should then
+		display the largest and smallest values stored in the array.*/
 	int nums[10];
 
 	for (int i = 0; i < 10; i++)
@@ -215,7 +232,7 @@ void arrayQuestion7()
 			sumCols = sumCols + days[j][i];
 		}
 		cout << "coloum sum: " << sumCols << endl;
-		sumRows = 0;
+		sumCols = 0;
 	}
 }
 
@@ -270,22 +287,89 @@ void arrayQuestion8()
 void arrayQuestion9()
 {
 	/*Daenerys Targaryen wants to keep track of how many kilos of food her three dragons eat
-	each day during a typical week.Write a program that stores this information in a 2
+	each day during a typical week. Write a program that stores this information in a 2
 	dimensional 3 x 7 array, where each row represents a different dragon and each column
-	represents a different day of the week.The program should first have Dany input the user
-	for each dragon.Then it should create a report that includes the following information :
+	represents a different day of the week. The program should first have Dany input the user
+	for each dragon. Then it should create a report that includes the following information :
 	-Average amount of food eaten per day by all the dragons together
 	- average amount of food eaten per day by any one dragon
 	- the greatest amount of food eaten during one day and which dragon that was
 	- the least amount of food eaten during one day and which dragon that was*/
 
 	int dragons[3][7];
+	srand(time(NULL));
 
 	for (int i = 0; i < 3; i++)
 	{
-		for (int i = 0; i < 7; i++)
+		for (int j = 0; j < 7; j++)
 		{
-			cout << "";
+			dragons[i][j] = rand() % 100 + 1;
+			cout << "Dragon " << i << " on day " << j << " has eaten " << dragons[i][j] << " kilos of food.\n\n";
 		}
+	}
+
+	int avgfoodperDragon = 0;
+	int foodperDragon = 0;
+
+	int avgfoodperDay = 0;
+	int foodperDay = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			foodperDragon = foodperDragon + dragons[i][j];
+			avgfoodperDragon = foodperDragon / 7;
+		}
+		cout << "Average food eaten by dragon " << i << ": " << avgfoodperDragon << "\n\n";
+		foodperDragon = 0;
+		avgfoodperDragon = 0;
+	}
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			foodperDay = foodperDay + dragons[j][i];
+			avgfoodperDay = foodperDay / 3;
+		}
+		cout << "Average food eaten on day " << i << ": " << avgfoodperDay << "\n\n";
+		foodperDay = 0;
+		avgfoodperDay = 0;
+	}
+	
+	int fatDragon = 0;
+	int skinnyDragon = 0;
+
+	for (int i = 0; i < 7; i++)
+	{
+		if ((dragons[0][i] > dragons[1][i]) && (dragons[0][i] > dragons[2][i]))
+		{
+			fatDragon = 0;
+		}
+		else if ((dragons[1][i] > dragons[0][i]) && (dragons[1][i] > dragons[2][i]))
+		{
+			fatDragon = 1;
+		}
+		else if ((dragons[2][i] > dragons[0][i]) && (dragons[2][i] > dragons[1][i]))
+		{
+			fatDragon = 2;
+		}
+
+		if ((dragons[0][i] < dragons[1][i]) && (dragons[0][i] < dragons[2][i]))
+		{
+			skinnyDragon = 0;
+		}
+		else if ((dragons[1][i] < dragons[0][i]) && (dragons[1][i] < dragons[2][i]))
+		{
+			skinnyDragon = 1;
+		}
+		else if ((dragons[2][i] < dragons[0][i]) && (dragons[2][i] < dragons[1][i]))
+		{
+			skinnyDragon = 2;
+		}
+
+		cout << "Most food eaten on day: " << i << " was by dragon: " << fatDragon << "\n";
+		cout << "Least food eaten on day: " << i << " was by dragon: " << skinnyDragon << "\n\n";
 	}
 }

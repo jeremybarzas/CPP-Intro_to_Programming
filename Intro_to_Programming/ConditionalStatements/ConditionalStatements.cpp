@@ -249,7 +249,7 @@ void ConditionalsQuestion7()
 {
 	int numMonth = 0;
 	int numDays = 0;
-	string month = "fuckign nothing";
+	string month = "nothing";
 
 	cout << "Enter a month by the number of month is it in the year." << endl;
 	cin >> numMonth;
@@ -334,7 +334,8 @@ void ConditionalsQuestion8()
 	cout << "A) numPos > numNeg, would evaluate to a true statement. \n \n";
 	cout << "B) frstChar > scndChar, would evaluate to a true statement. \n \n";
 	cout << "C) !(numPos + numNeg), would evaluate to a false statement. \n \n"; 
-	cout << "D) (numPos == -30) || (numNeg == -55), would evaluate to a true statement.\n \n";	cout << "E) (frstPrice >= 4.1) && (frstPrice <= 9.9), would evaluate to a true statement.\n \n";
+	cout << "D) (numPos == -30) || (numNeg == -55), would evaluate to a true statement.\n \n";
+	cout << "E) (frstPrice >= 4.1) && (frstPrice <= 9.9), would evaluate to a true statement.\n \n";
 	cout << "F) !flag &&(scndChar <= ‘R’), would evaluate to a false statement.\n \n";
 	cout << "G) (numPos < 66) || (flag && numPos > 35), would evaluate to a true statement.\n \n";
 	cout << "H) ++numPos == 36, would evaluate to a true statement.\n \n";
@@ -353,7 +354,12 @@ void ConditionalsQuestion9()
 	
 	bool a = true;
 	bool b = false;
-			cout << "A) (a || b) || (a && b) evaluates to: " << ((a || b) || (a && b)) << "\n\n";	cout << "B) !((!a) && (a)) || (a && b) evaluates to: " << (!((!a) && (a)) || (a && b)) << "\n\n";	cout << "C) !((5 || a) || (!b)) && (!(a) && b) evaluates to: " << (!((5 || a) || (!b)) && (!(a) && b)) << "\n\n";	cout << "D) a || b && a evaluates to: " << (a || b && a) << "\n\n";	cout << "E) !a&&b evaluates to: " << (!a&&b) << "\n\n";
+		
+	cout << "A) (a || b) || (a && b) evaluates to: " << ((a || b) || (a && b)) << "\n\n";
+	cout << "B) !((!a) && (a)) || (a && b) evaluates to: " << (!((!a) && (a)) || (a && b)) << "\n\n";
+	cout << "C) !((5 || a) || (!b)) && (!(a) && b) evaluates to: " << (!((5 || a) || (!b)) && (!(a) && b)) << "\n\n";
+	cout << "D) a || b && a evaluates to: " << (a || b && a) << "\n\n";
+	cout << "E) !a&&b evaluates to: " << (!a&&b) << "\n\n";
 }
 
 int main()
