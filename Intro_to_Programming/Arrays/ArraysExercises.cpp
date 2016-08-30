@@ -2,7 +2,6 @@
 #include <time.h>
 #include <stdlib.h>
 
-using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -107,7 +106,8 @@ void arrayQuestion2()
 
 void arrayQuestion3()
 {
-	/*Write a for loop to initialize the following array(int data[10]) with the values 10, 9, 8…(Etc)*/
+	/*Write a for loop to initialize the following array(int data[10]) with the values 10, 9, 8…(Etc)*/
+
 	int data[10];
 
 	for (int i = 10; i >= 0; i--)
@@ -145,7 +145,8 @@ void arrayQuestion4()
 void arrayQuestion5()
 {
 	/*Write a program that lets the user enter 10 values into an array.The program should then
-		display the largest and smallest values stored in the array.*/
+		display the largest and smallest values stored in the array.*/
+
 	int nums[10];
 
 	for (int i = 0; i < 10; i++)
