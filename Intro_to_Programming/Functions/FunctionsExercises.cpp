@@ -400,16 +400,14 @@ void functionsQuestion11()
 
 void modifyArray(int a[], int size)
 {
-	int tmpArray[4];
+	int sum = 0;
 
-	for (int i = 1; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
-		tmpArray[0] = a[0];
-		tmpArray[1] = a[0] + a[1];
-		tmpArray[2] = a[0] + a[1] + a[2];
-		tmpArray[3] = a[0] + a[1] + a[2] + a[3];
-
-		cout << "The array index " << i << " is: " << tmpArray[i] << endl;
+		a[i] += sum;
+		sum = a[i];
+		
+		cout << "The array index " << i << " modified value is: " << a[i] << endl;
 	}
 }
 
