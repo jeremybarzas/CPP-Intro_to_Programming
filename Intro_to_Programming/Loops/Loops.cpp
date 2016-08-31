@@ -35,7 +35,8 @@ void loopsExercise1()
 		- Modify the for loop to include 0 and include 100
 		- Modify the for loop to include 0 and not 100
 		- Modify the for loop to not include 0 and include 100
-		- Modify the for loop to decrement by 2*/
+		- Modify the for loop to decrement by 2*/
+
 		cout << "============================== Part 1 ==============================\n";
 
 		int centNums[101];

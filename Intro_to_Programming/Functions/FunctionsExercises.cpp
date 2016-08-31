@@ -31,6 +31,28 @@ int SumTo(int N);
 
 void functionsQuestion7();
 
+int SumArray(int array[], int size);
+
+void functionsQuestion8();
+
+int MinInArray(int array[], int size);
+
+void functionsQuestion9();
+
+void MultiplyByIndex(int inputArray[], int outputArray[], int size);
+
+void functionsQuestion10();
+
+void addtwoArrays(int inputArray1[], int inputArray2[], int outputArray[], int size);
+
+void functionsQuestion11();
+
+void modifyArray(int a[], int size);
+
+void functionsQuestion12();
+
+
+
 int main()
 {
 	int input = 1;
@@ -60,6 +82,16 @@ int main()
 		case 6: functionsQuestion6(); break;
 
 		case 7: functionsQuestion7(); break;
+
+		case 8: functionsQuestion8(); break;
+
+		case 9: functionsQuestion9(); break;
+
+		case 10: functionsQuestion10(); break;
+
+		case 11: functionsQuestion11(); break;
+
+		case 12: functionsQuestion12(); break;
 
 		default:
 			break;
@@ -242,4 +274,159 @@ void functionsQuestion7()
 	sum = SumTo(input);
 
 	cout << "The sum of all numbers from 1 to " << input << " is: " << sum << "\n\n";
+}
+
+int SumArray(int array[], int size)
+{
+	int sum = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		sum += array[i];
+	}
+
+	return sum;
+}
+
+void functionsQuestion8()
+{
+	/*Write a function that takes as its parameters an array of integers and the size of the array
+		and returns the sum of the values in the array.
+		Use this code to test the function :
+	#include <iostream>
+	//Your function called SumArray goes here
+	int main()
+	{
+		int integer_array[5] = { 7, 3, 2, 4, 9 };
+		int result = SumArray(integer_array, 5); //result = 25
+		std::cout << result << std::endl;
+	}*/	int integer_array[] = { 7, 3, 2, 4, 9 };
+	int result = SumArray(integer_array, 5);
+
+	cout << "The sum of all the elements in the array is: " << result << "\n\n";
+}
+
+int MinInArray(int array[], int size)
+{
+	int smallest = array[0];
+
+	for (int i = 0; i <= 6; i++)
+	{
+		if (array[i] < smallest)
+			smallest = array[i];
+	}
+
+	return smallest;
+}
+
+void functionsQuestion9()
+{
+	/*Write a function that takes as its parameter an array of integers and the size of the array
+		and returns the minimum of the values in the array.
+		Use this code to test the function :		#include <iostream>
+//Your function called MinInArray goes here
+int main()
+{
+ int integer_array[7] = {10, 15, 7, 4, 13, 19, 8};
+ int result = MinInArray(integer_array, 7); //result = 4
+ std::cout << result << std::endl;
+}*/
+	int integer_array[7] = { 10, 15, 7, 4, 13, 19, 8 };
+	int result = MinInArray(integer_array, 7);
+
+	cout << "The smallest value in the array is: " << result << "\n\n";
+}
+
+void MultiplyByIndex(int inputArray[], int outputArray[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			outputArray[j] = (inputArray[j] * j);
+		}
+		cout << "outputArray's index of " << i << " has a value of " << outputArray[i] << ".\n\n";
+	}
+}
+
+void functionsQuestion10()
+{
+	/*Write a function that takes as its parameter an array called input_array of integers, the
+		array size and a second array of the same size called output_array.Fill each element in the
+		second array to be the value in the same index of input_array multiplied by its index in the
+		array.
+		Use this code to test your function :
+	#include <iostream>
+	//Your function called MultiplyByIndex goes here
+	int main()
+	{
+		int integer_array[7] = { 10, 15, 7, 4, 13, 19, 8 };
+		int output_array[7] = {};
+		MultiplyByIndex(integer_array, output_array, 7);
+		
+		//output_array should be {0, 15, 14, 12, 52, 95, 48};
+		return 0;
+	}*/
+	int integer_array[7] = { 10, 15, 7, 4, 13, 19, 8 };
+	int output_array[7] = {};
+	MultiplyByIndex(integer_array, output_array, 7);
+}
+
+void addtwoArrays(int inputArray1[], int inputArray2[], int outputArray[], int size)
+{
+	for (int i  = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			outputArray[j] = inputArray1[j] + inputArray2[j];
+		}
+		cout << "outputArray's index of " << i << " has a value of " << outputArray[i] << ".\n\n";
+	}
+}
+
+void functionsQuestion11()
+{
+	/*Write a function that takes as its parameters two input arrays of integers, an integer for
+		their size and an output array.Set the value at each index to the sum of the corresponding
+		two elements of the input arrays at the same index.Assume the three arrays are of equal
+		length.Write your own code for testing this function.*/
+
+	int inputArray1[5] = { 1, 2, 3, 4, 5 };
+	int inputArray2[5] = { 6, 7, 8, 9, 10 };
+	int outputArray[5];
+
+	addtwoArrays(inputArray1, inputArray2, outputArray, 5);
+}
+
+void modifyArray(int a[], int size)
+{
+	int tmpArray[4];
+
+	for (int i = 1; i < size; i++)
+	{
+		tmpArray[0] = a[0];
+		tmpArray[1] = a[0] + a[1];
+		tmpArray[2] = a[0] + a[1] + a[2];
+		tmpArray[3] = a[0] + a[1] + a[2] + a[3];
+
+		cout << "The array index " << i << " is: " << tmpArray[i] << endl;
+	}
+}
+
+void functionsQuestion12()
+{
+	/*Write a function that takes as its parameters an array called array_input of integers and the
+		size of the array and modifies the given array so that it contains a running sum of its
+		original values. For example, if the array originally had the values { 3,2,4,7 }, after running
+		your function that array would instead contain { 3,5,9,16 }, and if you ran it another time
+		passing the modified array in again, you'd have {3,8,17,33}. Write your own code for testing
+		this function.*/
+	int array_input[4] = { 3, 2, 4, 7 };
+
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "The array index " << i << " before modifing is: " << array_input[i] << endl;
+	}
+	
+	modifyArray(array_input, 4);
 }
