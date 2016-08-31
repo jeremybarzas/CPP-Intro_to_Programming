@@ -51,6 +51,10 @@ void modifyArray(int a[], int size);
 
 void functionsQuestion12();
 
+void findNum();
+
+void functionsQuestion13();
+
 
 
 int main()
@@ -92,6 +96,8 @@ int main()
 		case 11: functionsQuestion11(); break;
 
 		case 12: functionsQuestion12(); break;
+
+		case 13: functionsQuestion13(); break;
 
 		default:
 			break;
@@ -425,6 +431,36 @@ void functionsQuestion12()
 	{
 		cout << "The array index " << i << " before modifing is: " << array_input[i] << endl;
 	}
-	
-	modifyArray(array_input, 4);
+
+	for (int i = 0; i < 4; i++)
+	{
+		modifyArray(array_input, 4);
+	}
+}
+
+void findNum()
+{
+
+
+
+}
+
+void functionsQuestion13()
+{
+	/*Write a function that searches for a particular number in an array.The function should
+		have three parameters : the array, the array size, and the number to be found.If the
+		number is in the array, the function should return the position of the number in the array.
+		If the number isn’t found, the function should return -1. In the case that the desired
+		number appears more than once in the array, the function should return the position of
+		the first occurrence.Write your own code to test this function.*/	
+	/*srand(time(NULL));
+	rand() % 20 + 1;*/
+
+	int arrayofShit[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		arrayofShit[i] = i;
+		cout << "Array index " << i << " contains: " << arrayofShit[i] << endl;
+	}
 }
