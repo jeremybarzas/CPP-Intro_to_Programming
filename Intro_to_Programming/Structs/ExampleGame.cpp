@@ -6,7 +6,6 @@
 using std::string;
 using std::cout;
 using std::cin;
-using std::endl;
 
 struct Player;
 struct Enemy;
@@ -16,7 +15,6 @@ struct Player
 	string name;
 	int health = 1000;
 	int str = 50;
-	int def = 25;
 	bool alive = true;
 
 	bool attack(Enemy&);
@@ -43,39 +41,51 @@ int main()
 	Enemy enemy3 = { "Enemy 3", 100, 200, true };
 	
 	srand(time(NULL));
+
 	int input = -1;
 	bool gameOver = false;
+
+	bool playerAlive = true;
+
+	bool enemy1Alive = true;
+	bool enemy2Alive = true;
+	bool enemy3Alive = true;
 
 	cout << "Please enter the name of your character: ";
 	cin >> player1.name;
 	system("cls");
 
-	cout << "Welcome " << player1.name << "!\n\n";
+	cout << "Welcome " << player1.name << "!!!\n\n";
+	cout << "You must defeat all enemies without dying to win.\n\n";
 	cout << "Enter a number from 1 - 3 to select an enemy to attack.\n\n";
+
 	system("pause");
 	system("cls");
 
 	while (gameOver == false)
 	{
-		if (player1.alive == false)
-		{
-			break;
-		}
-
 		if (input < 0)
 		{
+			printInfo(player1, enemy1, enemy2, enemy3);
+
 			cout << "A group of 3 enemies surrounds you...\n\nWhich one do you want to attack: ";
 		}
+
 		else if (input > 3 || input < 1)
 		{
-			cout << "The number you entered was not a correct seleciton.\nPlease enter another choice: ";
-		}
-		else
-		{
-			cout << "Chose another enemy to attack: ";
+			printInfo(player1, enemy1, enemy2, enemy3);
+
+			cout << "The number you entered was not a correct seleciton.\n\n";
+			cout << "Enter a number from 1 - 3 to select an enemy to attack.\n\n";
+			cout << "Please chose another enemy to attack : ";
 		}
 
-		printInfo(player1, enemy1, enemy2, enemy3);
+		else
+		{
+			printInfo(player1, enemy1, enemy2, enemy3);
+
+			cout << "Chose another enemy to attack: ";
+		}
 
 		cin >> input;
 		system("cls");
@@ -83,100 +93,92 @@ int main()
 		switch (input)
 		{
 		case 1:
-			if (player1.attack(enemy1) == false)
+			if (enemy1Alive == false)
 			{
-				cout << enemy1.name << " is already dead...\n";
+				cout << enemy1.name << " is already dead...\n\n";
 			}
 			
-			else if (player1.attack(enemy1) == true)
+			else if (enemy1Alive == true)
 			{
-				player1.attack(enemy1);
-				enemy1.attack(player1);
+				enemy1Alive = player1.attack(enemy1);
 
-				if (enemy3.attack(player1) == false)
-				{
-					cout << player1.name << " has died...\n\n";
-					gameOver = true;
-				}
-
-				if (player1.attack(enemy1) == false)
+				if (enemy1Alive == false)
 				{
 					cout << enemy1.name << " has died...\n\n";
 				}
-			}
 
-			printInfo(player1, enemy1, enemy2, enemy3);
+				if (enemy1Alive == true)
+				{
+					playerAlive = enemy1.attack(player1);
+				}
+			}
 
 			break;
 
 		case 2:
-			if (player1.attack(enemy2) == false)
+			if (enemy2Alive == false)
 			{
-				cout << enemy2.name << " is already dead...\n";
+				cout << enemy2.name << " is already dead...\n\n";
 			}
 
-			else if (player1.attack(enemy2) == true)
+			else if (enemy2Alive == true)
 			{
-				player1.attack(enemy2);
-				enemy2.attack(player1);
+				enemy2Alive = player1.attack(enemy2);
 
-				if (enemy3.attack(player1) == false)
-				{
-					cout << player1.name << " has died...\n\n";
-					gameOver = true;
-				}
-
-				if (player1.attack(enemy2) == false)
+				if (enemy2Alive == false)
 				{
 					cout << enemy2.name << " has died...\n\n";
 				}
-			}
 
-			printInfo(player1, enemy1, enemy2, enemy3);
+				if (enemy2Alive == true)
+				{
+					playerAlive = enemy2.attack(player1);
+				}
+			}
 
 			break;
 
 		case 3:
-			if (player1.attack(enemy3)== false)
+			if (enemy3Alive == false)
 			{
-				cout << enemy3.name << " is already dead...\n";
+				cout << enemy3.name << " is already dead...\n\n";
 			}
 
-			else if (player1.attack(enemy3) == true)
+			else if (enemy3Alive == true)
 			{
-				player1.attack(enemy3);
-				enemy3.attack(player1);
+				enemy3Alive = player1.attack(enemy3);
 
-				if (enemy3.attack(player1) == false)
-				{
-					cout << player1.name << " has died...\n\n";
-					gameOver = true;
-				}
-
-				if (player1.attack(enemy3) == false)
+				if (enemy3Alive == false)
 				{
 					cout << enemy3.name << " has died...\n\n";
 				}
+			
+				if (enemy3Alive == true)
+				{
+					playerAlive = enemy3.attack(player1);
+				}
 			}
 
-			printInfo(player1, enemy1, enemy2, enemy3);
-			
 			break;
 		}
 
-		if (enemy3.attack(player1) == false || (enemy1.alive == false && enemy2.alive == false && enemy3.alive == false))
+		if (playerAlive == false)
 		{
+			printInfo(player1, enemy1, enemy2, enemy3);
+
+			cout << player1.name << " has died...\n\n";
+			cout << "You suck so bad you should alt + f4 and uninstall...\n\n";
 			gameOver = true;
 		}
-	}
 
-	if (gameOver == true && player1.alive == true)
-	{
-		cout << "Congradulations you won the game!!!\n\n";
-	}
-	else if (gameOver == true && player1.alive == false)
-	{
-		cout << "You suck so bad you should alt + f4 and uninstall...\n\n";
+		else if (enemy1Alive == false && enemy2Alive == false && enemy3Alive == false)
+		{
+			printInfo(player1, enemy1, enemy2, enemy3);
+
+			cout << "All enemies are dead...\n\n";
+			cout << "Congradulations you won the game!!!\n\n";
+			gameOver = true;
+		}
 	}
 
 	system("pause");
@@ -186,12 +188,12 @@ int main()
 
 void printInfo(Player p , Enemy e1, Enemy e2, Enemy e3)
 {
-	cout << "\n\n";
 	cout << p.name << "'s health is:" << p.health << "\n\n";
 	cout << e1.name << "'s health is:" << e1.health << "\n";
 	cout << e2.name << "'s health is:" << e2.health << "\n";
 	cout << e3.name << "'s health is:" << e3.health << "\n\n";
 }
+
 bool Player::attack(Enemy &e)
 {
 	if (e.alive == false)
@@ -205,7 +207,7 @@ bool Player::attack(Enemy &e)
 
 		e.health -= atkDmg;
 
-		cout << name << " dealt " << atkDmg << " to " << e.name << "\n\n";
+		cout << name << " swung for " << atkDmg << " damage at " << e.name << ".\n\n";
 
 		if (e.health <=0)
 		{
@@ -218,9 +220,9 @@ bool Player::attack(Enemy &e)
 
 bool Enemy::attack(Player &p)
 {
-	if (alive == false)
+	if (p.alive == false)
 	{
-		return alive;
+		return p.alive;
 	}
 
 	else if (p.alive == true)
@@ -238,22 +240,22 @@ bool Enemy::attack(Player &p)
 
 			p.health -= (atkDmg - block);
 
-			cout << name << " dealt " << atkDmg << " to " << p.name << "\n\n";
-			cout << "You successfully blocked " << block << " from the attack!\n";
+			cout << name << " swung for " << atkDmg << " damage at " << p.name << ".\n\n";
+			cout << "You successfully blocked " << block << " from the attack!\n\n";
+			cout << "Only " << atkDmg - block << " damage went through.\n\n";
 		}
 
 		else if (savingThrow == false)
 		{
 			p.health -= atkDmg;
 
-			cout << name << " dealt " << atkDmg << " to " << p.name << "\n";
+			cout << name << " swung for " << atkDmg << " damage at " << p.name << ".\n\n";
 		}
-
+		
 		if (p.health <= 0)
 		{
 			p.alive = false;
+			return p.alive;
 		}
-
-		return p.alive;
 	}
 }

@@ -223,7 +223,8 @@ void functionsQuestion5()
 
 void functionsQuestion6()
 {
-	/*Find the error in each of the following functions and explain how to fix them.
+	/*Find the error in each of the following functions and explain how to fix them.
+
 	int sum(int x, int y)
 	{
 		int result;
@@ -248,7 +249,8 @@ void functionsQuestion6()
 	int square (int x)
 	{
 		return x * x;
-	}*/
+	}
+*/
 
 	cout << "The error in the first function is that is does not return anything.\n\n";
 	cout << "The error in the second function is it cannot assign a value to the varible n because it is not a variable that was created in the function it is an arbitrary varaible named creaeted for the argument.\n\n";
@@ -271,7 +273,8 @@ int SumTo(int N)
 void functionsQuestion7()
 {
 	/*Write a function called SumTo that accepts an integer parameter N and returns the sum of
-		all integers from 1 to N, including N.*/
+		all integers from 1 to N, including N.*/
+
 	int input;
 	int sum;
 	
@@ -306,7 +309,9 @@ void functionsQuestion8()
 		int integer_array[5] = { 7, 3, 2, 4, 9 };
 		int result = SumArray(integer_array, 5); //result = 25
 		std::cout << result << std::endl;
-	}*/	int integer_array[] = { 7, 3, 2, 4, 9 };
+	}*/
+
+	int integer_array[] = { 7, 3, 2, 4, 9 };
 	int result = SumArray(integer_array, 5);
 
 	cout << "The sum of all the elements in the array is: " << result << "\n\n";
@@ -329,14 +334,17 @@ void functionsQuestion9()
 {
 	/*Write a function that takes as its parameter an array of integers and the size of the array
 		and returns the minimum of the values in the array.
-		Use this code to test the function :		#include <iostream>
+		Use this code to test the function :
+		#include <iostream>
 //Your function called MinInArray goes here
 int main()
 {
  int integer_array[7] = {10, 15, 7, 4, 13, 19, 8};
  int result = MinInArray(integer_array, 7); //result = 4
  std::cout << result << std::endl;
-}*/
+}
+*/
+
 	int integer_array[7] = { 10, 15, 7, 4, 13, 19, 8 };
 	int result = MinInArray(integer_array, 7);
 
@@ -372,7 +380,8 @@ void functionsQuestion10()
 		
 		//output_array should be {0, 15, 14, 12, 52, 95, 48};
 		return 0;
-	}*/
+	}*/
+
 	int integer_array[7] = { 10, 15, 7, 4, 13, 19, 8 };
 	int output_array[7] = {};
 	MultiplyByIndex(integer_array, output_array, 7);
@@ -424,7 +433,8 @@ void functionsQuestion12()
 		original values. For example, if the array originally had the values { 3,2,4,7 }, after running
 		your function that array would instead contain { 3,5,9,16 }, and if you ran it another time
 		passing the modified array in again, you'd have {3,8,17,33}. Write your own code for testing
-		this function.*/
+		this function.*/
+
 	int array_input[4] = { 3, 2, 4, 7 };
 
 	for (int i = 0; i < 4; i++)
@@ -452,7 +462,8 @@ void functionsQuestion13()
 		number is in the array, the function should return the position of the number in the array.
 		If the number isn’t found, the function should return -1. In the case that the desired
 		number appears more than once in the array, the function should return the position of
-		the first occurrence.Write your own code to test this function.*/	
+		the first occurrence.Write your own code to test this function.*/
+	
 	/*srand(time(NULL));
 	rand() % 20 + 1;*/
 
