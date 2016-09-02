@@ -232,15 +232,19 @@ bool Enemy::attack(Player &p)
 
 		int atkDmg = rand() % str + 50;
 
-		savingThrow = rand() % 2; //randomizing true or false for block to happen
+		savingThrow = rand() % 2;
 
 		if (savingThrow == true)
 		{
 			block = rand() % 50 + 25;
 
-			p.health -= (atkDmg - block);
+			int dmg = atkDmg;
 
-			cout << name << " swung for " << atkDmg << " damage at " << p.name << ".\n\n";
+			atkDmg = (block >= atkDmg) ? 0 : atkDmg - block;
+
+			p.health -= atkDmg;
+
+			cout << name << " swung for " << dmg << " damage at " << p.name << ".\n\n";
 			cout << "You successfully blocked " << block << " from the attack!\n\n";
 			cout << "Only " << atkDmg - block << " damage went through.\n\n";
 		}

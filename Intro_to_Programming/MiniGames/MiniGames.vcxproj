@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D03731E9-459F-45CA-A75E-D121FC3E77A5}</ProjectGuid>
-    <RootNamespace>Structs</RootNamespace>
+    <ProjectGuid>{12AE1BBF-69C5-42F1-BE39-03F4507C3E73}</ProjectGuid>
+    <RootNamespace>MiniGames</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -110,7 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Structs.cpp" />
+    <ClCompile Include="MiniGames.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
