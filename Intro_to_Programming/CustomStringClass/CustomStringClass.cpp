@@ -1,71 +1,108 @@
 #include "CustomStringClass.h"
-#include "assert.h"
 
 int main()
 {
-	Student Jeremy = Student("jeremy", 1337, 25, 175, false);
-	Student Regie = Student("Regie", 9001, 21, 230, true);
-
-	
-
-	cout << "Jeremy after definiton / before swap fucntion\n\n"<< Jeremy.name << "\n" << Jeremy.ID << "\n" << Jeremy.age << "\n" << Jeremy.weight << "\n\n";
-	cout << "Regie after definiton / before swap fucntion\n\n" << Regie.name << "\n" << Regie.ID << "\n" << Regie.age << "\n" << Regie.weight << "\n\n";
-
-	Student students[2] = { Jeremy, Regie };
-
-	studentSwap(students[0], students[1]);
-
-	cout << Jeremy.name << "\n" << Jeremy.ID << "\n" << Jeremy.age << "\n" << Jeremy.weight << "\n\n";
-	cout << Regie.name << "\n" << Regie.ID << "\n" << Regie.age << "\n" << Regie.weight << "\n\n";
-
-	/*=======================================================*/
-	cout << "==============BEGIN COMPARE TEST Cstring=======\n\n";
-
 	cString testWord1 = cString("things");
 	cString testWord2 = cString("stuff");
 	cString testWord3 = cString("stuff");
+	cString testWord6 = ("ThInGs");
+	
+	printf("=============== Get the length of a cString ===============\n\n");
+
+	printf("String to get size of: "); testWord1.printWord();
+	cout << "Size of is: " << testWord1.sizeOf() << "\n\n";
+	
+	printf("String to get size of: "); testWord2.printWord();
+	cout << "Size of is: " << testWord2.sizeOf() << "\n\n";
+
+	printf("=============== Accessing a character at a certain index ===============\n\n");
+	
+	printf("String to get index of: "); testWord1.printWord();
+	cout << "Character at index 4 is: " << testWord1.atIndex(4) << "\n\n"; 
+	
+	printf("String to get index of: "); testWord2.printWord();
+	cout << "Character at index 2 is: " << testWord2.atIndex(2) << "\n\n";
+
+	printf("=============== Comparing on cString to another cString ===============\n\n");
+	
+	// -1 if before, 0 if same, 1 if after
+	int same = testWord2.compare(testWord3); // "stuff".compare("stuff") should be 0
+
+	printf("Word 1: "); testWord2.printWord();
+	printf("Word 2: "); testWord3.printWord();
+	printf("Compare function output: %i \n\n", same);
+
+	int lexAfter = testWord2.compare(testWord1); // "stuff" .compare("things") should be -1
+
+	printf("Word 1: "); testWord2.printWord();
+	printf("Word 2: "); testWord1.printWord();
+	printf("Compare function output: %i \n\n", lexAfter);
+
+	int lexBefore = testWord1.compare(testWord2); // "things".compare("stuff") should be 1
+
+	printf("Word 1: "); testWord1.printWord();
+	printf("Word 2: "); testWord2.printWord();
+	printf("Compare function outcome: %i \n\n", lexBefore);
+
+	printf("=============== Appending a cString to another cString ===============\n\n");
+
 	cString testWord4 = testWord1.append(testWord2);
+
+	printf("Word 1: "); testWord1.printWord();
+	printf("Word 2: "); testWord2.printWord();
+	printf("Append function outcome: ");
 	testWord4.printWord();
 
+	printf("=============== Prepending a cString to another cString ===============\n\n");
+
+	cString testWord5 = testWord1.prepend(testWord2);
+
+	printf("Word 1: "); testWord1.printWord();
+	printf("Word 2: "); testWord2.printWord();
+	printf("Prepend function outcome: ");
+	testWord5.printWord();
+
+	printf("=============== Return a cString as a constant C-style string ===============\n\n");
+
+
+
+
+
+	printf("=============== Convert all characters in cString to lowercase ===============\n\n");
+
+	cString testWord7 = testWord6.lowerCase();
+
+	printf("Word before modification is: "); testWord6.printWord();
+
+	testWord7.printWord();
 	
-	//cout << testWord1.chars << "\n\n";	
-	//cout << testWord2.chars << "\n\n";
+	printf("=============== Convert all characters in cString to uppercase ===============\n\n");
 	
-	/*=======================================================*/
-	cout << "=======================================================\n\n";
-
-	cout << testWord1.sizeOf() << "\n\n";
-	cout << testWord2.sizeOf() << "\n\n";
-
-	/*=======================================================*/
-	cout << "=======================================================\n\n";
-
-	cout << testWord1.atIndex(4) << "\n\n";
-	cout << testWord2.atIndex(2) << "\n\n";
-
-	/*=======================================================*/
-	cout << "=======================================================\n\n";
-
-	int same = testWord2.compare(testWord3); //stuff.compare(stuff)
-	//-1 if before 0 if same 1 if after
-	//example: 't' is before 'u' -1
-	//t is after s so 1
-	//if you compare against two non equal length then the shorter will be -1 if all of it's characters
-	//are before up to that point
-	cout << "same is: " << same << " and it should have been: 0\n\n";
-
-	assert(testWord2.compare(testWord1) == -1, "not negative 1"); // "stuff" .compare("things") should be -1
+	cString testWord8 = testWord6.upperCase();
 	
+	printf("Word before modification is: "); testWord6.printWord();
 	
-	int lexBefore = testWord1.compare(testWord2); // things.compare(stuff)
-	
+	testWord8.printWord();
 
-	/*=======================================================*/
-	cout << "=======================================================\n\n";
+	printf("=============== Find a sub-string within a cString ===============\n\n");
 
-	//cout << testWord1.append(testWord2) << "\n\n";
-	//cout << testWord2.append(testWord1) << "\n\n";
+	cString subString1 = cString("th");
+	cString subString2 = cString("suff");
 
+	bool found1 = testWord1.subString(subString1);
+	bool found2 = testWord2.subString(subString2);
+
+	printf("Sub-string to search for: "); subString1.printWord();
+
+	printf("Searching for sub-string within: "); testWord1.printWord();
+
+	(found1 == true) ? printf("Found sub-string\n\n") : printf("Did not find sub-string\n\n");
+
+	printf("Sub-string to search for: "); subString2.printWord();
+
+	printf("Searching for sub-string within: "); testWord2.printWord();
+
+	(found2 == true) ? printf("Found sub-string\n\n") : printf("Did not find sub-string\n\n");
 
 
 

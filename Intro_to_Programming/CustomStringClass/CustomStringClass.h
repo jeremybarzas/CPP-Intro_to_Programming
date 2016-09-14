@@ -16,29 +16,32 @@ private:
 	char *chars;
 
 public:
-	
-	
 
 	cString::cString() {};
 
 	cString::cString(char c[])
-	{
-		
+	{	
 		for (m_size = 0; c[m_size] != 0;)
 		{
 			m_size++;
 		}
-		
-		
 		
 		chars = new char[m_size];
 		
 		chars = c;
 	}
 
+	void printWord()
+	{
+		for (int i = 0; i < m_size; i++)
+		{
+			printf("%c", chars[i]);
+		}
+		printf("\n\n");
+	}
+
 	int cString::sizeOf()
 	{
-	
 		return m_size;
 	}
 
@@ -86,16 +89,15 @@ public:
 	cString cString::append(cString other)
 	{		
 		int newSize = this->sizeOf() + other.sizeOf();
-		//need a new character array that is the size of both... + 1 if we want a null terminating character
+
 		char * newWord = new char[newSize];
-		//populate the newWord with the first part that is this
-		for (int i = 0; i < this->m_size; i++)
+
+		for (int i = 0; i < this->sizeOf(); i++)
 		{
 			newWord[i] = this->chars[i];
 		}
-		//populate 
 		
-		for (int j = sizeOf(); j < other.sizeOf() + this->sizeOf(); j++)
+		for (int j = this->sizeOf(); j < other.sizeOf() + this->sizeOf(); j++)
 		{
 			int offset = j - this->sizeOf();
 			newWord[j] = other.chars[offset];
@@ -104,58 +106,127 @@ public:
 		newWord[newSize] = '\0';
 		
 		return cString(newWord);
-	
 	}
-	void printWord()
+
+	cString cString::prepend(cString other)
 	{
-		printf("PRINTING THE WORD!!!!!!");
-		for (int i = 0; i < m_size; i++)
+		int newSize = this->sizeOf() + other.sizeOf();
+
+		char * newWord = new char[newSize];
+
+		for (int i = 0; i < other.sizeOf(); i++)
 		{
-			printf("%c", chars[i]);
+			newWord[i] = other.chars[i];
 		}
-		printf("\n");
-		
+
+		for (int j = other.sizeOf(); j < this->sizeOf() + other.sizeOf(); j++)
+		{
+			int offset = j - other.sizeOf();
+			newWord[j] = this->chars[offset];
+		}
+
+		newWord[newSize] = '\0';
+
+		return cString(newWord);
 	}
 
-};
-
-class Item
-{
-	Item() {}
-	
-};
-class Student
-{
-public:
-
-	string name;
-	int ID;
-	int age;
-	int weight;
-	bool alive;
-	Item * inventory;
-
-	Student::Student() {};
-
-	Student::Student(string n, int i, int a, int w, bool d)
+	cString cString::lowerCase()
 	{
-		name = n;
-		ID = i;
-		age = a;
-		weight = w;
-		alive = d;
+		char * newWord = new char[this->sizeOf()];
+
+		int assKey = 0;
+
+		for (int i = 0; i < this->sizeOf(); i++)
+		{
+			if (this->chars[i] >= 65 && this->chars[i] <= 90)
+			{
+				assKey = (int)chars[i];
+				assKey = assKey + 32;
+				newWord[i] = (char)assKey;
+			}
+			else if (this->chars[i] >= 97 && this->chars[i] <= 122)
+			{
+				newWord[i] = chars[i];
+			}
+
+		}
+
+		newWord[this->sizeOf()] = '\0';
+
+		return cString(newWord);
 	}
 
+	cString cString::upperCase()
+	{
+		char * newWord = new char[this->sizeOf()];
+
+		int assKey = 0;
+
+		for (int i = 0; i < this->sizeOf(); i++)
+		{
+			if (this->chars[i] >= 97 && this->chars[i] <= 122)
+			{
+				assKey = (int)chars[i];
+				assKey = assKey - 32;
+				newWord[i] = (char)assKey;
+			}
+			else if (this->chars[i] >= 65 && this->chars[i] <= 90)
+			{
+				newWord[i] = chars[i];
+			}
+		}
+
+		newWord[this->sizeOf()] = '\0';
+
+		return cString(newWord);
+	}
+
+	bool cString::subString(cString other)
+	{
+		bool subFound = false;
+		int i = 0;
+		int j = 0;
+
+		for (int i = 0; i < this->sizeOf(); i++)
+		{
+			if (this->chars[i] == other.chars[0])
+			{
+				subFound = true;
+
+				for (int j = 0; j < other.sizeOf(); i++, j++)
+				{
+					if (this->chars[i] == other.chars[j])
+					{
+						subFound = true;
+					}
+
+					else
+					{
+						subFound = false;
+					}
+				}
+			}
+		}
+
+		return subFound;
+
+		/*while (true)
+		{
+			if (this->chars[i] == other.chars[j])
+			{
+				i++;
+				j++;
+
+				if (this->chars[i] == other.chars[j])
+				{
+					subFound = true;
+				}
+				else if (this->chars[i] != other.chars[j])
+				{
+					subFound = false;
+				}
+			}
+		}*/
+
+	}
 };
-
-void studentSwap(Student &);
-
-void studentSwap(Student &a, Student &b)
-{
-	Student temp;
-	temp = a;
-	a = b;
-	b = temp;
-
-	return;
-}
