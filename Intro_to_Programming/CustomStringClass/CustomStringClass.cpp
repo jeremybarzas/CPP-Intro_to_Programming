@@ -127,14 +127,14 @@ int main()
 	
 	printf("\n========== Replacing a found sub-string with another sub-string ==========\n\n\n");
 	
-	cString testword8 = cString("the thi ngs");
+	cString testWord9 = cString("the thi ngs");
 	cString subString5 = cString("thi");
 	cString subString6 = cString("facehead");
 
 	//printf("Sub-string to search for: "); subString5.printWord();
 	//printf("Sub-string to replace with: "); subString6.printWord();
 
-	cString modifiedcString = testword8.replaceSubstring(subString5, subString6);
+	cString modifiedcString = testWord9.replaceSubstring(subString5, subString6);
 
 
 	system("pause");

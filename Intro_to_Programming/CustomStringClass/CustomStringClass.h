@@ -20,6 +20,8 @@ private:
 
 public:
 
+	int theIndex;
+
 	// creates a default constructor
 	cString::cString() {};
 
@@ -267,19 +269,24 @@ public:
 		// returns a new cString that is assigned the values store in "newWord" 
 		return cString(newWord);
 	}
-	int theIndex;
+
 	// creates a function that checks if a sub-string passed as a parameter exists in the cString
 	bool cString::subString(cString other)
 	{
 		// creates a boolean variable to store whether the sub-string was found
 		bool subFound = false;
+
 		cString sub = cString(other.chars);
+
 		int patternLen = sub.sizeOf();
 
 		for (int i = 0; i < this->sizeOf(); i++)
 		{
 			if (subFound)
+			{
 				return true;
+			}
+		
 			//match on first letter
 			if (this->chars[i] == sub.chars[0])
 			{
@@ -300,37 +307,6 @@ public:
 				}
 			}
 		}
-		return subFound;
-
-
-		//// loops through the cString
-		//for (int i = 0; i < this->sizeOf(); i++)
-		//{
-		//	/*checks to see if the value at the index of "chars" in the cString is the same
-		//	as the value at the index of "chars" in the sub-string*/ 
-		//	if (this->chars[i] == other.chars[0])
-		//	{
-		//		// loops through sub-string
-		//		for (int j = 0; j < other.sizeOf(); j++, i++)
-		//		{
-		//			/*checks to see if the value at the index of "chars" in the cString is the same
-		//			as the value at the index of "chars" in the sub - string*/
-		//			if (this->chars[i] == other.chars[j])
-		//			{
-		//				//assigns "subFound" to true
-		//				theIndex = j;
-		//				subFound = true;						
-		//			}
-
-		//			// if the condition is not met then it executes these lines
-		//			else 
-		//			{
-		//				// returns "subFound" assigned as false to end the function
-		//				return subFound = false;
-		//			}
-		//		}
-		//	}
-		//}
 
 		// returns "subFound"
 		return subFound;
@@ -405,27 +381,6 @@ public:
 			newWord[i] = this->chars[k];
 			k++;
 		}
-
-
-
-
-
-			if (found == true)
-			{
-				for (int i = 0; i < newSize; i++)
-				{
-					if (this->chars[i] == searchFor.chars[i])
-					{
-						newWord[i] = replaceWith.chars[i];
-					}
-
-					else
-					{
-						newWord[i] = this->chars[i];
-					}
-				}
-			}
-
 
 		return cString(newWord);
 	}
