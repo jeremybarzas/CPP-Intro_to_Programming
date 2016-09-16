@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Testquestion4example.cpp" />
+    <ClCompile Include="DynamicArray.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2468406A-ACC6-4D15-840F-D326EFD684AA}</ProjectGuid>

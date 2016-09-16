@@ -1,12 +1,8 @@
 #include <iostream>
-#include <stdlib.h>
-#include <string>
 
-using std::string;
 using std::cout;
-using std::cin;
 
-void populateArray(int *ptr, int num);
+void populateArray(int *, int);
 
 int main()
 {

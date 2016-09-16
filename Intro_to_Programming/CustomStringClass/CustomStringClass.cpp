@@ -1,32 +1,40 @@
 #include "CustomStringClass.h"
 
+void test1();
+
 int main()
 {
-	
-	
-	
+	test1();
+
+	system("pause");
+
+	return 0;
+}
+
+void test1()
+{
 	cString testWord1 = cString("things");
 	cString testWord2 = cString("stuff");
 	cString testWord3 = cString("stuff");
-	
+
 	printf("\n========== Get the length of a cString ==========\n\n\n");
 
 	printf("String to get size of: "); testWord1.printWord();
-	cout << "Size of is: " << testWord1.sizeOf() << "\n\n";
-	
+	cout << "Size of is: " << testWord1.getSize() << "\n\n";
+
 	printf("String to get size of: "); testWord2.printWord();
-	cout << "Size of is: " << testWord2.sizeOf() << "\n\n";
+	cout << "Size of is: " << testWord2.getSize() << "\n\n";
 
 	printf("\n========== Accessing a character at a certain index ==========\n\n\n");
-	
+
 	printf("String to get index of: "); testWord1.printWord();
-	cout << "Character at index 4 is: " << testWord1.atIndex(4) << "\n\n"; 
-	
+	cout << "Character at index 4 is: " << testWord1.atIndex(4) << "\n\n";
+
 	printf("String to get index of: "); testWord2.printWord();
 	cout << "Character at index 2 is: " << testWord2.atIndex(2) << "\n\n";
 
 	printf("\n========== Comparing on cString to another cString ==========\n\n\n");
-	
+
 	// -1 if before, 0 if same, 1 if after
 	int same = testWord2.compare(testWord3); // "stuff".compare("stuff") should be 0
 
@@ -66,9 +74,10 @@ int main()
 
 	printf("\n========== Return a cString as a constant C-style string ==========\n\n\n");
 
+	const char* testString = testWord1.constantChar();
 
-
-
+	printf("Word to be changed into a constant C-style string: "); testWord1.printWord();
+	cout << testString << "\n\n";
 
 	printf("\n========== Convert all characters in cString to lowercase ==========\n\n\n");
 
@@ -78,20 +87,20 @@ int main()
 	printf("Word before modification is: "); testWord6.printWord();
 
 	printf("Word after modification is: "); testWord7.printWord();
-	
+
 	printf("\n========== Convert all characters in cString to uppercase ==========\n\n\n");
-	
+
 	cString testWord8 = testWord6.upperCase();
-	
+
 	printf("Word before modification is: "); testWord6.printWord();
-	
+
 	printf("Word after modification is: "); testWord8.printWord();
 
 	printf("\n========== Find a sub-string within a cString ==========\n\n\n");
 
 	cString subString1 = cString("hing");
 	bool found1 = testWord1.subString(subString1);
-	
+
 	printf("Sub-string to search for: "); subString1.printWord();
 	printf("Searching for sub-string within: "); testWord1.printWord();
 
@@ -109,7 +118,7 @@ int main()
 
 	cString subString3 = cString("ings");
 	bool found3 = testWord1.substringfromIndex(subString3, 2);
-	
+
 	printf("Sub-string to search for: "); subString3.printWord();
 	printf("Searching for sub-string within: "); testWord1.printWord();
 	printf("Starting at index: 2\n\n");
@@ -124,20 +133,33 @@ int main()
 	printf("Starting at index: 3\n\n");
 
 	(found4 == true) ? printf("Found sub-string\n\n") : printf("Did not find sub-string\n\n");
-	
+
 	printf("\n========== Replacing a found sub-string with another sub-string ==========\n\n\n");
-	
-	cString testWord9 = cString("the thi ngs");
+
+	cString testWord9 = cString("thethings");
 	cString subString5 = cString("thi");
 	cString subString6 = cString("facehead");
 
-	//printf("Sub-string to search for: "); subString5.printWord();
-	//printf("Sub-string to replace with: "); subString6.printWord();
+	printf("cString to search/repalce within: "); testWord9.printWord();
+	printf("Sub-string to search for: "); subString5.printWord();
+	printf("Sub-string to replace with: "); subString6.printWord();
 
-	cString modifiedcString = testWord9.replaceSubstring(subString5, subString6);
+	cString testWord10 = testWord9.replaceSubstring(subString5, subString6);
 
+	testWord10.printWord();
 
-	system("pause");
+	printf("\n========== Set a cString to a user's input ==========\n\n\n");
 	
-	return 0;
+	char input[255];
+
+	char *inputPtr = input;
+
+	printf("Enter a string: ");
+	cin >> inputPtr;
+
+	cString testWord11 = cString(inputPtr);
+
+	printf("\nThe new instance of the cString class is: "); testWord11.printWord();
+
+	return;
 }

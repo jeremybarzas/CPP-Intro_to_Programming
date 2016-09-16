@@ -1,10 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <stdlib.h>
-#include <string>
 
-using std::string;
 using std::cout;
 using std::cin;
 
@@ -16,20 +13,28 @@ private:
 	int m_size;
 
 	// creates a character pointer
-	char *chars;
+	char* charArray;
+
+	// creates a variable to store an integer to be used as a index in a function
+	int theIndex;
 
 public:
 
-	int theIndex;
-
 	// creates a default constructor
-	cString::cString() {};
+	cString() : m_size(0), charArray(nullptr), theIndex(-1) 
+	{
+	
+	};
 
 	// creates a constructor to make a cString that takes an array of characters as a parameter
-	cString::cString(char c[])
+	cString(char c[])
 	{
+		m_size = 0;
+		charArray = nullptr;
+		theIndex = -1;
+
 		// counting the amount of characters passed into the constructor
-		for (m_size = 0; c[m_size] != 0;)
+		for (int i = 0; c[i] != '\0'; i++)
 		{
 			// incrementing the size by 1 for each character passed into the constructor
 			m_size++;
@@ -37,44 +42,46 @@ public:
 
 		/*assigning the private variable "chars" to a new character array
 		of the size of the amount of characters passed into the constructor*/
-		this->chars = new char[m_size];
+		this->charArray = new char[m_size];
 
 		// assigning the characters passed into the constructor to the private variable chars
-		this->chars = c;
+		this->charArray = c;
 	}
 
 	// creates a function to print the characters stored in the array "chars"
 	void printWord()
 	{
 		// loops through the array "chars"
-		for (int i = 0; i < m_size; i++)
+		for (int i = 0; i < this->getSize(); i++)
 		{
 			// prints each character to the console
-			printf("%c", chars[i]);
+			printf("%c", this->charArray[i]);
 		}
 		// prints a double space to the console for formatting
 		printf("\n\n");
+		
+		return;
 	}
 
 	// creates a function to get the size of the cString
-	int cString::sizeOf()
+	int getSize()
 	{
 		// returns the size of the cString
 		return m_size;
 	}
 
 	// creates a function to access a character at a specific index that is passed as a parameter in the array "chars"
-	char cString::atIndex(int i)
+	char atIndex(int i)
 	{
 		// creates a variable of type character and assigns it the value store at the specific index 
-		char temp = chars[i];
+		char temp = charArray[i];
 
 		// returns the "temp" char variable
 		return temp;
 	}
 
 	// creates a function that checks one cString lexographically to another cString
-	int cString::compare(cString c)
+	int compare(cString c)
 	{
 		// creates a variable to use a an interatinig index
 		int i = 0;
@@ -85,7 +92,7 @@ public:
 		while (true)
 		{
 			// checks to see if the values at each index are the same
-			if (chars[i] == c.chars[i])
+			if (charArray[i] == c.charArray[i])
 			{
 				// assigns "result" to 0 and breaks the loop
 				result = 0;
@@ -93,7 +100,7 @@ public:
 			}
 
 			// checks to see if the values of the first word are greater than the second at each index
-			else if (chars[i] > c.chars[i])
+			else if (charArray[i] > c.charArray[i])
 			{
 				// assigns "result" to 1 and breaks the loop
 				result = 1;
@@ -101,7 +108,7 @@ public:
 			}
 
 			// checks to see if the values of the first word are lesser than the second at each index
-			else if (chars[i] < c.chars[i])
+			else if (charArray[i] < c.charArray[i])
 			{
 				// assigns "result" to -1 and breaks the loop
 				result = -1;
@@ -119,33 +126,67 @@ public:
 		return result;
 	}
 
-	// creates a function that appends the cString passed as a parameter to the cString the function was called from 
-	cString cString::append(cString other)
+	cString append(char * otherc)
 	{
+		cString other = cString(otherc);
 		// creates a variable and assigns it the sum of both cStrings size
-		int newSize = this->sizeOf() + other.sizeOf();
+		int newSize = this->getSize() + other.getSize();
 
 		// creates a pointer of type character and assigns it to a new character array of the size of "newSize"
 		char * newWord = new char[newSize];
 
 		// loops through "newWord" and the first word 
-		for (int i = 0; i < this->sizeOf(); i++)
+		for (int i = 0; i < this->getSize(); i++)
 		{
 			// assigns the index of "newWord" to the value of the index of the first word 
-			newWord[i] = this->chars[i];
+			newWord[i] = this->charArray[i];
 		}
 
 		// loops through "newWord" and the second word
 		// starts at the next index in "newWord" after the last character assign by the previous loop 
-		for (int j = this->sizeOf(); j < other.sizeOf() + this->sizeOf(); j++)
+		for (int j = this->getSize(); j < other.getSize() + this->getSize(); j++)
 		{
 			// creates a variable to be used as the index to interate through the second word
-			int offset = j - this->sizeOf();
+			int offset = j - this->getSize();
 
 			// assigns the index of "newWord" to the value stored at the index of the second word
-			newWord[j] = other.chars[offset];
-
+			newWord[j] = other.charArray[offset];
 		}
+
+		// assigns the last index "newWord" to the terminating character
+		newWord[newSize] = '\0';
+		
+		// returns a new cString that is assigned the values store in "newWord" 
+		return cString(newWord);
+	}
+
+	// creates a function that appends the cString passed as a parameter to the cString the function was called from 
+	cString append(cString other)
+	{
+		// creates a variable and assigns it the sum of both cStrings size
+		int newSize = this->getSize() + other.getSize();
+
+		// creates a pointer of type character and assigns it to a new character array of the size of "newSize"
+		char * newWord = new char[newSize];
+
+		// loops through "newWord" and the first word 
+		for (int i = 0; i < this->getSize(); i++)
+		{
+			// assigns the index of "newWord" to the value of the index of the first word 
+			newWord[i] = this->charArray[i];
+		}
+
+		// loops through "newWord" and the second word
+		// starts at the next index in "newWord" after the last character assign by the previous loop 
+		for (int j = this->getSize(); j < other.getSize() + this->getSize(); j++)
+		{
+			// creates a variable to be used as the index to interate through the second word
+			int offset = j - this->getSize();
+
+			// assigns the index of "newWord" to the value stored at the index of the second word
+			newWord[j] = other.charArray[offset];
+		}
+
 		// assigns the last index "newWord" to the terminating character
 		newWord[newSize] = '\0';
 
@@ -154,30 +195,30 @@ public:
 	}
 
 	// creates a function that prepends the cString passed as a parameter to the cString the function was called from 
-	cString cString::prepend(cString other)
+	cString prepend(cString other)
 	{
 		// creates a variable and assigns it the sum of both cStrings size
-		int newSize = this->sizeOf() + other.sizeOf();
+		int newSize = this->getSize() + other.getSize();
 
 		// creates a pointer of type character and assigns it to a new character array of the size of "newSize"
 		char * newWord = new char[newSize];
 
 		// loops through "newWord" and the second word
-		for (int i = 0; i < other.sizeOf(); i++)
+		for (int i = 0; i < other.getSize(); i++)
 		{
 			// assigns the index of "newWord" to the value stored at the index of the second word
-			newWord[i] = other.chars[i];
+			newWord[i] = other.charArray[i];
 		}
 
 		// loops through "newWord" and the first word 
 		// starts at the next index in "newWord" after the last character assign by the previous loop 
-		for (int j = other.sizeOf(); j < this->sizeOf() + other.sizeOf(); j++)
+		for (int j = other.getSize(); j < this->getSize() + other.getSize(); j++)
 		{
 			// creates a variable to be used as the index to interate through the first word
-			int offset = j - other.sizeOf();
+			int offset = j - other.getSize();
 
 			// assigns the index of "newWord" to the value stored at the index of the first word
-			newWord[j] = this->chars[offset];
+			newWord[j] = this->charArray[offset];
 		}
 
 		// assigns the last index "newWord" to the terminating character
@@ -187,24 +228,37 @@ public:
 		return cString(newWord);
 	}
 
+	// creates a function that returns a cString as constant character pointer
+	const char* constantChar()
+	{
+		//creates a new variable to store size for the new array 
+		int	newSize = this->getSize();
+
+		// creates a constant character pointer and assigns it to a new character array and assigns its size "newSize"
+		const char* newWord = new char[newSize];
+
+		// returns "newWord" assigned to the the values of "charArray"
+		return newWord = this->charArray;
+	}
+
 	// creates a function that turns all characters in a cString to lowercase
-	cString cString::lowerCase()
+	cString lowerCase()
 	{
 		/*creates a pointer of type character and assigns it to a new character array
 		of the same size as the cString it was called from*/
-		char * newWord = new char[this->sizeOf()];
+		char * newWord = new char[this->getSize()];
 
 		// creates a variable to store the ascii value of a character
 		int assKey = 0;
 
 		// loops through the character array
-		for (int i = 0; i < this->sizeOf(); i++)
+		for (int i = 0; i < this->getSize(); i++)
 		{
 			// checks to see if the character is uppercase
-			if (this->chars[i] >= 65 && this->chars[i] <= 90)
+			if (this->charArray[i] >= 65 && this->charArray[i] <= 90)
 			{
 				// assigns "assKey" to the value of an index of "chars" casted as an integer
-				assKey = (int)chars[i];
+				assKey = (int)charArray[i];
 
 				// assigns the value of "assKey" to its value plus 32 which will give the ascii value of the uppercase version of the character
 				assKey = assKey + 32;
@@ -214,39 +268,39 @@ public:
 			}
 
 			// checks to see if the character is lowercase
-			else if (this->chars[i] >= 97 && this->chars[i] <= 122)
+			else if (this->charArray[i] >= 97 && this->charArray[i] <= 122)
 			{
 				//assigns index of "newWord" to the value of the index of "chars"
-				newWord[i] = chars[i];
+				newWord[i] = charArray[i];
 			}
 
 		}
 
 		// assigns the last index "newWord" to the terminating character
-		newWord[this->sizeOf()] = '\0';
+		newWord[this->getSize()] = '\0';
 
 		// returns a new cString that is assigned the values store in "newWord" 
 		return cString(newWord);
 	}
 
 	// creates a function that turns all characters in a cString to uppercase
-	cString cString::upperCase()
+	cString upperCase()
 	{
 		/*creates a pointer of type character and assigns it to a new character array
 		of the same size as the cString it was called from*/
-		char * newWord = new char[this->sizeOf()];
+		char * newWord = new char[this->getSize()];
 
 		// creates a variable to store the ascii value of a character
 		int assKey = 0;
 
 		// loops through the character array
-		for (int i = 0; i < this->sizeOf(); i++)
+		for (int i = 0; i < this->getSize(); i++)
 		{
 			// checks to see if the character is lowercase
-			if (this->chars[i] >= 97 && this->chars[i] <= 122)
+			if (this->charArray[i] >= 97 && this->charArray[i] <= 122)
 			{
 				// assigns "assKey" to the value of an index of "chars" casted as an integer
-				assKey = (int)chars[i];
+				assKey = (int)charArray[i];
 
 				// assigns the value of "assKey" to its value minus 32 which will give the ascii value of the uppercase version of the character
 				assKey = assKey - 32;
@@ -256,54 +310,61 @@ public:
 			}
 
 			// checks to see if the character is uppercase
-			else if (this->chars[i] >= 65 && this->chars[i] <= 90)
+			else if (this->charArray[i] >= 65 && this->charArray[i] <= 90)
 			{
 				//assigns index of "newWord" to the value of the index of "chars"
-				newWord[i] = chars[i];
+				newWord[i] = charArray[i];
 			}
 		}
 
 		// assigns the last index "newWord" to the terminating character
-		newWord[this->sizeOf()] = '\0';
+		newWord[this->getSize()] = '\0';
 
 		// returns a new cString that is assigned the values store in "newWord" 
 		return cString(newWord);
 	}
 
 	// creates a function that checks if a sub-string passed as a parameter exists in the cString
-	bool cString::subString(cString other)
+	bool subString(cString other)
 	{
 		// creates a boolean variable to store whether the sub-string was found
 		bool subFound = false;
 
-		cString sub = cString(other.chars);
-
-		int patternLen = sub.sizeOf();
-
-		for (int i = 0; i < this->sizeOf(); i++)
+		// loops through the cString to find the sub-string 
+		for (int i = 0; i < this->getSize(); i++)
 		{
-			if (subFound)
+			// checks to see if "subFound" equal to true
+			if (subFound == true)
 			{
+				// returns true 
 				return true;
 			}
 		
-			//match on first letter
-			if (this->chars[i] == sub.chars[0])
+			// checks to see if the current index of the cString is equal to the first index of the sub-string
+			if (this->charArray[i] == other.charArray[0])
 			{
-				//start checking b/c we matched first letter
-				for (int j = 0; j < patternLen; j++)
+				// start checking b/c we matched first letter
+				for (int j = 0; j < other.getSize(); j++)
 				{
-					//the index we are at + the thing we want to iterate through
-					if (this->chars[i + j] == sub.chars[j])
+					// the index we are at + the thing we want to iterate through
+					if (this->charArray[i + j] == other.charArray[j])
 					{
+						// assigns "subFound" to true
 						subFound = true;
+						
+						// assigns "theIndex" to 1
 						theIndex = i;
 					}
+
+					// executes these lines of code if the conditional is not above is not met
 					else
 					{
+						// assigns "subFound" to true;
 						subFound = false;
-					}
 
+						// assigns "theIndex" 1
+						theIndex = 0;
+					}
 				}
 			}
 		}
@@ -314,24 +375,24 @@ public:
 
 	/*creates a function that checks if a sub-string passed as a parameter
 	starting at the index passed as a parameter exists in the cString*/
-	bool cString::substringfromIndex(cString other, int n)
+	bool substringfromIndex(cString other, int n)
 	{
 		// creates a boolean variable to store whether the sub-string was found
 		bool subFound = false;
 
 		// loops through the cString starting at the index that was passed as a parameter
-		for (int i = n; i < this->sizeOf(); i++)
+		for (int i = n; i < this->getSize(); i++)
 		{
 			/*checks to see if the value at the index of "chars" in the cString is the same
 			as the value at the index of "chars" in the sub-string*/
-			if (this->chars[i] == other.chars[0])
+			if (this->charArray[i] == other.charArray[0])
 			{
 				// loops through sub-string
-				for (int j = 0; j < other.sizeOf(); j++, i++)
+				for (int j = 0; j < other.getSize(); j++, i++)
 				{
 					/*checks to see if the value at the index of "chars" in the cString is the same
 					as the value at the index of "chars" in the sub - string*/
-					if (this->chars[i] == other.chars[j])
+					if (this->charArray[i] == other.charArray[j])
 					{
 						//assigns "subFound" to true
 						subFound = true;
@@ -351,36 +412,41 @@ public:
 		return subFound;
 	}
 
-	cString cString::replaceSubstring(cString searchFor, cString replaceWith)
+	cString replaceSubstring(cString searchFor, cString replaceWith)
 	{
-		char * c = this->chars;
-		bool found = this->subString(searchFor);
+		// creates a variable and assigns it to the return value of the "subString" fucntion 
+		bool subFound = this->subString(searchFor);
 
-
-		int newSize = this->sizeOf() - searchFor.sizeOf() + replaceWith.sizeOf();
-
+		/*creates a new variable to be used for size and assigns it to the value of 
+		the return value of */
+		int newSize = this->getSize() - searchFor.getSize() + replaceWith.getSize();
 
 		char * newWord = new char[newSize];
+		
 		//start at beginning
 		for (int i = 0; i < theIndex; i++)
-			newWord[i] = this->chars[i];
-		
-		int j = 0;
-		//start at what we put in
-		for (int i = theIndex; i < replaceWith.sizeOf() + theIndex; i++)
 		{
+			newWord[i] = this->charArray[i];
+		}
 
-			newWord[i] = replaceWith.chars[j];
-			j++;
+		//start at what we put in
+		
+
+		for (int i = theIndex, j = 0; i < replaceWith.getSize() + theIndex; i++, j++)
+		{
+			newWord[i] = replaceWith.charArray[j];
 		}
 
 		//start at both things we put in
-		int k = newSize - (theIndex + searchFor.sizeOf());
-		for (int i = theIndex + replaceWith.sizeOf(); i < newSize - (theIndex + searchFor.sizeOf()); i++)
+		int k = theIndex + searchFor.getSize();
+
+		for (int i = (theIndex + replaceWith.getSize()); i < newSize; i++)
 		{
-			newWord[i] = this->chars[k];
+			newWord[i] = this->charArray[k];
 			k++;
 		}
+
+		newWord[newSize] = '\0';
 
 		return cString(newWord);
 	}
