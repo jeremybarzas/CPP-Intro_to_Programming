@@ -1,8 +1,10 @@
 #include "CustomStringClass.h"
 
-cString::cString() : m_size(0), charArray(nullptr), theIndex(-1)
+cString::cString()
 {
-
+	m_size = 0;
+	charArray = nullptr;
+	theIndex = -1;
 };
 
 cString::cString(char c[])
@@ -219,7 +221,7 @@ cString cString::lowerCase()
 	char * newWord = new char[this->getSize()];
 
 	// creates a variable to store the ascii value of a character
-	int assKey = 0;
+	int Ascii = 0;
 
 	// loops through the character array
 	for (int i = 0; i < this->getSize(); i++)
@@ -228,13 +230,13 @@ cString cString::lowerCase()
 		if (this->charArray[i] >= 65 && this->charArray[i] <= 90)
 		{
 			// assigns "assKey" to the value of an index of "chars" casted as an integer
-			assKey = (int)charArray[i];
+			Ascii = (int)charArray[i];
 
 			// assigns the value of "assKey" to its value plus 32 which will give the ascii value of the uppercase version of the character
-			assKey = assKey + 32;
+			Ascii = Ascii + 32;
 
 			// assigns the index of "newWord" to the value of "assKey" casted as a character
-			newWord[i] = (char)assKey;
+			newWord[i] = (char)Ascii;
 		}
 
 		// checks to see if the character is lowercase
@@ -260,7 +262,7 @@ cString cString::upperCase()
 	char * newWord = new char[this->getSize()];
 
 	// creates a variable to store the ascii value of a character
-	int assKey = 0;
+	int Ascii = 0;
 
 	// loops through the character array
 	for (int i = 0; i < this->getSize(); i++)
@@ -269,13 +271,13 @@ cString cString::upperCase()
 		if (this->charArray[i] >= 97 && this->charArray[i] <= 122)
 		{
 			// assigns "assKey" to the value of an index of "chars" casted as an integer
-			assKey = (int)charArray[i];
+			Ascii = (int)charArray[i];
 
 			// assigns the value of "assKey" to its value minus 32 which will give the ascii value of the uppercase version of the character
-			assKey = assKey - 32;
+			Ascii = Ascii - 32;
 
 			// assigns the index of "newWord" to the value of "assKey" casted as a character
-			newWord[i] = (char)assKey;
+			newWord[i] = (char)Ascii;
 		}
 
 		// checks to see if the character is uppercase
