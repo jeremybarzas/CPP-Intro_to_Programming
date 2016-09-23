@@ -398,7 +398,7 @@ cString cString::replaceSubstring(cString searchFor, cString replaceWith)
 	}
 
 	//start at what we put in
-	for (int i = theIndex, j = 0; i < replaceWith.getSize() + theIndex; i++, j++)
+	for (int i = theIndex, j = 0; i < replaceWith.getSize() + this->theIndex; i++, j++)
 	{
 		newWord[i] = replaceWith.charArray[j];
 	}
