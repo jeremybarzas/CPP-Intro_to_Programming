@@ -6,8 +6,6 @@ int main()
 	
 	app->Start();
 	
-	app->Run();
-
 	system("pause");
 
 	return 0;

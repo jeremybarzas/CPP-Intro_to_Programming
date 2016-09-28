@@ -28,7 +28,7 @@ class Stuff
 
 			numArry = buffer;
 			
-			size *=2;
+			size *= 2;
 		}
 
 		numArry[count] = num;
