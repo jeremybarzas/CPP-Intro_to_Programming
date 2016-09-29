@@ -121,7 +121,6 @@ public:
 			m_questions = qBuffer;
 			m_answers = aBuffer;
 
-
 			size *= 2;
 		}
 

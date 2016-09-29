@@ -1,6 +1,7 @@
 #include "MyString.h"
 
 
+
 MyString::MyString()
 {
 	data = ""; // Default behavior will be to set it to empty
