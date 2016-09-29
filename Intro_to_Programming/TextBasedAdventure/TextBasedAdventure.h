@@ -60,7 +60,9 @@ public:
 	public:
 
 		MyString m_qValue;
-	
+
+		int m_aIndex = -1;
+
 		Answer * m_answer = new Answer[3];
 
 		Question() {};
@@ -70,6 +72,10 @@ public:
 			m_qValue = ms;
 			m_answer = nullptr;
 		};
+		
+		void AttachAnswer(MyString);
+
+		
 		
 		~Question() {};
 	};

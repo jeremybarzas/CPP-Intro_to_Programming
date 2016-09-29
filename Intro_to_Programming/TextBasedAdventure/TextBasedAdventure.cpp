@@ -171,7 +171,7 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 		if (ms.FindSubString(q->m_answer->m_aValue))
 		{
 			printf("correct\n\n");
-			m_current = q->m_answer->m_NextQuestion;
+			q = q->m_answer->m_NextQuestion;
 		}
 
 		else
@@ -184,3 +184,91 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 
 	return;
 }
+
+void TextBaseAdventure::Question::AttachAnswer(MyString answer)
+{
+	this->m_answer[m_aIndex] = Answer(answer);
+	m_aIndex++;
+
+}
+
+
+//================ Function Archive==========================//
+
+//Question* DoStuff()
+//{
+//	char input[255];
+//
+//	printf("Enter a question to add to the game...");
+//	cin >> input;
+//	printf("\n\n");
+//
+//	Question * tmp = new Question(input);
+//
+//	m_aIndex++;
+//
+//	printf("Enter a possible answer to the question...");
+//	cin >> input;
+//	printf("\n\n");
+//
+//	tmp->m_answer[m_aIndex] = Answer(input);
+//
+//	printf("Do you want to add another possible answer? (yes or no)");
+//	cin >> input;
+//	printf("\n\n");
+//
+//	if (input == "yes")
+//	{
+//		m_aIndex++;
+//
+//		printf("Enter a possible answer to the question...");
+//		cin >> input;
+//		printf("\n\n");
+//
+//		tmp->m_answer[m_aIndex] = Answer(input);
+//	}
+//
+//	else if (input == "no")
+//	{
+//		printf("Enter a number of the answer to link to a question...");
+//
+//		for (int i = 0, j = 1; i < 3; i++)
+//		{
+//			cout << j << ") - " << &tmp->m_answer[i] << "\n\n";
+//		}
+//
+//		cin >> input;
+//
+//		if (input == "1")
+//		{
+//			printf("Choose a question to link the answer to...");
+//
+//			for (int i = 0, j = 1; i <;/* size of question array */; i++)
+//			{
+//				cout << j << ") - " << &tmp->m_answer[i] << "\n\n";
+//			}
+//
+//			cin >> input;
+//		}
+//
+//		else if (input == "2")
+//		{
+//
+//		}
+//
+//		else if (input == "3")
+//		{
+//
+//		}
+//
+//		else
+//		{
+//			printf("Not a valid answer. Enter a number of the answer to link to a question...");
+//
+//			cin >> input;
+//		}
+//
+//	}
+//
+//	return tmp;
+//};
