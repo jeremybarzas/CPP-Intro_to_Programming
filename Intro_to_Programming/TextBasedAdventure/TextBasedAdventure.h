@@ -33,8 +33,11 @@ public:
 
 	Question * m_current;
 
-	int m_size = 1;  // these variables to be used for "MakeQuestions" fucntions.
-	int m_count = -1; // these variables to be used for "MakeQuestions" fucntions.
+	int m_qSize = 1;
+	int m_qCount = -1;
+
+	int m_aSize = 1;
+	int m_aCount = -1;
 
 	class Player
 	{
@@ -57,8 +60,7 @@ public:
 	public:
 
 		MyString m_qValue;
-		MyString m_aValue;
-
+	
 		Answer * m_answer;
 
 		Question() {};
@@ -77,14 +79,14 @@ public:
 	public:
 
 		MyString m_aValue;
-		Question * m_question;
+		Question * m_NextQuestion;
 
 		Answer() {};
 
 		Answer(MyString ms)
 		{
 			m_aValue = ms;
-			m_question = nullptr;
+			m_NextQuestion = nullptr;
 		};
 
 		~Answer() {};

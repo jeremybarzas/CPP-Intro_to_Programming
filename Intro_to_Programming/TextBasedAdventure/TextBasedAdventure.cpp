@@ -2,12 +2,13 @@
 
 TextBaseAdventure::TextBaseAdventure()
 {
-	m_questionsArry = new Question[m_size];
-	m_answersArry = new Answer[m_size];
+	m_questionsArry = new Question[m_qSize];
+	m_answersArry = new Answer[m_aSize];
 	
-	AddQuestion("1.) A person dun did it at the thing... What do you do ?", "a");
-	AddQuestion("2.) A person dun did it more at the thing... What do you do ?", "b");
-	AddQuestion("3.) A person dun did it even more at the thing... What do you do ?", "c");
+	AddQuestion("1.) The answer should be a ", "a");
+	AddQuestion("2.) The answer should be b ", "b");
+	AddQuestion("3.) The answer should be c ", "c");
+	//AddQuestion("4.) The answer should be d ", "d");
 
 	m_current = &m_questionsArry[0];
 }
@@ -36,6 +37,7 @@ void TextBaseAdventure::Update()
 
 		if (NextQuestion() == false)
 		{
+			printf("Update::the game is over.\n\n");
 			gameOver = true;
 		}
 	}
@@ -63,11 +65,11 @@ void TextBaseAdventure::PlayerName()
 
 void TextBaseAdventure::MakeQuestion(MyString question)
 {
-	if (m_count >= m_size)
+	if (m_qCount >= m_qSize)
 	{
-		Question * qBuffer = new Question[m_size * 2];
+		Question * qBuffer = new Question[m_qSize * 2];
 		
-		for (int i = 0; i < m_size; i++)
+		for (int i = 0; i < m_qSize; i++)
 		{
 			qBuffer[i] = m_questionsArry[i];
 		}
@@ -76,26 +78,23 @@ void TextBaseAdventure::MakeQuestion(MyString question)
 
 		m_questionsArry = qBuffer;
 
-		m_size *= 2;
+		m_qSize *= 2;
 	}
 
 	Question tmpQuestion = Question(question);
 
-	m_questionsArry[m_count] = tmpQuestion;
-
-	m_questionsArry[m_count].m_answer = &m_answersArry[m_count];
-
+	m_questionsArry[m_qCount] = tmpQuestion;
 
 	return;
 }
 
 void TextBaseAdventure::MakeAnswer(MyString answer)
 {
-	if (m_count >= m_size)
+	if (m_aCount >= m_aSize)
 	{
-		Answer * aBuffer = new Answer[m_size * 2];
+		Answer * aBuffer = new Answer[m_aSize * 2];
 
-		for (int i = 0; i < m_size; i++)
+		for (int i = 0; i < m_aSize; i++)
 		{
 			
 			aBuffer[i] = m_answersArry[i];
@@ -105,14 +104,12 @@ void TextBaseAdventure::MakeAnswer(MyString answer)
 
 		m_answersArry = aBuffer;
 
-		m_size *= 2;
+		m_aSize *= 2;
 	}
 	
 	Answer tmpAnswer = Answer(answer);
 
-	m_answersArry[m_count] = tmpAnswer;
-
-	m_answersArry[m_count].m_question = &m_questionsArry[m_count];
+	m_answersArry[m_aCount] = tmpAnswer;
 
 	return;
 }
@@ -128,14 +125,16 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 
 	if (ms.Compare("quit") == true)
 	{
+		printf("quit::the game is over.\n\n");
 		gameOver = true;
 		return;
 	}
 
 	if (q->m_answer == NULL)
 	{
-		gameOver = true;
-		return;
+		printf("q->m_answer == NULL::the game is over.\n\n");
+		//gameOver = true;
+		//return;
 	}
 
 	else
@@ -158,7 +157,7 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 
 bool TextBaseAdventure::NextQuestion()
 {
-	if (m_current->m_answer->m_question == NULL)
+	if (m_current->m_answer->m_NextQuestion == NULL)
 	{
 		return false;
 	}
@@ -170,15 +169,17 @@ bool TextBaseAdventure::NextQuestion()
 
 void TextBaseAdventure::AddQuestion(MyString question, MyString Answer)
 {
-	m_count++;
+	m_qCount++;
+	m_aCount++;
 
 	MakeQuestion(question);
 	MakeAnswer(Answer);
 
 	// question's answer pointer equals answer array index of 0
-
+	m_questionsArry[m_qCount].m_answer = &m_answersArry[m_aCount];
 
 	// answer's question pointer equals question array index of 0
+	m_answersArry[m_aCount].m_NextQuestion = &m_questionsArry[m_qCount];
 
 	return;
 }
