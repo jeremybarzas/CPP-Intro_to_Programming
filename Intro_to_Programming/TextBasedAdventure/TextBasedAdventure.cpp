@@ -5,10 +5,25 @@ TextBaseAdventure::TextBaseAdventure()
 	m_questionsArry = new Question[m_qSize];
 	m_answersArry = new Answer[m_aSize];
 	
-	AddQuestion("1.) The answer should be a ", "a");
-	AddQuestion("2.) The answer should be b ", "b");
-	AddQuestion("3.) The answer should be c ", "c");
-	//AddQuestion("4.) The answer should be d ", "d");
+	MakeQuestion("1.) The answer should be a");
+	MakeQuestion("2.) The answer should be b");
+	MakeQuestion("3.) The answer should be c");
+	MakeQuestion("4.) The answer should be d");
+
+	MakeAnswer("a");
+	MakeAnswer("b");
+	MakeAnswer("c");
+	MakeAnswer("d");
+
+	AttachAnswer(&m_questionsArry[0], &m_answersArry[0]);
+	AttachAnswer(&m_questionsArry[1], &m_answersArry[1]);
+	AttachAnswer(&m_questionsArry[2], &m_answersArry[2]);
+	AttachAnswer(&m_questionsArry[3], &m_answersArry[3]);
+
+	AttachQuestion(&m_answersArry[0], &m_questionsArry[1]);
+	AttachQuestion(&m_answersArry[1], &m_questionsArry[2]);
+	AttachQuestion(&m_answersArry[2], &m_questionsArry[3]);
+	AttachQuestion(&m_answersArry[3], &m_questionsArry[0]);
 
 	m_current = &m_questionsArry[0];
 }
@@ -35,7 +50,7 @@ void TextBaseAdventure::Update()
 	{
 		AskQuestion(m_current);
 
-		if (NextQuestion() == false)
+		if (m_current->m_answer->m_NextQuestion == NULL)
 		{
 			printf("Update::the game is over.\n\n");
 			gameOver = true;
@@ -65,6 +80,8 @@ void TextBaseAdventure::PlayerName()
 
 void TextBaseAdventure::MakeQuestion(MyString question)
 {
+	m_qCount++;
+
 	if (m_qCount >= m_qSize)
 	{
 		Question * qBuffer = new Question[m_qSize * 2];
@@ -90,6 +107,8 @@ void TextBaseAdventure::MakeQuestion(MyString question)
 
 void TextBaseAdventure::MakeAnswer(MyString answer)
 {
+	m_aCount++;
+
 	if (m_aCount >= m_aSize)
 	{
 		Answer * aBuffer = new Answer[m_aSize * 2];
@@ -114,6 +133,16 @@ void TextBaseAdventure::MakeAnswer(MyString answer)
 	return;
 }
 
+void TextBaseAdventure::AttachAnswer(Question *question, Answer *answer)
+{
+	question->m_answer = answer;
+}
+
+void TextBaseAdventure::AttachQuestion(Answer *answer, Question *question)
+{
+	answer->m_NextQuestion = question;
+}
+
 void TextBaseAdventure::AskQuestion(Question * &q)
 {
 	printf("%s \n", q->m_qValue);
@@ -133,8 +162,8 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 	if (q->m_answer == NULL)
 	{
 		printf("q->m_answer == NULL::the game is over.\n\n");
-		//gameOver = true;
-		//return;
+		gameOver = true;
+		return;
 	}
 
 	else
@@ -142,6 +171,7 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 		if (ms.FindSubString(q->m_answer->m_aValue))
 		{
 			printf("correct\n\n");
+			m_current = q->m_answer->m_NextQuestion;
 		}
 
 		else
@@ -151,35 +181,6 @@ void TextBaseAdventure::AskQuestion(Question * &q)
 			AskQuestion(m_current);
 		}
 	}
-
-	return;
-}
-
-bool TextBaseAdventure::NextQuestion()
-{
-	if (m_current->m_answer->m_NextQuestion == NULL)
-	{
-		return false;
-	}
-
-	m_current++;
-
-	return true;
-}
-
-void TextBaseAdventure::AddQuestion(MyString question, MyString Answer)
-{
-	m_qCount++;
-	m_aCount++;
-
-	MakeQuestion(question);
-	MakeAnswer(Answer);
-
-	// question's answer pointer equals answer array index of 0
-	m_questionsArry[m_qCount].m_answer = &m_answersArry[m_aCount];
-
-	// answer's question pointer equals question array index of 0
-	m_answersArry[m_aCount].m_NextQuestion = &m_questionsArry[m_qCount];
 
 	return;
 }

@@ -61,7 +61,7 @@ public:
 
 		MyString m_qValue;
 	
-		Answer * m_answer;
+		Answer * m_answer = new Answer[3];
 
 		Question() {};
 
@@ -70,7 +70,7 @@ public:
 			m_qValue = ms;
 			m_answer = nullptr;
 		};
-
+		
 		~Question() {};
 	};
 
@@ -98,53 +98,12 @@ public:
 
 	void MakeAnswer(MyString);
 
-	void AddQuestion(MyString, MyString);
+	void AttachAnswer(Question*, Answer*);
+
+	void AttachQuestion(Answer*, Question*);
 
 	void AskQuestion(Question * &);
-
-	bool NextQuestion();
 
 	~TextBaseAdventure() {};
 
 }; //the end of TBAG class
-
-
-//======================= Fucntion Archive =======================
-
-   //void MakeQuestion(MyString, MyString);
-
-   //void TextBaseAdventure::MakeQuestion(MyString question, MyString answer)
-   //{
-   //	m_count++;
-   //
-   //	if (m_count >= m_size)
-   //	{
-   //		Question * qBuffer = new Question[m_size * 2];
-   //		Answer * aBuffer = new Answer[m_size * 2];
-   //
-   //		for (int i = 0; i < m_size; i++)
-   //		{
-   //			qBuffer[i] = m_questionsArry[i];
-   //			aBuffer[i] = m_answersArry[i];
-   //		}
-   //
-   //		delete[] m_questionsArry;
-   //		delete[] m_answersArry;
-   //
-   //		m_questionsArry = qBuffer;
-   //		m_answersArry = aBuffer;
-   //
-   //		m_size *= 2;
-   //	}
-   //
-   //	Question tmpQuestion = Question(question);
-   //	Answer tmpAnswer = Answer(answer);
-   //
-   //	m_questionsArry[m_count] = tmpQuestion;
-   //	m_answersArry[m_count] = tmpAnswer;
-   //
-   //	m_questionsArry[m_count].m_answer = &m_answersArry[m_count];
-   //	m_answersArry[m_count].m_question = &m_questionsArry[m_count];
-   //
-   //	return;
-   //}
