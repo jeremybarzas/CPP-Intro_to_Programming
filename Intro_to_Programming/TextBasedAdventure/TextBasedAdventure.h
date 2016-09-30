@@ -34,11 +34,8 @@ public:
 	Question * m_current;
 
 	int m_qSize = 1;
-	int m_qCount = -1;
-
-	int m_aSize = 1;
-	int m_aCount = -1;
-
+	int m_qIndex = 0;
+	
 	class Player
 	{
 	public:
@@ -61,22 +58,21 @@ public:
 
 		MyString m_qValue;
 
-		int m_aIndex = -1;
+		int m_aSize = 1;
+		int m_aIndex = 0;
 
-		Answer * m_answer = new Answer[3];
+		Answer * m_answers;
 
 		Question() {};
 
 		Question(MyString ms)
 		{
 			m_qValue = ms;
-			m_answer = nullptr;
+			m_answers = new Answer[m_aSize];
 		};
-		
-		void AttachAnswer(MyString);
 
-		
-		
+		Answer CreateAnswer(MyString);
+
 		~Question() {};
 	};
 
@@ -100,15 +96,15 @@ public:
 
 	void PlayerName();
 
-	void MakeQuestion(MyString);
+	//void MakeQuestion(MyString);
 
-	void MakeAnswer(MyString);
+	//void MakeAnswer(MyString);
 
-	void AttachAnswer(Question*, Answer*);
+	bool AskQuestion(Question *);
 
-	void AttachQuestion(Answer*, Question*);
+	Question CreateQuestion(MyString, MyString, MyString, MyString);
 
-	void AskQuestion(Question * &);
+	int AddQuestion(MyString, MyString, MyString, MyString);
 
 	~TextBaseAdventure() {};
 
