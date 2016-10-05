@@ -12,11 +12,11 @@ public:
 	bool gameOver = false;
 };
 
-class TextBaseAdventure : public BaseApp
+class TextBasedAdventure : public BaseApp
 {
 public:
 
-	TextBaseAdventure();
+	TextBasedAdventure();
 
 	void Start();
 	void Run();
@@ -29,12 +29,14 @@ public:
 	
 	Player * m_player;
 	Question * m_questionsArry;
-	Answer * m_answersArry;
 
-	Question * m_current;
+	Question * m_currentQ;
+	Question * m_lastQ;
 
 	int m_qSize = 1;
 	int m_qIndex = 0;
+
+	int qOutcome = 0;
 	
 	class Player
 	{
@@ -42,13 +44,14 @@ public:
 
 		MyString m_name;
 
+		bool m_alive;
+
+		int m_health;
+
 		Player() {};
 
-		Player(MyString m)
-		{
-			m_name = m;
-		};
-
+		Player(MyString m);
+		
 		~Player() {};
 	};
 
@@ -57,55 +60,21 @@ public:
 	public:
 
 		MyString m_qValue;
-
-		int m_aSize = 1;
-		int m_aIndex = 0;
-
-		Answer * m_answers;
+		MyString m_aValue;
 
 		Question() {};
 
-		Question(MyString ms)
-		{
-			m_qValue = ms;
-			m_answers = new Answer[m_aSize];
-		};
-
-		Answer CreateAnswer(MyString);
+		Question(MyString, MyString);
 
 		~Question() {};
 	};
 
-	class Answer
-	{
-	public:
-
-		MyString m_aValue;
-		Question * m_NextQuestion;
-
-		Answer() {};
-
-		Answer(MyString ms)
-		{
-			m_aValue = ms;
-			m_NextQuestion = nullptr;
-		};
-
-		~Answer() {};
-	};
-
 	void PlayerName();
 
-	//void MakeQuestion(MyString);
+	int AddQuestion(MyString, MyString);
 
-	//void MakeAnswer(MyString);
+	int AskQuestion(Question *);
 
-	bool AskQuestion(Question *);
+	~TextBasedAdventure() {};
 
-	Question CreateQuestion(MyString, MyString, MyString, MyString);
-
-	int AddQuestion(MyString, MyString, MyString, MyString);
-
-	~TextBaseAdventure() {};
-
-}; //the end of TBAG class
+};

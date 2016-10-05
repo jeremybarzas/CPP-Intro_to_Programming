@@ -2,11 +2,9 @@
 
 int main()
 {
-	TextBaseAdventure * app = new TextBaseAdventure();
+	TextBasedAdventure * app = new TextBasedAdventure();
 	
 	app->Start();
-	
-	system("pause");
 
 	return 0;
 }
