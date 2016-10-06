@@ -1,54 +1,44 @@
 #include <iostream>
 
-int sumofLargest(int[], int);
+using std::cout;
+
+char * reverseArray(char *);
 
 int main()
 {
-	const int size = 5;
-	int nums[size] = { 1,2,7,4,5 };
+	char charArray[6] = {'h','e','l','l','o'};
 
-	int returnValue = 0;
+	char * charptr = charArray;
 
-	returnValue = sumofLargest(nums, size);
+	printf("before function: ");
 
-	std::cout << returnValue << "\n\n";
+	cout << charptr;
+
+	printf("\n\n");
+
+	charptr = reverseArray(charptr);
+
+	printf("after function: ");
+
+	cout << charptr;
+
+	printf("\n\n");
 
 	system("pause");
 
 	return 0;
 }
 
-int sumofLargest(int a[], int s)
+char * reverseArray(char * a)
 {
-	int size = s;
-
-	int * numsPtr = a;
-
-	int largest1 = numsPtr[0];
-	int largest2 = numsPtr[0];
-
-	int largest1Index = 0;
-	int largest2Index = 0;
-
-	for (int i = 0; i < size; i++)
+	char* tmpArry = new char[6];
+	
+	for (int i = 0, j = 4; i < 5; i++, j--)
 	{
-		if (numsPtr[i] > largest1)
-		{
-			largest1 = numsPtr[i];
-			largest1Index++;
-		}
+		tmpArry[i] = a[j];
 	}
 
-	for (int i = 0; i < size; i++)
-	{
-		if (numsPtr[i] > largest2 && numsPtr[i] < largest1)
-		{
-			largest2 = numsPtr[i];
-			largest2Index++;
-		}
-	}
+	tmpArry[5] = '\0';
 
-	int sum = numsPtr[largest1Index] + numsPtr[largest2Index];
-
-	return sum;
+	return tmpArry;
 }

@@ -1,42 +1,34 @@
-# include <iostream>
+#include <iostream>
 
 using std::cout;
 
-char* reverseArray(char []);
+void populateArray(int *, int);
 
 int main()
 {
-	char charArray[5] = {'h','e','l','l','o'};
+	const int arraySize = 10;
+	int intArray[arraySize];
 
-	char * charptr = charArray;
+	int *arryPtr = &intArray[0];
 
-	printf("before function: ");
+	populateArray(arryPtr, arraySize);
 
-	cout << charptr;
-
-	printf("\n\n");
-
-	charptr = reverseArray(charptr);
-
-	printf("after function: ");
-
-	cout << charptr;
-
-	printf("\n\n");
+	for (int i = 0; i < 10; i++)
+	{
+		cout << intArray[i] << "\n";
+	}
 
 	system("pause");
 
 	return 0;
 }
 
-char * reverseArray(char a[])
+void populateArray(int *intPtr, int num)
 {
-	char* tmpArry = a;
-
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < num; i++)
 	{
-		
+		intPtr[i] = i * 2;
 	}
 
-	return a;
+	return;
 }
