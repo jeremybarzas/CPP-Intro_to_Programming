@@ -2,25 +2,24 @@
 
 TextBasedAdventure::TextBasedAdventure()
 {
-	m_questionsArry = new Question[m_qSize];
+	m_qSize = 1;
+	m_qIndex = 0;
 
+	qOutcome = 0;
+
+	m_questionsArry = new Question[m_qSize];
+}
+
+void TextBasedAdventure::Start()
+{
 	AddQuestion("1.) This question's answer is a", "a");
 	AddQuestion("2.) This question's answer is b", "b");
 	AddQuestion("3.) This question's answer is c", "c");
 	AddQuestion("4.) This question's answer is d", "d");
 	AddQuestion("5.) This question's answer is e", "e");
-	AddQuestion("6.) This question's answer is f", "f");
-	AddQuestion("7.) This question's answer is g", "g");
-	AddQuestion("8.) This question's answer is h", "h");
-	AddQuestion("9.) This question's answer is i", "i");
-	AddQuestion("10.) This question's answer is j", "j");
 
-	m_currentQ = &m_questionsArry[0];
-	m_lastQ = &m_questionsArry[m_qIndex];
-}
+	CreateQuestion();
 
-void TextBasedAdventure::Start()
-{
 	Run();
 
 	return;
@@ -28,8 +27,11 @@ void TextBasedAdventure::Start()
 
 void TextBasedAdventure::Run()
 {
-	PlayerName();
-
+	if (PlayerName() == true)
+	{
+		PrintInstructions();
+	}
+	
 	Update();
 
 	return;
@@ -89,6 +91,22 @@ void TextBasedAdventure::End()
 	printf("The game is now over...\n\n");
 	system("pause");
 	system("cls");
+
+	return;
+}
+
+void TextBasedAdventure::PrintInstructions()
+{
+	printf("You must answer all the questions correctly without your character dying to win.\n\n");
+	printf("You must answer each question by typing your answer and pressing enter.\n\n");
+	printf("If you enter an answer incorrectly your character will lose 1 health point.\n\n");
+	printf("Your charcater starts with 3 health, if your characters health reachs 0 they will die and the game will be over.\n\n");
+	printf("Good Luck!!\n\n");
+
+	system("pause");
+	system("cls");
+
+	return;
 }
 
 TextBasedAdventure::Question::Question(MyString question, MyString answer)
@@ -104,9 +122,10 @@ TextBasedAdventure::Player::Player(MyString m)
 	m_health = 3;
 }
 
-void TextBasedAdventure::PlayerName()
+bool TextBasedAdventure::PlayerName()
 {
 	char name[255];
+	char instructions[5];
 
 	printf("Hello traveler what is your name??  ");
 
@@ -118,10 +137,30 @@ void TextBasedAdventure::PlayerName()
 
 	printf("Welcome %s!!\n\n", m_player->m_name);
 
-	system("pause");
-	system("cls");
+	printf("Type yes or no\n\n");
+	printf("Would you like to read the instructions before beginning??  ");
 
-	return;
+	cin.getline(instructions, 5);
+
+	MyString ms = MyString(instructions);
+
+	printf("\n\n");
+
+	if (ms.FindSubString("yes") == true)
+	{
+		system("pause");
+		system("cls");
+
+		return true;
+	}
+
+	else if (ms.FindSubString("no") == true)
+	{
+		system("pause");
+		system("cls");
+
+		return false;
+	}
 }
 
 int TextBasedAdventure::AskQuestion(Question *current)
@@ -154,6 +193,7 @@ int TextBasedAdventure::AskQuestion(Question *current)
 	else
 	{
 		printf("\nThat is incorrect...\n\n");
+		printf("You have lost 1 health point\n\n");
 		system("pause");
 		system("cls");
 
@@ -183,4 +223,54 @@ int TextBasedAdventure::AddQuestion(MyString q, MyString a)
 	m_questionsArry[m_qIndex] = tmp;
 
 	return m_qIndex++;
+}
+
+void TextBasedAdventure::CreateQuestion()
+{
+	char qText[255];
+	char aText[255];
+
+	char yesorno[5];
+	int newQcount = 0;
+
+	printf("Type yes or no\n\n");
+	printf("Would you like to create your own question(s)??  ");
+
+	cin.getline(yesorno, 5);
+
+	MyString ms = MyString(yesorno);
+
+	printf("\n\n");
+
+	if (ms.FindSubString("yes") == true)
+	{
+		printf("How many new questions do you wan to create??  ");
+		cin >> newQcount;
+
+		for(int i = 0; i < newQcount; i++)
+		{
+			printf("\nEnter the new question here:  ");
+			
+			cin.ignore(cin.rdbuf()->in_avail(), '\n');
+			cin.getline(qText, 254);
+			
+			printf("\nEnter the answer for the new question here:  ");
+			
+			cin.ignore(cin.rdbuf()->in_avail(), '\n');
+			cin.getline(aText, 254);
+
+			MyString question = MyString(qText);
+			MyString answer = MyString(aText);
+
+			AddQuestion(question, answer);
+		}
+	}
+	
+	m_currentQ = &m_questionsArry[0];
+	m_lastQ = &m_questionsArry[m_qIndex];
+	
+	system("pause");
+	system("cls");
+
+	return;
 }

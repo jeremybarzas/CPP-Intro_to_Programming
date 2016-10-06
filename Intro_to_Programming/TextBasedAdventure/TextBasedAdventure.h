@@ -16,6 +16,11 @@ class TextBasedAdventure : public BaseApp
 {
 public:
 
+	int m_qSize;
+	int m_qIndex;
+
+	int qOutcome;
+
 	TextBasedAdventure();
 
 	void Start();
@@ -25,7 +30,6 @@ public:
 
 	class Player;
 	class Question;
-	class Answer;
 	
 	Player * m_player;
 	Question * m_questionsArry;
@@ -33,11 +37,6 @@ public:
 	Question * m_currentQ;
 	Question * m_lastQ;
 
-	int m_qSize = 1;
-	int m_qIndex = 0;
-
-	int qOutcome = 0;
-	
 	class Player
 	{
 	public:
@@ -50,7 +49,7 @@ public:
 
 		Player() {};
 
-		Player(MyString m);
+		Player(MyString);
 		
 		~Player() {};
 	};
@@ -69,12 +68,15 @@ public:
 		~Question() {};
 	};
 
-	void PlayerName();
+	void PrintInstructions();
+
+	bool PlayerName();
 
 	int AddQuestion(MyString, MyString);
 
 	int AskQuestion(Question *);
 
-	~TextBasedAdventure() {};
+	void CreateQuestion();
 
+	~TextBasedAdventure() {};
 };
