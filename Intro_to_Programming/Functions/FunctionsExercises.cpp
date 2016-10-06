@@ -15,46 +15,65 @@ int exampleFunction(string a, int b, int c);
 
 float Half(float a);
 
-void functionsQuestion1();
+float smaller(int, int);
 
-float functionsQuestion2();
-
-void functionsQuestion4();
+float smaller(int, int, int);
 
 int CoinToss(int a);
+
+int SumTo(int N);
+
+int SumArray(int array[], int size);
+
+int MinInArray(int array[], int size);
+
+void MultiplyByIndex(int inputArray[], int outputArray[], int size);
+
+void addtwoArrays(int inputArray1[], int inputArray2[], int outputArray[], int size);
+
+void modifyArray(int a[], int size);
+
+int Split(int[], int, int[], int[]);
+
+int powerofy(int, int);
+
+void lookandsay(int[], int);
+
+void RockPaperScissors();
+
+void functionsQuestion1();
+
+void functionsQuestion2();
+
+void functionsQuestion3();
+
+void functionsQuestion4();
 
 void functionsQuestion5();
 
 void functionsQuestion6();
 
-int SumTo(int N);
-
 void functionsQuestion7();
-
-int SumArray(int array[], int size);
 
 void functionsQuestion8();
 
-int MinInArray(int array[], int size);
-
 void functionsQuestion9();
-
-void MultiplyByIndex(int inputArray[], int outputArray[], int size);
 
 void functionsQuestion10();
 
-void addtwoArrays(int inputArray1[], int inputArray2[], int outputArray[], int size);
-
 void functionsQuestion11();
-
-void modifyArray(int a[], int size);
 
 void functionsQuestion12();
 
-void findNum();
-
 void functionsQuestion13();
 
+void functionsQuestion14();
+
+void functionsQuestion15();
+
+void functionsQuestion16();
+
+void functionsQuestion17();
 
 
 int main()
@@ -71,13 +90,9 @@ int main()
 		{
 		case 1: functionsQuestion1(); break;
 
-		case 2:
-			float smaller;
+		case 2: functionsQuestion2(); break;
 
-			smaller = functionsQuestion2();
-
-			cout << "\nThe smaller number is: " << smaller << endl;
-			break;
+		case 3: functionsQuestion3(); break;
 
 		case 4: functionsQuestion4(); break;
 
@@ -98,6 +113,14 @@ int main()
 		case 12: functionsQuestion12(); break;
 
 		case 13: functionsQuestion13(); break;
+
+		case 14: functionsQuestion14(); break;
+
+		case 15: functionsQuestion15(); break;
+
+		case 16: functionsQuestion16(); break;
+
+		case 17: functionsQuestion17(); break;
 
 		default:
 			break;
@@ -139,53 +162,38 @@ float Half(float a)
 	return num;
 }
 
-void functionsQuestion1()
+float smaller(int a, int b)
 {
-	int the_variable = 1;
-	PrintInteger(the_variable);
+	int nums[2] = { a, b };
+
+	float smallest = nums[0];
+
+	for (int i = 0; i < 2; i++)
 	{
-		PrintInteger(the_variable);
-		int the_variable = 2;
-		PrintInteger(the_variable);
+		if (nums[i] < smallest)
 		{
-			PrintInteger(the_variable);
-			int the_variable = 3;
-			PrintInteger(the_variable);
+			smallest = nums[i];
 		}
-		PrintInteger(the_variable);
 	}
-	PrintInteger(the_variable);
 
-	cout << "The output of the program is 1, 1, 2, 2, 3, 2, 1. \n \n";
+	return smallest;
 }
 
-float functionsQuestion2()
+float smaller(int a, int b, int c)
 {
-	float a, b, smaller;
+	int nums[3] = { a, b, c };
 
-	cout << "Enter the first float value: ";
-	cin >> a;
+	float smallest = nums[0];
 
-	cout << "\nEnter the second float value: ";
-	cin >> b;
+	for (int i = 0; i < 3; i++)
+	{
+		if (nums[i] < smallest)
+		{
+			smallest = nums[i];
+		}
+	}
 
-	smaller = (a < b) ? a : b;
-
-	return smaller;
-}
-
-void functionsQuestion4()
-{
-	float num;
-	float halfofNum;
-
-	cout << "Enter a number to be divided in half" << endl;
-	cin >> num;
-	cout << endl;
-
-	halfofNum = Half(num);
-
-	cout << "Half of the number you enter is: " << halfofNum << endl;
+	return smallest;
 }
 
 int CoinToss(int a)
@@ -211,6 +219,336 @@ int CoinToss(int a)
 	return headsorTails;
 }
 
+int SumTo(int N)
+{
+	int num = N;
+	int sum = 1;
+
+	for (int i = num; i > 1; i--)
+	{
+		sum = sum + i;
+	}
+
+	return sum;
+}
+
+int SumArray(int array[], int size)
+{
+	int sum = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		sum += array[i];
+	}
+
+	return sum;
+}
+
+int MinInArray(int array[], int size)
+{
+	int smallest = array[0];
+
+	for (int i = 0; i <= 6; i++)
+	{
+		if (array[i] < smallest)
+			smallest = array[i];
+	}
+
+	return smallest;
+}
+
+void MultiplyByIndex(int inputArray[], int outputArray[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			outputArray[j] = (inputArray[j] * j);
+		}
+		cout << "outputArray's index of " << i << " has a value of " << outputArray[i] << ".\n\n";
+	}
+}
+
+void addtwoArrays(int inputArray1[], int inputArray2[], int outputArray[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			outputArray[j] = inputArray1[j] + inputArray2[j];
+		}
+		cout << "outputArray's index of " << i << " has a value of " << outputArray[i] << ".\n\n";
+	}
+}
+
+void modifyArray(int a[], int size)
+{
+	int sum = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		a[i] += sum;
+		sum = a[i];
+
+		cout << "The array index " << i << " modified value is: " << a[i] << endl;
+	}
+}
+
+int Split(int input[], int size, int outputPos[], int outputNeg[])
+{
+	int i = 0;
+	int j = 0;
+	int k = 0;
+
+	while (i < size)
+	{
+		if (input[i] > 0)
+		{
+			outputPos[j] = input[i];
+			j++;
+		}
+
+		if (input[i] < 0)
+		{
+			outputNeg[k] = input[i];
+			k++;
+		}
+
+		i++;
+	}
+
+	return j;
+}
+
+int powerofy(int x, int y)
+{
+	int output = 1;
+
+	for (int i = 0; i < y; i++)
+	{
+		output *= x;
+	}
+
+	return output;
+}
+
+void lookandsay(int nums[], int size)
+{
+	int number = 0;
+	int count = 0;
+
+	for (int i = 0; i < size;)
+	{
+		number = nums[i];
+
+		if (number == nums[i])
+		{
+			for (int j = i; number == nums[i]; j++)
+			{
+				count++;
+				i++;
+			}
+
+			if (i != size)
+			{
+				cout << count << ", " << number << ", ";
+			}
+
+			else 
+			{
+				cout << count << ", " << number;
+			}
+		}
+		count = 0;
+	}
+}
+
+void RockPaperScissors()
+{
+	srand(time(NULL));
+
+	bool runningMan = true;
+	int input;
+
+	int rps = 0;
+	int playerChoice = -1;
+
+	while (runningMan)
+	{
+		cout << "Enter a 4 at any time to quit playing.\n\n";
+		cout << "1. Rock\n\n2. Paper\n\n3. Scissors\n\n";
+		cout << "Choose rock, paper, or scissors: ";
+
+		cin >> input;
+		while (!cin)
+		{
+			cin.clear();
+			cin.ignore();
+			cin >> input;
+		}
+		cout << "\n";
+
+		switch (input)
+		{
+		case 1:
+			playerChoice = input;
+			rps = rand() % 3 + 1;
+			break;
+
+		case 2:
+			playerChoice = input;
+			rps = rand() % 3 + 1;
+			break;
+
+		case 3:
+			playerChoice = input;
+			rps = rand() % 3 + 1;
+			break;
+
+		case 4: runningMan = false;
+		}
+
+		//===================================================//
+
+		if (playerChoice == 1)
+		{
+			cout << "You chose rock\n\n";
+		}
+
+		if (playerChoice == 2)
+		{
+			cout << "You chose paper\n\n";
+		}
+
+		if (playerChoice == 3)
+		{
+			cout << "You chose scissors\n\n";
+		}
+
+		//===================================================//
+
+		if (rps == 1)
+		{
+			cout << "Computer chose rock.\n\n";
+		}
+
+		else if (rps == 2)
+		{
+			cout << "Computer chose paper.\n\n";
+		}
+
+		else if (rps == 3)
+		{
+			cout << "Computer chose scissors.\n\n";
+		}
+
+		//===================================================//
+
+		if (playerChoice == rps)
+		{
+			cout << "Its a tie!\n\n";
+		}
+		if (playerChoice == 1 && rps == 3)
+		{
+			cout << "Rock beats scissors, you win!!!\n\n";
+		}
+		if (playerChoice == 1 && rps == 2)
+		{
+			cout << "Paper beats rock, you lose...\n\n";
+		}
+		if (playerChoice == 2 && rps == 1)
+		{
+			cout << "Paper beats rock, you win!!!\n\n";
+		}
+		if (playerChoice == 2 && rps == 3)
+		{
+			cout << "Scissors beat paper, you lose...\n\n";
+		}
+		if (playerChoice == 3 && rps == 2)
+		{
+			cout << "Scissors beats paper, you win!!!\n\n";
+		}
+		if (playerChoice == 3 && rps == 1)
+		{
+			cout << "Rock beats scissors, you lose...\n\n";
+		}
+
+		system("pause");
+		system("cls");
+	}
+
+}
+
+void functionsQuestion1()
+{
+	int the_variable = 1;
+	PrintInteger(the_variable);
+	{
+		PrintInteger(the_variable);
+		int the_variable = 2;
+		PrintInteger(the_variable);
+		{
+			PrintInteger(the_variable);
+			int the_variable = 3;
+			PrintInteger(the_variable);
+		}
+		PrintInteger(the_variable);
+	}
+	PrintInteger(the_variable);
+
+	cout << "The output of the program is 1, 1, 2, 2, 3, 2, 1. \n \n";
+}
+
+void functionsQuestion2()
+{
+	/*Write a function that returns the smaller of two floats that are passed to it :
+	You should make a program that asks the user for two different numbers such that it*/
+
+	float a;
+	float b;
+
+	cout << "Enter the first float value: ";
+	cin >> a;
+
+	cout << "\nEnter the second float value: ";
+	cin >> b;
+
+	cout << "The smaller number is: " << smaller(a, b);
+}
+
+void functionsQuestion3()
+{
+	/*Add another function with the same name as the one you wrote in question 2, but with
+	three floats instead of two.What is this language feature called ?*/	float a;
+	float b;
+	float c;
+
+	cout << "Enter the first float value: ";
+	cin >> a;
+
+	cout << "\nEnter the second float value: ";
+	cin >> b;
+
+	cout << "\nEnter the third float value: ";
+	cin >> c;
+
+	cout << "The smaller number is: " << smaller(a, b, c);
+}
+
+void functionsQuestion4()
+{
+	float num;
+	float halfofNum;
+
+	cout << "Enter a number to be divided in half" << endl;
+	cin >> num;
+	cout << endl;
+
+	halfofNum = Half(num);
+
+	cout << "Half of the number you enter is: " << halfofNum << endl;
+}
+
 void functionsQuestion5()
 {
 	int tosses;
@@ -227,74 +565,49 @@ void functionsQuestion6()
 
 	int sum(int x, int y)
 	{
-		int result;
-		result = x + y;
+	int result;
+	result = x + y;
 	}
 	int sum(int n)
 	{
-		if (0 == n)
-			return 0;
-		else
-			n = n + n;
+	if (0 == n)
+	return 0;
+	else
+	n = n + n;
 	}
-	
+
 	#include <iostream>
 
 	int main()
 	{
-		double x = 13.6;
-		std::cout << "square of 13.6 = " << square(x) << std::endl;
+	double x = 13.6;
+	std::cout << "square of 13.6 = " << square(x) << std::endl;
 	}
 
 	int square (int x)
 	{
-		return x * x;
+	return x * x;
 	}
-*/
+	*/
 
 	cout << "The error in the first function is that is does not return anything.\n\n";
 	cout << "The error in the second function is it cannot assign a value to the varible n because it is not a variable that was created in the function it is an arbitrary varaible named creaeted for the argument.\n\n";
 	cout << "The error in the third function is that the function is being called before it has been declared.\n";
 }
 
-int SumTo(int N)
-{
-	int num = N;
-	int sum = 1;
-
-	for (int i = num; i > 1; i--)
-	{
-		sum = sum + i;
-	}
-
-	return sum;
-}
-
 void functionsQuestion7()
 {
 	/*Write a function called SumTo that accepts an integer parameter N and returns the sum of
-		all integers from 1 to N, including N.*/
+	all integers from 1 to N, including N.*/
 
 	int input;
 	int sum;
-	
+
 	cout << "Enter a number to add from 1 to it.\n";
 	cin >> input;
 	sum = SumTo(input);
 
 	cout << "The sum of all numbers from 1 to " << input << " is: " << sum << "\n\n";
-}
-
-int SumArray(int array[], int size)
-{
-	int sum = 0;
-
-	for (int i = 0; i < size; i++)
-	{
-		sum += array[i];
-	}
-
-	return sum;
 }
 
 void functionsQuestion8()
@@ -317,19 +630,6 @@ void functionsQuestion8()
 	cout << "The sum of all the elements in the array is: " << result << "\n\n";
 }
 
-int MinInArray(int array[], int size)
-{
-	int smallest = array[0];
-
-	for (int i = 0; i <= 6; i++)
-	{
-		if (array[i] < smallest)
-			smallest = array[i];
-	}
-
-	return smallest;
-}
-
 void functionsQuestion9()
 {
 	/*Write a function that takes as its parameter an array of integers and the size of the array
@@ -349,18 +649,6 @@ int main()
 	int result = MinInArray(integer_array, 7);
 
 	cout << "The smallest value in the array is: " << result << "\n\n";
-}
-
-void MultiplyByIndex(int inputArray[], int outputArray[], int size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			outputArray[j] = (inputArray[j] * j);
-		}
-		cout << "outputArray's index of " << i << " has a value of " << outputArray[i] << ".\n\n";
-	}
 }
 
 void functionsQuestion10()
@@ -387,18 +675,6 @@ void functionsQuestion10()
 	MultiplyByIndex(integer_array, output_array, 7);
 }
 
-void addtwoArrays(int inputArray1[], int inputArray2[], int outputArray[], int size)
-{
-	for (int i  = 0; i < size; i++)
-	{
-		for (int j = 0; j < size; j++)
-		{
-			outputArray[j] = inputArray1[j] + inputArray2[j];
-		}
-		cout << "outputArray's index of " << i << " has a value of " << outputArray[i] << ".\n\n";
-	}
-}
-
 void functionsQuestion11()
 {
 	/*Write a function that takes as its parameters two input arrays of integers, an integer for
@@ -411,19 +687,6 @@ void functionsQuestion11()
 	int outputArray[5];
 
 	addtwoArrays(inputArray1, inputArray2, outputArray, 5);
-}
-
-void modifyArray(int a[], int size)
-{
-	int sum = 0;
-
-	for (int i = 0; i < size; i++)
-	{
-		a[i] += sum;
-		sum = a[i];
-		
-		cout << "The array index " << i << " modified value is: " << a[i] << endl;
-	}
 }
 
 void functionsQuestion12()
@@ -448,13 +711,6 @@ void functionsQuestion12()
 	}
 }
 
-void findNum()
-{
-
-
-
-}
-
 void functionsQuestion13()
 {
 	/*Write a function that searches for a particular number in an array.The function should
@@ -474,4 +730,72 @@ void functionsQuestion13()
 		arrayofShit[i] = i;
 		cout << "Array index " << i << " contains: " << arrayofShit[i] << endl;
 	}
+}
+
+void functionsQuestion14()
+{
+	/*Write a function named Split that accepts one input array of integers, an integer for the
+	size of the input array, and two output arrays.All numbers in the input array that are
+	positive are copied into the first output array and all numbers in the input array that are
+	negative are copied into the second output array.The function should return how many
+	numbers were copied into the first output array.Write your own code to test this function.*/
+
+	const int size = 5;
+
+	int inputArry[size] = { 1, -2, 3, -4, 5 };
+
+	int outputArry1[size];
+	int outputArry2[size];
+
+	cout << "The amount of numbers copied to the first array is: " << Split(inputArry, size, outputArry1, outputArry2);
+}
+
+void functionsQuestion15()
+{
+	/*Write a function that calculates and then returns x to the power of y.*/
+	int x = 5;
+	int y = 6;
+
+	cout << powerofy(x, y);
+}
+
+void functionsQuestion16()
+{
+	/*Write a function that takes in an array of integers, and the size of the array.The function
+	should print out the “look and say” sequence for the array.The look and say sequence
+	works by printing out how many of the same number there are in a row followed by that number.
+		
+	For example, if the array was{ 1, 1, 1, 1 } the function would print out “4, 1” because there are four ones.
+
+	If the array was{ 1, 2, 2, 2, 3, 4 } the function would print out “1, 1, 3, 2, 1, 3, 1, 4” because there
+	is “one 1, three 2s, one 3, one 4”.
+	
+	If the array is{ 1,2,2,1,5,1,1,7,7,7,7,1,1,1,1,1,1,1,1 } the function should print out
+	“1, 1, 2, 2, 1, 1, 1, 5, 2, 1, 4, 7, 8, 1”
+		Write your own code to test the function.*/
+	const int size = 10;
+	
+	int nums[size] = { 1,2,2,3,3,3,4,4,4,4 };
+
+	lookandsay(nums, size);
+}
+
+void functionsQuestion17()
+{
+	/*Write a program that lets the user play the game of Rock, Paper, Scissors against the
+		computer.The program should work as follows :
+	1. When the program begins, a random number in the range of 1 - 3 is generated.If
+		the number is 1, then the computer has chosen rock.If the number is 2, then the
+		computer has chosen paper.So if the number is 3 then the computer has chosen
+		scissors.
+		2. The user enters their choice of “rock”, “paper” or “scissors”
+		3. The computer’s choice is displayed.
+		4. A winner is selected according to the following rules :
+	1. Rock beats scissors, scissors beats paper, paper beats rock
+		2. If there is a tie then the game must be replayed
+		5. Make sure to break the game up into functions to perform each task.Make sure to
+		look for any code that is repeated, and break it out into a function.*/
+
+	RockPaperScissors();
+
 }

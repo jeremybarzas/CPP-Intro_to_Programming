@@ -251,12 +251,12 @@ void TextBasedAdventure::CreateQuestion()
 		{
 			printf("\nEnter the new question here:  ");
 			
-			cin.ignore(cin.rdbuf()->in_avail(), '\n');
+			//cin.ignore(cin.rdbuf()->in_avail(), '\n');
 			cin.getline(qText, 254);
 			
 			printf("\nEnter the answer for the new question here:  ");
 			
-			cin.ignore(cin.rdbuf()->in_avail(), '\n');
+			//cin.ignore(cin.rdbuf()->in_avail(), '\n');
 			cin.getline(aText, 254);
 
 			MyString question = MyString(qText);
