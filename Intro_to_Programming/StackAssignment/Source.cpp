@@ -47,6 +47,16 @@ int main()
 	}
 
 	char  postfixExpression[10] = { '5','1','2', '+', '4', 'x' ,'+' ,'3' ,'-' };
+	int i = 0;
+	while (postfixExpression[i] != '\0')
+	{
+		if (postfixExpression[i] == '+')
+		{
+			//pop 2 apply expression
+			//push rewsult
+		}
+		stack.push(postfixExpression[i]);
+	}
 	//while (stack.isFullStack())
 	//{
 	//	while (stack.top != '+')
