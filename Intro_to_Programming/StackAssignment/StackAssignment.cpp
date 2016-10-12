@@ -2,97 +2,44 @@
 
 Stack::Stack(int size)
 {
-	m_size = size;
-	m_index = -1;
+	m_Size = size;
+	m_Index = -1;
 }
 
 void Stack::initializeStack()
 {
-	m_data = new char[m_size];
+	m_Data = new char[m_Size];
 
-	m_top = &m_data[m_index];
+	m_Top = &m_Data[m_Index];
 }
 
-void Stack::push(const char &a)
+void Stack::Push(const char &a)
 {
-	m_index++;
+	m_Index++;
 
-	m_data[m_index] = a;
+	m_Data[m_Index] = a;
 
-	top();
+	Top();
 
 	cout << a << " was ";
 	printf("push on the stack.\n\n");
-
-	/*if (isFullStack())
-	{
-		pop();
-
-		cout << a << " was ";
-		printf("popped\n\n");
-
-		cout << "the top is: " << m_top << "\n\n";
-	}
-
-	else if (!isFullStack())
-	{
-		if (isEmpty())
-		{
-			m_index++;
-			
-			m_data[m_index] = a;
-
-			top();
-
-			cout << a << " was ";
-			printf("push on the stack.\n\n");
-
-			cout << "the top is: " << m_top << "\n\n";
-		}
-
-		else if (isEmpty() == false)
-		{
-			m_index++;
-
-			char * pushBuffer = new char[m_size + 1];
-
-			for (int i = 0; i < m_size; i++)
-			{
-				pushBuffer[i] = m_data[i];
-			}
-
-			delete[] m_data;
-
-			m_size += 1;
-			m_data = pushBuffer;
-
-			m_data[m_index] = a;
-
-			top();
-
-			cout << a << " was ";
-			printf("pushed on the stack.\n\n");
-
-			cout << "the top is: " << m_top << "\n\n";
-		}
-	}*/
 }
 
-char* Stack::top()
+char* Stack::Top()
 {
-	m_top = &m_data[m_index];
+	m_Top = &m_Data[m_Index];
 
-	return m_top;
+	return m_Top;
 }
 
-void Stack::pop()
+void Stack::Pop()
 { 
-	m_index --;
+	m_Index --;
 }
 
 bool Stack::isFullStack()
 {
-	if (m_index >= m_size)
+	if (m_Index >= m_Size)
 	{
 		return true;
 	}
@@ -102,13 +49,100 @@ bool Stack::isFullStack()
 
 bool Stack::isEmpty()
 {
-	if (m_index < -1)
+	if (m_Index > -1)
 	{
 		return false;
 	}
-
-	if (m_index >= -1)
+	if (m_Index <= -1)
 	{
 		return true;
+	}
+}
+
+int Conversion2int(char PFE[], int index)
+{
+	if (PFE[index] == '0')
+	{
+		return 0;
+	}
+	else if (PFE[index] == '1')
+	{
+		return 1;
+	}
+	else if (PFE[index] == '2')
+	{
+		return 2;
+	}
+	else if (PFE[index] == '3')
+	{
+		return 3;
+	}
+	else if (PFE[index] == '4')
+	{
+		return 4;
+	}
+	else if (PFE[index] == '5')
+	{
+		return 5;
+	}
+	else if (PFE[index] == '6')
+	{
+		return 6;
+	}
+	else if (PFE[index] == '7')
+	{
+		return 7;
+	}
+	else if (PFE[index] == '8')
+	{
+		return 8;
+	}
+	else if (PFE[index] == '9')
+	{
+		return 9;
+	}
+}
+
+char Conversion2char(int number)
+{
+	if (number == 0)
+	{
+		return '0';
+	}
+	else if (number == 1)
+	{
+		return '1';
+	}
+	else if (number == 2)
+	{
+		return '2';
+	}
+	else if (number == 3)
+	{
+		return '3';
+	}
+	else if (number == 4)
+	{
+		return '4';
+	}
+	else if (number == 5)
+	{
+		return '5';
+	}
+	else if (number == 6)
+	{
+		return '6';
+	}
+	else if (number == 7)
+	{
+		return '7';
+	}
+	else if (number == 8)
+	{
+		return '8';
+	}
+	else if (number == 9)
+	{
+		return '9';
 	}
 }
