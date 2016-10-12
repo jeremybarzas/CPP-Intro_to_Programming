@@ -773,9 +773,9 @@ void functionsQuestion16()
 	If the array is{ 1,2,2,1,5,1,1,7,7,7,7,1,1,1,1,1,1,1,1 } the function should print out
 	“1, 1, 2, 2, 1, 1, 1, 5, 2, 1, 4, 7, 8, 1”
 		Write your own code to test the function.*/
-	const int size = 10;
+	const int size = 14;
 	
-	int nums[size] = { 1,2,2,3,3,3,4,4,4,4 };
+	int nums[size] = { 1,2,2,3,3,3,4,4,4,4,1,3,2,4 };
 
 	lookandsay(nums, size);
 }
