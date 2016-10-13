@@ -14,16 +14,16 @@ void BaseApp::Run()
 	}
 }
 
+void BaseApp::Shutdown()
+{
+	printf("The game is shutting down.\n\n");
+	gameover = true;
+}
+
 void RPS::Start()
 {
 	printf("The game is starting.\n\n");
 	Run();
-}
-
-void RPS::Shutdown()
-{
-	gameover = true;
-	printf("The game is shutting down.\n\n");
 }
 
 void RPS::Update()
