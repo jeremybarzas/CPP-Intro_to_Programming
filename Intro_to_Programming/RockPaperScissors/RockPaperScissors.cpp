@@ -24,6 +24,7 @@ void BaseApp::Shutdown()
 {
 	printf("The game is shutting down.\n\n");
 	gameover = true;
+	system("pause");
 }
 
 void RPS::Update()
@@ -66,7 +67,8 @@ void RPS::Update()
 		rps = rand() % 3 + 1;
 		break;
 
-	case 4: Shutdown();
+	case 4: Shutdown(); return;
+
 	}
 
 	//===================================================//

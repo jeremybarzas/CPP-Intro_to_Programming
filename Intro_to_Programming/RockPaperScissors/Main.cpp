@@ -2,9 +2,9 @@
 
 int main()
 {
-	RPS * appRPS = new RPS();
+	GameSelector app;
 
-	appRPS->Start();
+	app.Start();
 
 	return 0;
 }
