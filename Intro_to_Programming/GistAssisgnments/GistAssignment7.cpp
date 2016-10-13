@@ -41,7 +41,7 @@ int Sumof2largest(int a[], int size)
 	{
 		if (j == lrgIndex)
 		{
-			j += 2;
+			j++;
 		}
 		if (a[j] > largest2nd)
 		{
