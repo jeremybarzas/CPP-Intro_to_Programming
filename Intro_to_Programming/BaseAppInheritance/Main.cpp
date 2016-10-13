@@ -1,4 +1,4 @@
-#include "RockPaperScissors.h"
+#include "BaseAppInheritance.h"
 
 int main()
 {

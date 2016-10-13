@@ -18,11 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseAppInheritance.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseAppInheritance.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{AFEA53A3-EBD5-414A-BE8D-FD9DADC5E602}</ProjectGuid>
-    <RootNamespace>RockPaperScissors</RootNamespace>
+    <ProjectGuid>{271FBDB4-E3DA-407F-AFF2-7277CB9EED7A}</ProjectGuid>
+    <RootNamespace>BaseAppInheritance</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>BaseAppInheritance</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -110,13 +116,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="RockPaperScissors.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="RockPaperScissors.cpp" />
-    <ClCompile Include="Main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
