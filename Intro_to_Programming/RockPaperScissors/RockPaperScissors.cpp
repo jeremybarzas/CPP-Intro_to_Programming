@@ -5,6 +5,12 @@ BaseApp::BaseApp()
 	gameover = false;
 }
 
+void BaseApp::Start()
+{
+	printf("The game is starting.\n\n");
+	Run();
+}
+
 void BaseApp::Run()
 {
 	printf("The game is running.\n\n");
@@ -18,12 +24,6 @@ void BaseApp::Shutdown()
 {
 	printf("The game is shutting down.\n\n");
 	gameover = true;
-}
-
-void RPS::Start()
-{
-	printf("The game is starting.\n\n");
-	Run();
 }
 
 void RPS::Update()

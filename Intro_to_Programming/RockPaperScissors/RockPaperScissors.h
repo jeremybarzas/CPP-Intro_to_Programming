@@ -8,7 +8,7 @@ using namespace std;
 class BaseApp
 {
 public:
-	virtual void Start() = 0;
+	void Start();
 	void Run();
 	virtual void Update() = 0;
 	void Shutdown();
@@ -22,7 +22,6 @@ public:
 class RPS : public BaseApp
 {
 public:
-	void Start();
 	void Update();
 
 	RPS() {};
