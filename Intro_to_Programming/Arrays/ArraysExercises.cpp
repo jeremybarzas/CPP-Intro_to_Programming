@@ -160,8 +160,8 @@ void arrayQuestion5()
 		cout << "The number in the index of " << i << " is: " << nums[i] << "\n \n";
 	}
 
-	int largest = nums[0];
-	int smallest = nums[0];
+	int largest = 0;
+	int smallest = 0;
 
 	for (int i = 0; i <= 9; i++)
 	{
