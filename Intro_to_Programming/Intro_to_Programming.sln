@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorld", "HelloWorld\HelloWorld.vcxproj", "{32E12D38-F293-4A9E-8DCC-665717C319CC}"
 EndProject
@@ -48,6 +48,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OverloadingOperators", "OverloadingOperators\OverloadingOperators.vcxproj", "{E0A9E2E7-DA13-4C02-978E-D82857885A88}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WeaponDPS", "WeaponDPS\WeaponDPS.vcxproj", "{D5E5649C-DA8E-4348-BB03-E280645787E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DiceRoll", "DiceRoll\DiceRoll.vcxproj", "{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -241,6 +243,14 @@ Global
 		{D5E5649C-DA8E-4348-BB03-E280645787E6}.Release|x64.Build.0 = Release|x64
 		{D5E5649C-DA8E-4348-BB03-E280645787E6}.Release|x86.ActiveCfg = Release|Win32
 		{D5E5649C-DA8E-4348-BB03-E280645787E6}.Release|x86.Build.0 = Release|Win32
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Debug|x64.ActiveCfg = Debug|x64
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Debug|x64.Build.0 = Debug|x64
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Debug|x86.ActiveCfg = Debug|Win32
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Debug|x86.Build.0 = Debug|Win32
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Release|x64.ActiveCfg = Release|x64
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Release|x64.Build.0 = Release|x64
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Release|x86.ActiveCfg = Release|Win32
+		{19F0B146-3AF0-4E68-9E9D-7B64E56313AB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
