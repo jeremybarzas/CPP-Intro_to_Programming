@@ -61,29 +61,11 @@ T Min(char a, char b)
 		printf("they are same");
 		return NULL;
 	}
-
-	// first lower second upper
-	else if ((int)a > 64 && (int)a < 91 && (int)b > 96 && (int)b < 123)
-	{
-		if ((a + 32) < b)
-			return a;
-		else
-			return b;
-	}
-
-	// first upper second lower
-	else if ((int)a > 96 && (int)a < 123 && (int)b > 64 && (int)b < 91)
-	{
-		if (a < (b + 32))
-			return a;
-		else
-			return b;
-	}
-
-	// they are the both the same case
-	else if (a < b)
+	// a upper b lower 
+	if (a < b - 32 && a + 32 < b)
 		return a;
-	else
+	// a lower b upper
+	if (b < a - 32 && b + 32 < b)
 		return b;
 }
 
@@ -100,34 +82,15 @@ T Max(char a, char b)
 		printf("they are same");
 		return NULL;
 	}
-
-	// first lower second upper
-	else if ((int)a > 64 && (int)a < 91 && (int)b > 96 && (int)b < 123)
-	{
-		if ((a + 32) > b)
-			return a;
-		else
-			return b;
-	}
-
-	// first upper second lower
-	else if ((int)a > 96 && (int)a < 123 && (int)b > 64 && (int)b < 91)
-	{
-		if (a > (b + 32))
-			return a;
-		else
-			return b;
-	}
-
-	// they are the both the same case
-	else if (a > b)
+	// a upper b lower 
+	if (a > b - 32 && a + 32 > b)
 		return a;
-	else
+	// a lower b upper
+	if (b > a - 32 && b + 32 > b)
 		return b;
 }
 
-/*
-Create a template class for storing any data - type.The data itself should be stored as a private
+/*Create a template class for storing any data - type.The data itself should be stored as a private
 pointer to an array on the heap.
 Your class should have the following public template functions :
 
@@ -170,9 +133,9 @@ private:
 	T * dynamicArray;
 
 public:
-	Bucket()
+	Bucket(int a)
 	{
-		m_size = 2;
+		m_size = a;
 		m_index = -1;
 		dynamicArray = new T[m_size];
 	};
