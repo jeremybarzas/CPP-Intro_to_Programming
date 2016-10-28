@@ -6,14 +6,13 @@ int main()
 	
 	Vector2<int> b = { 0, 1 };
 
-	Vector2<int> c = { 0, 0 };
+	Vector2<int> c = { 1, 1 };
 
-	Vector2<int> d = { 0, 0 };
+	assert(a + b == c);
 
-	c = a + b;
+	Vector2<int> d = { 1,1 };
 
-	//static function
-	d = Vector2<int>::add(a, b);
+	d.Mag();
 
 	system("pause");
 	return 0;
