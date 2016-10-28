@@ -74,9 +74,10 @@ public:
 	// Dot Product
 	Vector2<T>DotProduct(Vector2<T> other)
 	{
-		Vector2 norm = this->Normalize();
+		Vector3 normThis = this->Normalize();
+		Vector3 normOther = other.Normalize();
 
-		T dotP = (norm.x * other.x) + (norm.y * other.y);
+		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y);
 
 		return dotP;
 	}
@@ -102,7 +103,7 @@ public:
 
 	bool operator == (Vector3<T> other)
 	{
-		if (other.x == x && other.y == y)
+		if (other.x == x && other.y == y && other.z == z)
 			return true;
 
 		return false;
@@ -113,8 +114,9 @@ public:
 	{
 		T a = this->x + other.x;
 		T b = this->y + other.y;
+		T c = this->z + other.z;
 
-		return Vector3<T>(a, b);
+		return Vector3<T>(a, b, c);
 	};
 
 	// Subtraction
@@ -122,8 +124,9 @@ public:
 	{
 		T a = this->x - other.x;
 		T b = this->y - other.y;
+		T c = this->z - other.z;
 
-		return Vector2<T>(a, b);
+		return Vector2<T>(a, b, c);
 	};
 
 	// Scalar Multiplication
@@ -131,14 +134,15 @@ public:
 	{
 		T a = other * this->x;
 		T b = other * this->y;
+		T c = other * this->z;
 
-		return Vector3<T>(a, b);
+		return Vector3<T>(a, b, c);
 	};
 
 	// Magnitude
 	T Mag()
 	{
-		T mag = sqrt((this->x * this->x) + (this->y * this->y));
+		T mag = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z));
 
 		return mag;
 	}
@@ -148,15 +152,16 @@ public:
 	{
 		T mag = this->Mag();
 
-		return Vector3<T>((this->x / mag), (this->y / mag));
+		return Vector3<T>((this->x / mag), (this->y / mag), (this->z / mag));
 	}
 
 	// Dot Product
 	T DotProduct(Vector3<T> other)
 	{
-		Vector3 norm = this->Normalize();
+		Vector3 normThis = this->Normalize();
+		Vector3 normOther = other.Normalize();
 
-		T dotP = (norm.x * other.x) + (norm.y * other.y);
+		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z);
 
 		return dotP;
 	}
