@@ -60,7 +60,7 @@ public:
 
 	T front() const
 	{
-		return last;
+		return last->info;
 	}
 
 	int length() const

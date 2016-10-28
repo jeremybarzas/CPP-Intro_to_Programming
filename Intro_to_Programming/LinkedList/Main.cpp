@@ -12,7 +12,7 @@ int main()
 	list.Add(5);
 
 	int count = list.length();
-
+	int front = list.front();
 
 	///////////////////////////////
 	Node<int> * Head;
