@@ -111,8 +111,8 @@ public:
 	// Addition
 	Vector3<T> operator + (Vector3<T> other)
 	{
-		T a = a = this->x + other.x;
-		T b = b = this->y + other.y;
+		T a = this->x + other.x;
+		T b = this->y + other.y;
 
 		return Vector3<T>(a, b);
 	};
@@ -120,8 +120,8 @@ public:
 	// Subtraction
 	Vector3<T> operator - (Vector3<T> other)
 	{
-		T a = a = this->x - other.x;
-		T b = b = this->y - other.y;
+		T a = this->x - other.x;
+		T b = this->y - other.y;
 
 		return Vector2<T>(a, b);
 	};
