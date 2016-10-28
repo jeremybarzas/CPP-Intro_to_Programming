@@ -23,11 +23,16 @@ public:
 
 	~LinkedList() {};
 
-	bool Add(const T& node)
+	bool Add(const T& n)
 	{
+		Node<T> * newNode = new Node<T>;
+
+		newNode->info = n;
+		newNode->next = NULL;
+
 		if (first == NULL)
 		{
-			first = node;
+			first = newNode;
 			last = first;
 			m_count++;
 			return true;
@@ -36,15 +41,15 @@ public:
 		{
 			if (last == first)
 			{
-				first->next = node;
-				last = node;
+				first->next = newNode;
+				last = newNode;
 				m_count++;
 				return true;
 			}
 			else
 			{
-				last->next = node;
-				last = node;
+				last->next = newNode;
+				last = newNode;
 				m_count++;
 				return true;
 			}
