@@ -180,19 +180,30 @@ public:
 				return true;
 			}
 
-			iterator++;
+			++iterator;
 		}
 	};
 
 	void print() const
 	{
-		LinkedListIterator<T> tmp = LinkedListIterator<T>(first);
+		Node<T> * ptr = first;
 
-		while (tmp.current != NULL)
+		int c = 0;
+
+		while ( ptr != NULL)
 		{
-			cout << tmp.current->info << "\n";
-
-			tmp.current++;
+			if (c == 0)
+			{
+				cout << ptr->info << "\n";
+				ptr = first->next;
+				c++;
+			}
+			else
+			{
+				cout << ptr->info << "\n";
+				ptr = ptr->next;
+				c++;
+			}
 		}
 	};
 };
