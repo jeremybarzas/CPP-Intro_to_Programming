@@ -14,6 +14,11 @@ int main()
 
 	d.Mag();
 
+	Vector2<int> e = { 2,2 };
+	Vector2<int> f = { 3,2 };
+
+	int DP = e.DotProduct(f);
+
 	system("pause");
 	return 0;
 }

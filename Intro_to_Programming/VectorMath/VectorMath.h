@@ -72,10 +72,10 @@ public:
 	}
 
 	// Dot Product
-	Vector2<T>DotProduct(Vector2<T> other)
+	T DotProduct(Vector2<T> other)
 	{
-		Vector3 normThis = this->Normalize();
-		Vector3 normOther = other.Normalize();
+		Vector2 normThis = this->Normalize();
+		Vector2 normOther = other.Normalize();
 
 		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y);
 
