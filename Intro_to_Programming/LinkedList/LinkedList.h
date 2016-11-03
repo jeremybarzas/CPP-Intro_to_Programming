@@ -18,6 +18,7 @@ private:
 	Node<T> * current;
 
 public:
+	
 	LinkedListIterator()
 	{
 		this->current = NULL;
@@ -30,7 +31,7 @@ public:
 
 	T operator*()
 	{
-		return this->current->info;
+		return current->info;
 	};
 
 	LinkedListIterator<T> operator++()
@@ -40,18 +41,18 @@ public:
 		return *this;
 	};
 
-	bool operator==(LinkedListIterator<T>& list) const
+	bool operator==(LinkedListIterator<T>& iterator) const
 	{
-		if (this->current == list.current)
+		if (this->current == iterator.current)
 		{
 			return true;
 		}
 		return false;
 	};
 
-	bool operator!=(LinkedListIterator<T>& list) const
+	bool operator!=(LinkedListIterator<T>& iterator) const
 	{
-		if (this->current == list.current)
+		if (this->current == iterator.current)
 		{
 			return false;
 		}
@@ -76,7 +77,13 @@ public:
 		m_count = 0;
 	};
 
-	~LinkedList() {}
+	~LinkedList() {};
+
+	const LinkedList<T>& operator= (const LinkedList<T>& otherList)
+	{
+		copyList(otherList);
+		return *this;
+	};
 
 	LinkedListIterator<T> begin()
 	{
@@ -85,7 +92,7 @@ public:
 
 	LinkedListIterator<T> end()
 	{
-		return LinkedListIterator<T>(last->next);
+		return LinkedListIterator<T>(last);
 	};
 
 	void initializeList()
@@ -93,6 +100,52 @@ public:
 		first = NULL;
 		last = NULL;
 		m_count = 0;
+	};
+
+	void deleteNode(const T& nodeInfo)
+	{
+		Node<T> * nodePtr = first;
+		Node<T> * tmp = first;
+
+		while (nodePtr != NULL)
+		{
+			if (nodePtr->info == nodeInfo)
+			{
+				tmp = nodePtr;
+				nodePtr = nodePtr->next;
+				delete tmp;
+				m_count--;
+				first = nodePtr;
+			}
+			if (nodePtr->next == NULL)
+			{
+				last = nodePtr;
+				break;
+			}
+			if (nodePtr->next->info == nodeInfo)
+			{
+				tmp = nodePtr->next;
+				nodePtr->next = nodePtr->next->next;
+				delete tmp;
+				m_count--;
+			}
+			nodePtr = nodePtr->next;
+		}
+	};
+
+	void destroyList()
+	{
+		Node<T> * ptr = first;
+
+		while (ptr != NULL)
+		{
+			first = first->next;
+			delete ptr;
+			ptr = first;
+			m_count--;
+		}
+		first = NULL;
+		last = NULL;
 	};
 
 	T front() const
@@ -123,7 +176,7 @@ public:
 		return m_count;
 	}
 
-	bool insertLast(const T& node)
+	void insertLast(const T& node)
 	{
 		Node<T> * newNode = new Node<T>;
 
@@ -135,7 +188,6 @@ public:
 			first = newNode;
 			last = first;
 			m_count++;
-			return true;
 		}
 		else
 		{
@@ -144,70 +196,81 @@ public:
 				first->next = newNode;
 				last = newNode;
 				m_count++;
-				return true;
 			}
 			else
 			{
 				last->next = newNode;
 				last = newNode;
 				m_count++;
-				return true;
 			}
 		}
-
-		return false;
 	}
 
 	void insertFirst(const T& nodeInfo)
 	{
-		Node<T> * newNode = new Node<T>(nodeInfo);
+		Node<T> * newNode = new Node<T>;
 
-		newNode->next = this->first;
+		newNode->info = nodeInfo;
+		newNode->next = NULL;
 
-		first = newNode;
-
-		m_count++;
+		if (first == NULL)
+		{
+			first = newNode;
+			last = first;
+			m_count++;
+		}
+		else
+		{
+			newNode->next = this->first;
+			first = newNode;
+			m_count++;
+		}
 	};
 
 	bool search(const T& nodeInfo)
 	{
-		LinkedListIterator<T> iterator = this->begin(); 
+		Node<T> * ptr = first;
 
-		for (int i = 0; i < this->length(); i++)
+		while (ptr != NULL)
 		{
-			if (nodeInfo == iterator.current)
+			if (ptr->info == nodeInfo)
 			{
 				return true;
 			}
-
-			++iterator;
+			ptr = ptr->next;
 		}
+		return false;
 	};
 
 	void print() const
 	{
 		Node<T> * ptr = first;
 
-		int c = 0;
-
-		while ( ptr != NULL)
+		while (ptr != NULL)
 		{
-			if (c == 0)
-			{
-				cout << ptr->info << "\n";
-				ptr = first->next;
-				c++;
-			}
-			else
-			{
-				cout << ptr->info << "\n";
-				ptr = ptr->next;
-				c++;
-			}
+			cout << ptr->info << "\n";
+			ptr = ptr->next;
 		}
+		printf("\n");
+	};
+
+private:
+	//Function to make a copy of list
+	//Postcondition: A copy of list is created and assigned to this list
+	void copyList(const LinkedList<T>& otherList)
+	{
+		Node<T> nodePtr;
+		Node<T> tmp;
+
+		while (nodePtr != NULL)
+		{
+			
+		}
+		this->first = otherList.first;
+		this->last = otherList.last;
+		this->m_count = otherList.m_count;
 	};
 };
-
 
 
 //template<typename Type>
@@ -250,8 +313,7 @@ public:
 //	//iterator specified by right otherwise returns false
 //	bool operator!=(linkedListIterator<Type>& list) const;
 //};
-//
-//
+
 //template<typename Type>
 //class linkedListType
 //{
@@ -339,8 +401,5 @@ public:
 //	//Postcondition: The list object is destroyed
 //	~linkedListType<Type>() {}
 //
-//private:
-//	//Function to make a copy of list
-//	//Postcondition: A copy of list is created and assigned to this list
-//	void copyList(const linkedListType<Type>& otherList);
+//
 //};
