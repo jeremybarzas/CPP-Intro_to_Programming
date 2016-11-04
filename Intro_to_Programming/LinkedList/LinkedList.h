@@ -15,6 +15,7 @@ template<typename T>
 class LinkedListIterator
 {
 private:
+
 	Node<T> * current;
 
 public:
@@ -22,24 +23,24 @@ public:
 	LinkedListIterator()
 	{
 		this->current = NULL;
-	};
+	}
 
 	LinkedListIterator(Node<T> * node)
 	{
 		this->current = node;
-	};
+	}
 
 	T operator*()
 	{
 		return current->info;
-	};
+	}
 
 	LinkedListIterator<T> operator++()
 	{
 		this->current = this->current->next;
 
 		return *this;
-	};
+	}
 
 	bool operator==(LinkedListIterator<T>& iterator) const
 	{
@@ -48,7 +49,7 @@ public:
 			return true;
 		}
 		return false;
-	};
+	}
 
 	bool operator!=(LinkedListIterator<T>& iterator) const
 	{
@@ -57,13 +58,14 @@ public:
 			return false;
 		}
 		return true;
-	};
+	}
 };
 
 template<typename T>
 class LinkedList
 {
 protected:
+
 	int m_count;
 	Node<T> * first;
 	Node<T> * last;
@@ -75,40 +77,38 @@ public:
 		first = NULL;
 		last = NULL;
 		m_count = 0;
-	};
+	}
 
 	LinkedList(const LinkedList<T>& otherList)
 	{
-		first = otherList.first;
-		last = otherList.last;
-		m_count = otherList.m_count;
-	};
+		*this = otherList;
+	}
 
-	~LinkedList() {};
+	~LinkedList() {}
 
 	const LinkedList<T>& operator= (const LinkedList<T>& otherList)
 	{
 		this->copyList(otherList);
 
 		return *this;
-	};
+	}
 
 	LinkedListIterator<T> begin()
 	{
 		return LinkedListIterator<T>(first);
-	};
+	}
 
 	LinkedListIterator<T> end()
 	{
 		return LinkedListIterator<T>(last);
-	};
+	}
 
 	void initializeList()
 	{
 		first = NULL;
 		last = NULL;
 		m_count = 0;
-	};
+	}
 
 	void deleteNode(const T& nodeInfo)
 	{
@@ -139,7 +139,7 @@ public:
 			}
 			nodePtr = nodePtr->next;
 		}
-	};
+	}
 
 	void destroyList()
 	{
@@ -154,7 +154,7 @@ public:
 		}
 		first = NULL;
 		last = NULL;
-	};
+	}
 
 	T front() const
 	{
@@ -177,7 +177,7 @@ public:
 			return true;
 		}
 		return false;
-	};
+	}
 
 	int length() const
 	{
@@ -233,7 +233,7 @@ public:
 			first = newNode;
 			m_count++;
 		}
-	};
+	}
 
 	bool search(const T& nodeInfo)
 	{
@@ -248,7 +248,7 @@ public:
 			ptr = ptr->next;
 		}
 		return false;
-	};
+	}
 
 	void print() const
 	{
@@ -256,15 +256,22 @@ public:
 
 		while (ptr != NULL)
 		{
-			cout << ptr->info << "\n";
-			ptr = ptr->next;
+			if (ptr == last)
+			{
+				cout << ptr->info;
+				ptr = ptr->next;
+			}
+			else
+			{
+				cout << ptr->info << ", ";
+				ptr = ptr->next;
+			}
 		}
-		printf("\n");
-	};
+		printf("\n\n");
+	}
 
 private:
-	//Function to make a copy of list
-	//Postcondition: A copy of list is created and assigned to this list
+
 	void copyList(const LinkedList<T>& otherList)
 	{
 		Node<T> * nodePtr = otherList.first;
@@ -287,7 +294,7 @@ private:
 				nodePtr = nodePtr->next;
 			}
 		}
-	};
+	}
 };
 
 
