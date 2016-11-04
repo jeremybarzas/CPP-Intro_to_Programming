@@ -117,6 +117,13 @@ public:
 
 		while (nodePtr != NULL)
 		{
+			//if the node you are checking is the last node
+			if (nodePtr->next == NULL)
+			{
+				last = nodePtr;
+				break;
+			}
+			// if the node you are checking is the one to be deleted
 			if (nodePtr->info == nodeInfo)
 			{
 				tmp = nodePtr;
@@ -125,11 +132,7 @@ public:
 				m_count--;
 				first = nodePtr;
 			}
-			if (nodePtr->next == NULL)
-			{
-				last = nodePtr;
-				break;
-			}
+			// if the node next to the one you are checking is the one to be deleted
 			if (nodePtr->next->info == nodeInfo)
 			{
 				tmp = nodePtr->next;
@@ -137,6 +140,7 @@ public:
 				delete tmp;
 				m_count--;
 			}
+			// iterante the pointer to the next node to be checked.
 			nodePtr = nodePtr->next;
 		}
 	}
