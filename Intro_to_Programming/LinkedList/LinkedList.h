@@ -77,7 +77,7 @@ public:
 		m_count = 0;
 	};
 
-	LinkedList(const LinkedList<T> &otherList)
+	LinkedList(const LinkedList<T>& otherList)
 	{
 		first = otherList.first;
 		last = otherList.last;
