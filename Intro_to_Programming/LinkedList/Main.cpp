@@ -42,8 +42,8 @@ int main()
 
 	printf("overloading assignment = operator\n");
 
-	count = 0;
 	list2 = list;
+
 	count = list2.length();
 	list2.print();
 
