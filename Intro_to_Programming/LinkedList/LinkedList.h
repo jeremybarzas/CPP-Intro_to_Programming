@@ -77,6 +77,13 @@ public:
 		m_count = 0;
 	};
 
+	LinkedList(const LinkedList<T> &otherList)
+	{
+		first = otherList.first;
+		last = otherList.last;
+		m_count = otherList.m_count;
+	};
+
 	~LinkedList() {};
 
 	const LinkedList<T>& operator= (const LinkedList<T>& otherList)
