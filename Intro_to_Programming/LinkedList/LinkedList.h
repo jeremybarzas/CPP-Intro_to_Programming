@@ -288,7 +288,7 @@ private:
 		{
 			if (c == 0)
 			{
-				insertFirst(nodePtr->info);
+				this->insertFirst(nodePtr->info);
 				nodePtr = nodePtr->next;
 				c++;
 			}
