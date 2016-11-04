@@ -81,7 +81,8 @@ public:
 
 	const LinkedList<T>& operator= (const LinkedList<T>& otherList)
 	{
-		copyList(otherList);
+		this->copyList(otherList);
+
 		return *this;
 	};
 
@@ -259,16 +260,26 @@ private:
 	//Postcondition: A copy of list is created and assigned to this list
 	void copyList(const LinkedList<T>& otherList)
 	{
-		Node<T> nodePtr;
-		Node<T> tmp;
+		Node<T> * nodePtr = otherList.first;
+		
+		this->destroyList();
+
+		int c = 0;
 
 		while (nodePtr != NULL)
 		{
-			
+			if (c == 0)
+			{
+				insertFirst(nodePtr->info);
+				nodePtr = nodePtr->next;
+				c++;
+			}
+			else
+			{
+				this->insertLast(nodePtr->info);
+				nodePtr = nodePtr->next;
+			}
 		}
-		this->first = otherList.first;
-		this->last = otherList.last;
-		this->m_count = otherList.m_count;
 	};
 };
 

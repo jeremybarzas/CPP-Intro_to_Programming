@@ -22,10 +22,10 @@ int main()
 
 	int count = list.length();
 	bool found = list.search(10);
-
+	
 	list.deleteNode(8);
 	list.print();
-
+	
 	count = list.length();
 	
 	LinkedListIterator<int> iterator = list.begin();
@@ -38,6 +38,7 @@ int main()
 
 	printf("\n");
 
+	count = 0;
 	list2 = list;
 	count = list2.length();
 	list2.print();
