@@ -2,25 +2,26 @@
 #include <iostream>
 #include <cassert>
 
-template<class T>
-class Vector2
+/*=================== Vector Math =====================*/
+
+class Vector2D
 {
 private:
-	T x;
-	T y;
+	float x;
+	float y;
 
 public:
-	Vector2() {};
+	Vector2D() {};
 
-	Vector2(T a, T b) 
+	Vector2D(float a, float b) 
 	{
 		x = a;
 		y = b;
 	};
 	
-	~Vector2() {};
+	~Vector2D() {};
 
-	bool operator == (Vector2<T> other)
+	bool operator == (Vector2D other)
 	{
 		if (other.x == x && other.y == y)
 			return true;
@@ -29,81 +30,83 @@ public:
 	};
 
 	// Addition
-	Vector2<T> operator + (Vector2<T> other)
+	Vector2D operator + (Vector2D other)
 	{
-		T a = a = this->x + other.x;
-		T b = b = this->y + other.y;
+		float a = this->x + other.x;
+		float b = this->y + other.y;
 
-		return Vector2<T>(a, b);
+		Vector2D tmp = Vector2D(a, b);
+		return tmp;
 	};
 
 	// Subtraction
-	Vector2<T> operator - (Vector2<T> other)
+	Vector2D operator - (Vector2D other)
 	{
-		T a = a = this->x - other.x;
-		T b = b = this->y - other.y;
+		float a = this->x - other.x;
+		float b = this->y - other.y;
 
-		return Vector2<T>(a, b);
+		Vector2D tmp = Vector2D(a, b);
+		return tmp;
 	};
 
 	// Scalar Multiplication
-	Vector2<T> operator * (T other)
+	Vector2D operator * (float other)
 	{
-		T a = other * this->x;
-		T b = other * this->y;
+		float a = other * this->x;
+		float b = other * this->y;
 
-		return Vector2<T>(a, b);
+		Vector2D tmp = Vector2D(a, b);
+		return tmp;
 	};
 
 	// Magnitude
-	T Mag()
+	float Mag()
 	{
-		T mag = sqrt((this->x * this->x) + (this->y * this->y));
+		float mag = sqrt((this->x * this->x) + (this->y * this->y));
 
 		return mag;
 	}
 
 	// Normalize Vector
-	Vector2<T> Normalize()
+	Vector2D Normalize()
 	{
-		T mag = this->Mag();
-
-		return Vector2<T>((this->x / mag), (this->y / mag));
+		float mag = this->Mag();
+		Vector2D tmp = Vector2D((this->x / mag), (this->y / mag));
+		return tmp;
 	}
 
 	// Dot Product
-	T DotProduct(Vector2<T> other)
+	float DotProduct(Vector2D other)
 	{
-		Vector2 normThis = this->Normalize();
-		Vector2 normOther = other.Normalize();
+		Vector2D normThis = this->Normalize();
+		Vector2D normOther = other.Normalize();
 
-		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y);
+		float dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y);
 
 		return dotP;
 	}
 };
 
-template<class T>
-class Vector3
+class Vector3D
 {
 private:
-	T x;
-	T y;
-	T z;
+	float x;
+	float y;
+	float z;
 
 public:
-	Vector3() {};
+	Vector3D() {};
 
-	Vector3(T a, T b, T c)
+	Vector3D(float a, float b, float c)
 	{
 		x = a;
 		y = b;
-		z = c;
+		z = z;
 	};
 
-	~Vector3() {};
+	~Vector3D() {};
 
-	bool operator == (Vector3<T> other)
+	bool operator == (Vector3D other)
 	{
 		if (other.x == x && other.y == y && other.z == z)
 			return true;
@@ -112,97 +115,100 @@ public:
 	};
 
 	// Addition
-	Vector3<T> operator + (Vector3<T> other)
+	Vector3D operator + (Vector3D other)
 	{
-		T a = this->x + other.x;
-		T b = this->y + other.y;
-		T c = this->z + other.z;
+		float a = this->x + other.x;
+		float b = this->y + other.y;
+		float c = this->z + other.z;
 
-		return Vector3<T>(a, b, c);
+		Vector3D tmp = Vector3D(a, b, c);
+		return tmp;
 	};
 
 	// Subtraction
-	Vector3<T> operator - (Vector3<T> other)
+	Vector3D operator - (Vector3D other)
 	{
-		T a = this->x - other.x;
-		T b = this->y - other.y;
-		T c = this->z - other.z;
+		float a = this->x - other.x;
+		float b = this->y - other.y;
+		float c = this->z - other.z;
 
-		return Vector2<T>(a, b, c);
+		Vector3D tmp = Vector3D(a, b, c);
+		return tmp;
 	};
 
 	// Scalar Multiplication
-	Vector3<T> operator * (T other)
+	Vector3D operator * (float other)
 	{
-		T a = other * this->x;
-		T b = other * this->y;
-		T c = other * this->z;
+		float a = other * this->x;
+		float b = other * this->y;
+		float c = other * this->z;
 
-		return Vector3<T>(a, b, c);
+		Vector3D tmp = Vector3D(a, b, c);
+		return tmp;
 	};
 
 	// Magnitude
-	T Mag()
+	float Mag()
 	{
-		T mag = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z));
+		float mag = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z));
 
 		return mag;
 	}
 
 	// Normalize Vector
-	Vector3<T> Normalize()
+	Vector3D Normalize()
 	{
-		T mag = this->Mag();
+		float mag = this->Mag();
 
-		return Vector3<T>((this->x / mag), (this->y / mag), (this->z / mag));
+		Vector3D tmp = Vector3D((this->x / mag), (this->y / mag), (this->z / mag));
+		return tmp;
 	}
 
 	// Dot Product
-	T DotProduct(Vector3<T> other)
+	float DotProduct(Vector3D other)
 	{
-		Vector3 normThis = this->Normalize();
-		Vector3 normOther = other.Normalize();
+		Vector3D normThis = this->Normalize();
+		Vector3D normOther = other.Normalize();
 
-		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z);
+		float dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z);
 
 		return dotP;
 	}
 
-	// Cross Product
-	static Vector3<T> CrossProduct(Vector3<T> a, Vector3<T> b)
+	static Vector3D CrossProduct(Vector3D a, Vector3D b)
 	{
 		// 1 x 2 = ((1y * 2z - 1z * 2y), (1z * 2x - 1x * 2z), (1x * 2y - 1y * 2x))
-		T ex = ((a.y * b.z) - (a.z * b.y));
-		T why = (a.z * b.x) - (a.x * b.z);
-		T zee = ((a.x * b.y) - (a.y * b.x));
-	
-		return Vector3<T>(ex, why, zee);
+		float ex = ((a.y * b.z) - (a.z * b.y));
+		float why = (a.z * b.x) - (a.x * b.z);
+		float zee = ((a.x * b.y) - (a.y * b.x));
+
+		Vector3D tmp = Vector3D(ex, why, zee);
+		return tmp;
 	}
 };
 
-template<class T>
-class Vector4
+class Vector4D
 {
 private:
-	T x;
-	T y;
-	T z;
-	T w;
+	float x;
+	float y;
+	float z;
+	float w;
 
 public:
-	Vector4() {};
+	Vector4D() {};
 
-	Vector4(T a, T b, T c, T d)
+	Vector4D(float a, float b, float c, float d)
 	{
 		x = a;
 		y = b;
-		z = c;
+		z = z;
 		w = d;
 	};
 
-	~Vector4() {};
+	~Vector4D() {};
 
-	bool operator == (Vector4<T> other)
+	bool operator == (Vector4D other)
 	{
 		if (other.x == x && other.y == y && other.z == z && other.w == w)
 			return true;
@@ -211,62 +217,327 @@ public:
 	};
 
 	// Addition
-	Vector4<T> operator + (Vector4<T> other)
+	Vector4D operator + (Vector4D other)
 	{
-		T a = this->x + other.x;
-		T b = this->y + other.y;
-		T c = this->z + other.z;
-		T d = this->w + other.w;
+		float a = this->x + other.x;
+		float b = this->y + other.y;
+		float c = this->z + other.z;
+		float d = this->w + other.w;
 
-		return Vector4<T>(a, b, c, d);
+		Vector4D tmp = Vector4D(a, b, c, d);
+		return tmp;
 	};
 
 	// Subtraction
-	Vector4<T> operator - (Vector4<T> other)
+	Vector4D operator - (Vector4D other)
 	{
-		T a = this->x - other.x;
-		T b = this->y - other.y;
-		T c = this->z - other.z;
-		T d = this->w - other.w;
+		float a = this->x - other.x;
+		float b = this->y - other.y;
+		float c = this->z - other.z;
+		float d = this->w - other.w;
 
-		return Vector2<T>(a, b, c, d);
+		Vector4D tmp = Vector4D(a, b, c, d);
+		return tmp;
 	};
 
 	// Scalar Multiplication
-	Vector4<T> operator * (T other)
+	Vector4D operator * (float other)
 	{
-		T a = other * this->x;
-		T b = other * this->y;
-		T c = other * this->z;
-		T d = other * this->w;
+		float a = other * this->x;
+		float b = other * this->y;
+		float c = other * this->z;
+		float d = other * this->w;
 
-		return Vector4<T>(a, b, c, d);
+		Vector4D tmp = Vector4D(a, b, c, d);
+		return tmp;
 	};
 
 	// Magnitude
-	T Mag()
+	float Mag()
 	{
-		T mag = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z) + (this->w * this->w));
+		float mag = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z) + (this->w * this->w));
 
 		return mag;
 	}
 
 	// Normalize Vector
-	Vector4<T> Normalize()
+	Vector4D Normalize()
 	{
-		T mag = this->Mag();
+		float mag = this->Mag();
 
-		return Vector4<T>((this->x / mag), (this->y / mag), (this->z / mag), (this->w / mag));
+		Vector4D tmp = Vector4D((this->x / mag), (this->y / mag), (this->z / mag), (this->w / mag));
+		return tmp;
 	}
 
 	// Dot Product
-	T DotProduct(Vector4<T> other)
+	float DotProduct(Vector4D other)
 	{
-		Vector4 normThis = this->Normalize();
-		Vector4 normOther = other.Normalize();
+		Vector4D normThis = this->Normalize();
+		Vector4D normOther = other.Normalize();
 
-		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z) + (normThis.w * normOther.w);
+		float dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z) + (normThis.w * normOther.w);
 
 		return dotP;
 	}
+};
+
+/*=================== Matrix Math =====================*/
+
+class Matrix2D
+{
+private:
+	float m_vec2a[2];
+	float m_vec2b[2];
+
+public:
+
+	// default constructor
+	Matrix2D() 
+	{
+		m_vec2a[0] = 0;
+		m_vec2a[1] = 0;
+		m_vec2b[0] = 0;
+		m_vec2b[1] = 0;
+	}
+
+	// deconstructor
+	~Matrix2D() {}
+
+	// constructor that takes in raw float values
+	Matrix2D(float a1, float a2, float b1, float b2) 
+	{
+		m_vec2a[0] = a1;
+		m_vec2a[1] = a2;
+
+		m_vec2b[0] = b1;
+		m_vec2b[1] = b2;
+	}
+
+	// constructor that takes in arrays of floats
+	Matrix2D(float a[], float b[])
+	{
+		m_vec2a[0] = a[0];
+		m_vec2a[1] = a[1];
+
+		m_vec2b[0] = b[0];
+		m_vec2b[1] = b[1];
+	}
+
+	// multiplying two Matrix2ds
+	Matrix2D multiply(Matrix2D other)
+	{
+		float a1 = (this->m_vec2a[0] * other.m_vec2a[0]) + (this->m_vec2a[1] * other.m_vec2b[0]);
+		float a2 = (this->m_vec2a[0] * other.m_vec2a[1]) + (this->m_vec2a[1] * other.m_vec2b[1]);
+
+		float b1 = (this->m_vec2b[0] * other.m_vec2a[0]) + (this->m_vec2b[1] * other.m_vec2b[0]);
+		float b2 = (this->m_vec2b[0] * other.m_vec2a[1]) + (this->m_vec2b[1] * other.m_vec2b[1]);
+
+		Matrix2D mult = Matrix2D(a1, a2, b1, b2);
+
+		return mult;
+	}
+	 
+};
+
+class Matrix3D
+{
+private:
+	float m_vec3a[3];
+	float m_vec3b[3];
+	float m_vec3c[3];
+
+public:
+
+	// default constructor
+	Matrix3D()
+	{
+		m_vec3a[0] = 0;
+		m_vec3a[1] = 0;
+		m_vec3a[2] = 0;
+
+		m_vec3b[0] = 0;
+		m_vec3b[1] = 0;
+		m_vec3b[2] = 0;
+
+		m_vec3c[0] = 0;
+		m_vec3c[1] = 0;
+		m_vec3c[2] = 0;
+	}
+
+	// deconstructor
+	~Matrix3D() {}
+
+	// constructor that takes in raw float values
+	Matrix3D(float a1, float a2, float a3, float b1, float b2, float b3, float c1, float c2, float c3)
+	{
+		m_vec3a[0] = a1;
+		m_vec3a[1] = a2;
+		m_vec3a[2] = a3;
+
+		m_vec3b[0] = b1;
+		m_vec3b[1] = b2;
+		m_vec3b[2] = b3;
+
+		m_vec3c[0] = b1;
+		m_vec3c[1] = b2;
+		m_vec3c[2] = b3;
+	}
+
+	// constructor that takes in arrays of floats
+	Matrix3D(float a[], float b[], float c[])
+	{
+		m_vec3a[0] = a[0];
+		m_vec3a[1] = a[1];
+		m_vec3a[2] = a[2];
+
+		m_vec3b[0] = b[0];
+		m_vec3b[1] = b[1];
+		m_vec3b[2] = b[2];
+
+		m_vec3c[0] = c[0];
+		m_vec3c[1] = c[1];
+		m_vec3c[2] = c[2];
+	}
+
+	// multiplying two Matrix3Ds
+	Matrix3D multiply(Matrix3D other)
+	{
+		float a[3];
+		a[0] = (this->m_vec3a[0] * other.m_vec3a[0]) + (this->m_vec3a[1] * other.m_vec3b[0]) + (this->m_vec3a[2] * other.m_vec3c[0]);
+		a[1] = (this->m_vec3a[0] * other.m_vec3a[1]) + (this->m_vec3a[1] * other.m_vec3b[1]) + (this->m_vec3a[2] * other.m_vec3c[1]);
+		a[2] = (this->m_vec3a[0] * other.m_vec3a[2]) + (this->m_vec3a[1] * other.m_vec3b[2]) + (this->m_vec3a[2] * other.m_vec3c[2]);
+
+		float b[3];
+		b[0] = (this->m_vec3b[0] * other.m_vec3a[0]) + (this->m_vec3b[1] * other.m_vec3b[0]) + (this->m_vec3b[2] * other.m_vec3c[0]);
+		b[1] = (this->m_vec3b[0] * other.m_vec3a[1]) + (this->m_vec3b[1] * other.m_vec3b[1]) + (this->m_vec3b[2] * other.m_vec3c[1]);
+		b[2] = (this->m_vec3b[0] * other.m_vec3a[2]) + (this->m_vec3b[1] * other.m_vec3b[2]) + (this->m_vec3b[2] * other.m_vec3c[2]);
+
+		float c[3];
+		c[0] = (this->m_vec3c[0] * other.m_vec3a[0]) + (this->m_vec3c[1] * other.m_vec3b[0]) + (this->m_vec3c[2] * other.m_vec3c[0]);
+		c[1] = (this->m_vec3c[0] * other.m_vec3a[1]) + (this->m_vec3c[1] * other.m_vec3b[1]) + (this->m_vec3c[2] * other.m_vec3c[1]);
+		c[2] = (this->m_vec3c[0] * other.m_vec3a[2]) + (this->m_vec3c[1] * other.m_vec3b[2]) + (this->m_vec3c[2] * other.m_vec3c[2]);
+
+		Matrix3D mult = Matrix3D(a, b, c);
+
+		return mult;
+	}
+
+};
+
+class Matrix4D
+{
+private:
+	float m_vec4a[4];
+	float m_vec4b[4];
+	float m_vec4c[4];
+	float m_vec4d[4];
+
+public:
+
+	// default constructor
+	Matrix4D()
+	{
+		m_vec4a[0] = 0;
+		m_vec4a[1] = 0;
+		m_vec4a[2] = 0;
+		m_vec4a[3] = 0;
+
+		m_vec4b[0] = 0;
+		m_vec4b[1] = 0;
+		m_vec4b[2] = 0;
+		m_vec4b[3] = 0;
+
+		m_vec4c[0] = 0;
+		m_vec4c[1] = 0;
+		m_vec4c[2] = 0;
+		m_vec4c[3] = 0;
+
+		m_vec4d[0] = 0;
+		m_vec4d[1] = 0;
+		m_vec4d[2] = 0;
+		m_vec4d[3] = 0;
+	}
+
+	// deconstructor
+	~Matrix4D() {}
+
+	// constructor that takes in raw float values
+	Matrix4D(float a1, float a2, float a3, float a4, float b1, float b2, float b3, float b4, float c1, float c2, float c3, float c4, float d1, float d2, float d3, float d4)
+	{
+		m_vec4a[0] = a1;
+		m_vec4a[1] = a2;
+		m_vec4a[2] = a3;
+		m_vec4a[3] = a4;
+
+		m_vec4b[0] = b1;
+		m_vec4b[1] = b2;
+		m_vec4b[2] = b3;
+		m_vec4b[3] = b4;
+
+		m_vec4c[0] = c1;
+		m_vec4c[1] = c2;
+		m_vec4c[2] = c3;
+		m_vec4c[3] = c4;
+
+		m_vec4d[0] = d1;
+		m_vec4d[1] = d2;
+		m_vec4d[2] = d3;
+		m_vec4d[3] = d4;
+	}
+
+	// constructor that takes in arrays of floats
+	Matrix4D(float a[], float b[], float c[], float d[])
+	{
+		m_vec4a[0] = a[0];
+		m_vec4a[1] = a[1];
+		m_vec4a[2] = a[2];
+		m_vec4a[3] = a[3];
+
+		m_vec4b[0] = b[0];
+		m_vec4b[1] = b[1];
+		m_vec4b[2] = b[2];
+		m_vec4b[3] = d[3];
+
+		m_vec4c[0] = c[0];
+		m_vec4c[1] = c[1];
+		m_vec4c[2] = c[2];
+		m_vec4c[3] = c[3];
+
+		m_vec4d[0] = d[0];
+		m_vec4d[1] = d[1];
+		m_vec4d[2] = d[2];
+		m_vec4d[3] = d[3];
+	}
+
+	// multiplying two Matrix3Ds
+	Matrix4D multiply(Matrix4D other)
+	{
+		float a[4];
+		a[0] = (this->m_vec4a[0] * other.m_vec4a[0]) + (this->m_vec4a[1] * other.m_vec4b[0]) + (this->m_vec4a[2] * other.m_vec4c[0]) + (this->m_vec4a[3] * other.m_vec4c[0]);
+		a[1] = (this->m_vec4a[0] * other.m_vec4a[1]) + (this->m_vec4a[1] * other.m_vec4b[1]) + (this->m_vec4a[2] * other.m_vec4c[1]) + (this->m_vec4a[3] * other.m_vec4c[1]);
+		a[2] = (this->m_vec4a[0] * other.m_vec4a[2]) + (this->m_vec4a[1] * other.m_vec4b[2]) + (this->m_vec4a[2] * other.m_vec4c[2]) + (this->m_vec4a[3] * other.m_vec4c[2]);
+		a[2] = (this->m_vec4a[0] * other.m_vec4a[3]) + (this->m_vec4a[1] * other.m_vec4b[3]) + (this->m_vec4a[2] * other.m_vec4c[3]) + (this->m_vec4a[3] * other.m_vec4c[3]);
+
+		float b[4];
+		a[0] = (this->m_vec4b[0] * other.m_vec4a[0]) + (this->m_vec4b[1] * other.m_vec4b[0]) + (this->m_vec4b[2] * other.m_vec4c[0]) + (this->m_vec4b[3] * other.m_vec4c[0]);
+		a[1] = (this->m_vec4b[0] * other.m_vec4a[1]) + (this->m_vec4b[1] * other.m_vec4b[1]) + (this->m_vec4b[2] * other.m_vec4c[1]) + (this->m_vec4b[3] * other.m_vec4c[1]);
+		a[2] = (this->m_vec4b[0] * other.m_vec4a[2]) + (this->m_vec4b[1] * other.m_vec4b[2]) + (this->m_vec4b[2] * other.m_vec4c[2]) + (this->m_vec4b[3] * other.m_vec4c[2]);
+		a[2] = (this->m_vec4b[0] * other.m_vec4a[3]) + (this->m_vec4b[1] * other.m_vec4b[3]) + (this->m_vec4b[2] * other.m_vec4c[3]) + (this->m_vec4b[3] * other.m_vec4c[3]);
+		float c[4];
+		a[0] = (this->m_vec4c[0] * other.m_vec4a[0]) + (this->m_vec4c[1] * other.m_vec4b[0]) + (this->m_vec4c[2] * other.m_vec4c[0]) + (this->m_vec4c[3] * other.m_vec4c[0]);
+		a[1] = (this->m_vec4c[0] * other.m_vec4a[1]) + (this->m_vec4c[1] * other.m_vec4b[1]) + (this->m_vec4c[2] * other.m_vec4c[1]) + (this->m_vec4c[3] * other.m_vec4c[1]);
+		a[2] = (this->m_vec4c[0] * other.m_vec4a[2]) + (this->m_vec4c[1] * other.m_vec4b[2]) + (this->m_vec4c[2] * other.m_vec4c[2]) + (this->m_vec4c[3] * other.m_vec4c[2]);
+		a[2] = (this->m_vec4c[0] * other.m_vec4a[3]) + (this->m_vec4c[1] * other.m_vec4b[3]) + (this->m_vec4c[2] * other.m_vec4c[3]) + (this->m_vec4c[3] * other.m_vec4c[3]);
+
+		float d[4];
+		a[0] = (this->m_vec4d[0] * other.m_vec4a[0]) + (this->m_vec4d[1] * other.m_vec4b[0]) + (this->m_vec4d[2] * other.m_vec4c[0]) + (this->m_vec4d[3] * other.m_vec4c[0]);
+		a[1] = (this->m_vec4d[0] * other.m_vec4a[1]) + (this->m_vec4d[1] * other.m_vec4b[1]) + (this->m_vec4d[2] * other.m_vec4c[1]) + (this->m_vec4d[3] * other.m_vec4c[1]);
+		a[2] = (this->m_vec4d[0] * other.m_vec4a[2]) + (this->m_vec4d[1] * other.m_vec4b[2]) + (this->m_vec4d[2] * other.m_vec4c[2]) + (this->m_vec4d[3] * other.m_vec4c[2]);
+		a[2] = (this->m_vec4d[0] * other.m_vec4a[3]) + (this->m_vec4d[1] * other.m_vec4b[3]) + (this->m_vec4d[2] * other.m_vec4c[3]) + (this->m_vec4d[3] * other.m_vec4c[3]);
+		
+		Matrix4D mult = Matrix4D(a, b, c, d);
+
+		return mult;
+	}
+
 };

@@ -2,22 +2,15 @@
 
 int main()
 {
-	Vector2<int> a = { 1, 0 };
-	
-	Vector2<int> b = { 0, 1 };
+	/*=================== Matrix2D =====================*/
 
-	Vector2<int> c = { 1, 1 };
+	float Mat2aVec2a[2] = { 1, 2 };
+	float Mat2aVec2b[2] = { 3, 4 };
+	Matrix2D a = Matrix2D(Mat2aVec2a, Mat2aVec2b);
 
-	assert(a + b == c);
-
-	Vector2<int> d = { 1,1 };
-
-	d.Mag();
-
-	Vector2<int> e = { 2,2 };
-	Vector2<int> f = { 3,2 };
-
-	int DP = e.DotProduct(f);
+	float Mat2bVec2a[2] = { 5, 6 };
+	float Mat2bVec2b[2] = { 7, 8 };
+	Matrix2D b = Matrix2D(Mat2bVec2a, Mat2bVec2b);
 
 	system("pause");
 	return 0;
