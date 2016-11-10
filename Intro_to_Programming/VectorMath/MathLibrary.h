@@ -89,14 +89,16 @@ class Vector3
 private:
 	T x;
 	T y;
+	T z;
 
 public:
 	Vector3() {};
 
-	Vector3(T a, T b)
+	Vector3(T a, T b, T c)
 	{
 		x = a;
 		y = b;
+		z = c;
 	};
 
 	~Vector3() {};
@@ -175,5 +177,96 @@ public:
 		T zee = ((a.x * b.y) - (a.y * b.x));
 	
 		return Vector3<T>(ex, why, zee);
+	}
+};
+
+template<class T>
+class Vector4
+{
+private:
+	T x;
+	T y;
+	T z;
+	T w;
+
+public:
+	Vector4() {};
+
+	Vector4(T a, T b, T c, T d)
+	{
+		x = a;
+		y = b;
+		z = c;
+		w = d;
+	};
+
+	~Vector4() {};
+
+	bool operator == (Vector4<T> other)
+	{
+		if (other.x == x && other.y == y && other.z == z && other.w == w)
+			return true;
+
+		return false;
+	};
+
+	// Addition
+	Vector4<T> operator + (Vector4<T> other)
+	{
+		T a = this->x + other.x;
+		T b = this->y + other.y;
+		T c = this->z + other.z;
+		T d = this->w + other.w;
+
+		return Vector4<T>(a, b, c, d);
+	};
+
+	// Subtraction
+	Vector4<T> operator - (Vector4<T> other)
+	{
+		T a = this->x - other.x;
+		T b = this->y - other.y;
+		T c = this->z - other.z;
+		T d = this->w - other.w;
+
+		return Vector2<T>(a, b, c, d);
+	};
+
+	// Scalar Multiplication
+	Vector4<T> operator * (T other)
+	{
+		T a = other * this->x;
+		T b = other * this->y;
+		T c = other * this->z;
+		T d = other * this->w;
+
+		return Vector4<T>(a, b, c, d);
+	};
+
+	// Magnitude
+	T Mag()
+	{
+		T mag = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z) + (this->w * this->w));
+
+		return mag;
+	}
+
+	// Normalize Vector
+	Vector4<T> Normalize()
+	{
+		T mag = this->Mag();
+
+		return Vector4<T>((this->x / mag), (this->y / mag), (this->z / mag), (this->w / mag));
+	}
+
+	// Dot Product
+	T DotProduct(Vector4<T> other)
+	{
+		Vector4 normThis = this->Normalize();
+		Vector4 normOther = other.Normalize();
+
+		T dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z) + (normThis.w * normOther.w);
+
+		return dotP;
 	}
 };

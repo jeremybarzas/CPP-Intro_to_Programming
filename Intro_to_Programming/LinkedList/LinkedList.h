@@ -301,7 +301,6 @@ private:
 	}
 };
 
-
 //template<typename Type>
 //struct nodeType
 //{
