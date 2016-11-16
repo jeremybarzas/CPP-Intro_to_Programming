@@ -24,6 +24,16 @@ public:
 	
 	~Vector2D() {};
 
+	float getX()
+	{
+		return x;
+	}
+
+	float getY()
+	{
+		return y;
+	}
+
 	bool operator == (Vector2D other)
 	{
 		if (other.x == x && other.y == y)
@@ -71,7 +81,7 @@ public:
 	}
 
 	// Normalize Vector
-	Vector2D Normalize()
+	Vector2D Normalise()
 	{
 		float mag = this->Mag();
 		Vector2D tmp = Vector2D((this->x / mag), (this->y / mag));
@@ -81,8 +91,8 @@ public:
 	// Dot Product
 	float DotProduct(Vector2D other)
 	{
-		Vector2D normThis = this->Normalize();
-		Vector2D normOther = other.Normalize();
+		Vector2D normThis = this->Normalise();
+		Vector2D normOther = other.Normalise();
 
 		float dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y);
 
@@ -108,6 +118,21 @@ public:
 	};
 
 	~Vector3D() {};
+
+	float getX()
+	{
+		return x;
+	}
+
+	float getY()
+	{
+		return y;
+	}
+
+	float getZ()
+	{
+		return z;
+	}
 
 	bool operator == (Vector3D other)
 	{
@@ -159,7 +184,7 @@ public:
 	}
 
 	// Normalize Vector
-	Vector3D Normalize()
+	Vector3D Normalise()
 	{
 		float mag = this->Mag();
 
@@ -170,14 +195,15 @@ public:
 	// Dot Product
 	float DotProduct(Vector3D other)
 	{
-		Vector3D normThis = this->Normalize();
-		Vector3D normOther = other.Normalize();
+		Vector3D normThis = this->Normalise();
+		Vector3D normOther = other.Normalise();
 
 		float dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z);
 
 		return dotP;
 	}
 
+	// Cross Product
 	static Vector3D CrossProduct(Vector3D a, Vector3D b)
 	{
 		// 1 x 2 = ((1y * 2z - 1z * 2y), (1z * 2x - 1x * 2z), (1x * 2y - 1y * 2x))
@@ -210,6 +236,26 @@ public:
 	};
 
 	~Vector4D() {};
+
+	float getX()
+	{
+		return x;
+	}
+
+	float getY()
+	{
+		return y;
+	}
+
+	float getZ()
+	{
+		return z;
+	}
+
+	float getW()
+	{
+		return w;
+	}
 
 	bool operator == (Vector4D other)
 	{
@@ -264,7 +310,7 @@ public:
 	}
 
 	// Normalize Vector
-	Vector4D Normalize()
+	Vector4D Normalise()
 	{
 		float mag = this->Mag();
 
@@ -275,8 +321,8 @@ public:
 	// Dot Product
 	float DotProduct(Vector4D other)
 	{
-		Vector4D normThis = this->Normalize();
-		Vector4D normOther = other.Normalize();
+		Vector4D normThis = this->Normalise();
+		Vector4D normOther = other.Normalise();
 
 		float dotP = (normThis.x * normOther.x) + (normThis.y * normOther.y) + (normThis.z * normOther.z) + (normThis.w * normOther.w);
 
@@ -288,12 +334,11 @@ public:
 
 class Matrix2D
 {
-
+private:
 	float m_vec2a[2];
 	float m_vec2b[2];
 
 public:
-
 	// default constructor
 	Matrix2D() 
 	{
@@ -327,7 +372,7 @@ public:
 	}
 
 	// multiplying two Matrix2ds
-	Matrix2D multiply(Matrix2D other)
+	Matrix2D operator * (Matrix2D other)
 	{
 		float a1 = (this->m_vec2a[0] * other.m_vec2a[0]) + (this->m_vec2a[1] * other.m_vec2b[0]);
 		float a2 = (this->m_vec2a[0] * other.m_vec2a[1]) + (this->m_vec2a[1] * other.m_vec2b[1]);
@@ -339,7 +384,16 @@ public:
 
 		return mult;
 	}
-	 
+
+	Vector2D operator * (Vector2D other)
+	{
+		float x = other.getX() * this->m_vec2a[0] + other.getX() * this->m_vec2b[0];
+		float y = other.getY() * this->m_vec2a[1] + other.getY() * this->m_vec2b[1];
+		
+		Vector2D tmp = Vector2D(x, y);
+
+		return tmp;
+	}
 };
 
 class Matrix3D
@@ -350,7 +404,6 @@ private:
 	float m_vec3c[3];
 
 public:
-
 	// default constructor
 	Matrix3D()
 	{
@@ -403,7 +456,7 @@ public:
 	}
 
 	// multiplying two Matrix3Ds
-	Matrix3D multiply(Matrix3D other)
+	Matrix3D operator * (Matrix3D other)
 	{
 		float a[3];
 		a[0] = (this->m_vec3a[0] * other.m_vec3a[0]) + (this->m_vec3a[1] * other.m_vec3b[0]) + (this->m_vec3a[2] * other.m_vec3c[0]);
@@ -425,6 +478,43 @@ public:
 		return mult;
 	}
 
+	Vector3D operator * (Vector3D other)
+	{
+		float x = other.getX() * this->m_vec3a[0] + other.getX() * this->m_vec3b[0] + other.getX() * this->m_vec3c[0];
+		float y = other.getY() * this->m_vec3a[1] + other.getY() * this->m_vec3b[1] + other.getY() * this->m_vec3c[1];
+		float z = other.getZ() * this->m_vec3a[2] + other.getZ() * this->m_vec3b[2] + other.getZ() * this->m_vec3c[2];
+
+		Vector3D tmp = Vector3D(x, y, z);
+
+		return tmp;
+	}
+
+	Matrix3D SetRotateX(float valueX)
+	{
+		Matrix3D rotationalX = Matrix3D(1, 0, 0, 0, cos(valueX), -sin(valueX), 0, sin(valueX), cos(valueX));
+
+		*this = *this * rotationalX;
+
+		return *this;
+	}
+
+	Matrix3D SetRotateY(float valueY)
+	{
+		Matrix3D rotationalY = Matrix3D(cos(valueY), 0, sin(valueY), 0, 1, 0, -sin(valueY), 0, cos(valueY));
+
+		*this = *this * rotationalY;
+
+		return *this;
+	}
+
+	Matrix3D SetRotateZ(float valueZ)
+	{
+		Matrix3D rotationalZ = Matrix3D(cos(valueZ), -sin(valueZ), 0, sin(valueZ), cos(valueZ), 0, 0, 0, 1);
+
+		*this = *this * rotationalZ;
+
+		return *this;
+	}
 };
 
 class Matrix4D
@@ -436,7 +526,6 @@ private:
 	float m_vec4d[4];
 
 public:
-
 	// default constructor
 	Matrix4D()
 	{
@@ -513,7 +602,7 @@ public:
 	}
 
 	// multiplying two Matrix3Ds
-	Matrix4D multiply(Matrix4D other)
+	Matrix4D operator * (Matrix4D other)
 	{
 		float a[4];
 		a[0] = (this->m_vec4a[0] * other.m_vec4a[0]) + (this->m_vec4a[1] * other.m_vec4b[0]) + (this->m_vec4a[2] * other.m_vec4c[0]) + (this->m_vec4a[3] * other.m_vec4c[0]);
@@ -537,74 +626,64 @@ public:
 		a[1] = (this->m_vec4d[0] * other.m_vec4a[1]) + (this->m_vec4d[1] * other.m_vec4b[1]) + (this->m_vec4d[2] * other.m_vec4c[1]) + (this->m_vec4d[3] * other.m_vec4c[1]);
 		a[2] = (this->m_vec4d[0] * other.m_vec4a[2]) + (this->m_vec4d[1] * other.m_vec4b[2]) + (this->m_vec4d[2] * other.m_vec4c[2]) + (this->m_vec4d[3] * other.m_vec4c[2]);
 		a[2] = (this->m_vec4d[0] * other.m_vec4a[3]) + (this->m_vec4d[1] * other.m_vec4b[3]) + (this->m_vec4d[2] * other.m_vec4c[3]) + (this->m_vec4d[3] * other.m_vec4c[3]);
-		
+
 		Matrix4D mult = Matrix4D(a, b, c, d);
 
 		return mult;
 	}
 
+	Vector4D operator * (Vector4D other)
+	{
+		float x = other.getX() * this->m_vec4a[0] + other.getX() * this->m_vec4b[0] + other.getX() * this->m_vec4c[0] + other.getX() * this->m_vec4d[0];
+		float y = other.getY() * this->m_vec4a[1] + other.getY() * this->m_vec4b[1] + other.getY() * this->m_vec4c[1] + other.getY() * this->m_vec4d[1];
+		float z = other.getZ() * this->m_vec4a[2] + other.getZ() * this->m_vec4b[2] + other.getZ() * this->m_vec4c[2] + other.getZ() * this->m_vec4d[2];
+		float w = other.getW() * this->m_vec4a[3] + other.getW() * this->m_vec4b[3] + other.getW() * this->m_vec4c[3] + other.getW() * this->m_vec4d[3];
+
+		Vector4D tmp = Vector4D(x, y, z, w);
+
+		return tmp;
+	}
+
+	Matrix4D SetRotateX(float valueX)
+	{								  
+		Matrix4D rotationalX = Matrix4D(1, 0, 0, 0, 0, cos(valueX), -sin(valueX), 0, 0, sin(valueX), cos(valueX), 0, 0, 0, 0, 1);
+
+		*this = *this * rotationalX;
+
+		return *this;
+	}
+
+	Matrix4D SetRotateY(float valueY)
+	{
+		Matrix4D rotationalY = Matrix4D(cos(valueY), 0, sin(valueY), 0, 0, 1, 0, 0, -sin(valueY), 0, cos(valueY), 0, 0, 0, 0, 1);
+
+		*this = *this * rotationalY;
+
+		return *this;
+	}
+
+	Matrix4D SetRotateZ(float valueZ)
+	{
+		Matrix4D rotationalZ = Matrix4D(cos(valueZ), -sin(valueZ), 0, 0, sin(valueZ), cos(valueZ), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+
+		*this = *this * rotationalZ;
+
+		return *this;
+	}
 };
 
 /*=================== Unit Testing =====================*/
 
-void Vec2DUnitTest()
-{
-	
-}
+void UnitTest();
 
-void Mat2DUnitTest()
-{
-	cout << "========== Matrix 2D Unit Test. ==========\n";
+void Vec2DUnitTest();
 
-	float Mat2aVec2a[2] = { 1, 2 };
-	float Mat2aVec2b[2] = { 3, 4 };
-	Matrix2D a = Matrix2D(Mat2aVec2a, Mat2aVec2b);
+void Vec3DUnitTest();
 
-	float Mat2bVec2a[2] = { 5, 6 };
-	float Mat2bVec2b[2] = { 7, 8 };
-	Matrix2D b = Matrix2D(Mat2bVec2a, Mat2bVec2b);
+void Vec4DUnitTest();
 
-	Matrix2D c = a.multiply(b);
+void Mat2DUnitTest();
 
-	printf("\n");
-	system("pause");
-}
+void Mat3DUnitTest();
 
-void UnitTest()
-{
-	int input = -1;
-
-	while (input != 0)
-	{
-		cout << "Vector 2D Unit Test - - - - - - - 1\n";
-		cout << "Vector 3D Unit Test - - - - - - - 2\n";
-		cout << "Vector 4D Unit Test - - - - - - - 3\n";
-		cout << "Matrix 2D Unit Test - - - - - - - 4\n";
-		cout << "Matrix 3D Unit Test - - - - - - - 5\n";
-		cout << "Matrix 4D Unit Test - - - - - - - 6\n";
-
-		cout << "\nEnter 0 to quit the program.\n\n";
-
-		cout << "Enter the number of the unit test to display: ";
-		cin >> input;
-		printf("\n");
-
-		switch (input)
-		{
-		case 1: 
-
-		case 2:
-
-		case 3:
-
-		case 4: Mat2DUnitTest();
-
-		case 5:
-
-		case 6:
-
-		default:
-			break;
-		}
-	}
-}
+void Mat4DUnitTest();
