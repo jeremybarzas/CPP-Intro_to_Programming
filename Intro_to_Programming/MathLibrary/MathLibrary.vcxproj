@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{84B38A1C-0C14-4A25-8C75-A08AA29DE7BA}</ProjectGuid>
+    <ProjectGuid>{9EEB6A56-9C33-4A90-8556-EEB535F441EB}</ProjectGuid>
     <RootNamespace>MathLibrary</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -110,10 +110,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\VectorMath\MathLibrary.h" />
+    <ClInclude Include="MathLibrary.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\VectorMath\Main.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MathLibrary.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
