@@ -1,9 +1,11 @@
  #pragma once
 #include <iostream>
 #include <cassert>
+#include <fstream>
 
 using std::cin;
 using std::cout;
+using std::ofstream;
 
 /*=================== Vector Math =====================*/
 
@@ -114,7 +116,7 @@ public:
 	{
 		x = a;
 		y = b;
-		z = z;
+		z = c;
 	};
 
 	~Vector3D() {};
@@ -231,7 +233,7 @@ public:
 	{
 		x = a;
 		y = b;
-		z = z;
+		z = c;
 		w = d;
 	};
 
