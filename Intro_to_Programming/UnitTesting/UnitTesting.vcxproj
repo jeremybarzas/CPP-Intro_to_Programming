@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9EEB6A56-9C33-4A90-8556-EEB535F441EB}</ProjectGuid>
-    <RootNamespace>MathLibrary</RootNamespace>
+    <ProjectGuid>{6300DA05-155C-4242-8FBF-34F5CC630B9D}</ProjectGuid>
+    <RootNamespace>UnitTesting</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -110,10 +110,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MathLibrary.h" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="MathLibrary.h" />
+    <ClInclude Include="UnitTesting.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

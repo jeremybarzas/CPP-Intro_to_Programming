@@ -1,10 +1,7 @@
-#include 
+#include "UnitTesting.h"
 
 int main()
 {
-
-	int sum = add(1, 1);
-
 	UnitTest();
 
 	return 0;

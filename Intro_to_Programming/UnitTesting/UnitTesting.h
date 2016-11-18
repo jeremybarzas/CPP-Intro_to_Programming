@@ -1,4 +1,25 @@
+#pragma once
+#include <iostream>
+#include <cassert>
+#include <fstream>
+
 #include "MathLibrary.h"
+#include "LinkedList.h"
+
+using std::cin;
+using std::cout;
+using std::ofstream;
+
+void UnitTest();
+
+void Vec2DUnitTest();
+void Vec3DUnitTest();
+void Vec4DUnitTest();
+void Mat2DUnitTest();
+void Mat3DUnitTest();
+void Mat4DUnitTest();
+
+void LinkedListUnitTest();
 
 void UnitTest()
 {
@@ -12,20 +33,21 @@ void UnitTest()
 		cout << "Matrix 2D Unit Test - - - - - - - 4\n";
 		cout << "Matrix 3D Unit Test - - - - - - - 5\n";
 		cout << "Matrix 4D Unit Test - - - - - - - 6\n";
+		cout << "Linked List Unit Test - - - - - - 7\n";
 
 		cout << "\nEnter 0 to quit the program.\n\n";
 
 		cout << "Enter the number of the unit test to display: ";
 		cin >> input;
 		cin.ignore();
-		
+
 		if (cin.fail())
 		{
 			cin.clear();
 			cin.ignore();
 		}
 		system("cls");
-		
+
 		switch (input)
 		{
 		case 1: Vec2DUnitTest(); input = -1; break;
@@ -39,6 +61,8 @@ void UnitTest()
 		case 5: Mat3DUnitTest(); input = -1; break;
 
 		case 6: Mat4DUnitTest(); input = -1; break;
+
+		case 7: LinkedListUnitTest(); input = -1; break;
 
 		case 0: printf("The program will now close.\n\n"); system("pause"); break;
 
@@ -57,7 +81,7 @@ void Vec2DUnitTest()
 
 	Vector2D A = Vector2D(1, 2);
 	Vector2D B = Vector2D(3, 4);
-	
+
 	cout << "Vectors to be used:\nA) == <1, 2>\nB) == <3, 4>\n\n";
 
 	/*========== Addition ==========*/
@@ -111,7 +135,7 @@ void Vec2DUnitTest()
 	cout << "float dotP = A.DotProduct(B);\n\n";
 
 	float dotP = A.DotProduct(B);
-	
+
 	cout << "Dot product: " << dotP << "\n\n";
 
 	cout << "========== Vector 2D Unit Test End ==========\n\n";
@@ -236,6 +260,194 @@ void Mat4DUnitTest()
 {
 	cout << "========== Matrix 4D Unit Test ==========\n\n";
 
+
+	system("pause");
+	system("cls");
+}
+
+void LinkedListUnitTest()
+{
+	LinkedList<int> List1 = LinkedList<int>();
+	LinkedList<int> List2 = LinkedList<int>();
+	LinkedList<int> List3 = LinkedList<int>();
+	LinkedList<int> List4 = LinkedList<int>();
+	LinkedList<int> List5 = LinkedList<int>();
+
+	for (int i = 0; i < 50; i++)
+	{
+		if (i < 10)
+		{
+			List1.insertLast(i);
+		}
+		else if(i < 20)
+		{
+			List2.insertLast(i);
+		}
+		else if (i < 30)
+		{
+			List3.insertLast(i);
+		}
+		else if (i < 40)
+		{
+			List4.insertLast(i);
+		}
+		else if (i < 50)
+		{
+			List5.insertLast(i);
+		}
+	}
+
+	cout << "========== Linked List Unit Test Start ==========\n\n";
+	
+	cout << "Lists to be used: \n\n";
+
+	cout << "List 1: ";
+	List1.print();
+
+	cout << "List 2: ";
+	List2.print();
+
+	cout << "List 3: ";
+	List3.print();
+
+	cout << "List 4: ";
+	List4.print();
+
+	cout << "List 5: ";
+	List5.print();
+
+	/*========== Linked List Iterator ==========*/
+	cout << "\n========== Linked List Iterator ==========\n\n";
+
+	LinkedListIterator<int> iterator1 = List1.begin();
+
+	cout << "List 1: ";
+	for (int i = 1; i <= List1.length(); i++)
+	{
+		if (i == List1.length())
+		{
+			cout << *iterator1;
+			++iterator1;
+		}
+		else
+		{
+			cout << *iterator1 << ", ";
+			++iterator1;
+		}
+	}
+
+	LinkedListIterator<int> iterator2 = List2.begin();
+
+	cout << "\nList 2: ";
+	for (int i = 1; i <= List2.length(); i++)
+	{
+		if (i == List2.length())
+		{
+			cout << *iterator2;
+			++iterator2;
+		}
+		else
+		{
+			cout << *iterator2 << ", ";
+			++iterator2;
+		}
+	}
+
+	LinkedListIterator<int> iterator3 = List3.begin();
+
+	cout << "\nList 3: ";
+	for (int i = 1; i <= List3.length(); i++)
+	{
+		if (i == List3.length())
+		{
+			cout << *iterator3;
+			++iterator3;
+		}
+		else
+		{
+			cout << *iterator3 << ", ";
+			++iterator3;
+		}
+	}
+
+	LinkedListIterator<int> iterator4 = List4.begin();
+
+	cout << "\nList 4: ";
+	for (int i = 1; i <= List4.length(); i++)
+	{
+		if (i == List4.length())
+		{
+			cout << *iterator4;
+			++iterator4;
+		}
+		else
+		{
+			cout << *iterator4 << ", ";
+			++iterator4;
+		}
+	}
+
+	LinkedListIterator<int> iterator5 = List5.begin();
+
+	cout << "\nList 5: ";
+	for (int i = 1; i <= List5.length(); i++)
+	{
+		if (i == List5.length())
+		{
+			cout << *iterator5;
+			++iterator5;
+		}
+		else
+		{
+			cout << *iterator5 << ", ";
+			++iterator5;
+		}
+	}
+
+	/*========== Delete Node ==========*/
+	cout << "\n\n========== Delete Node ==========\n\n";
+
+	cout << "Before Delete Node:\n\n";
+
+	cout << "List 1: ";
+	List1.print();
+
+	cout << "List 2: ";
+	List2.print();
+
+	cout << "List 3: ";
+	List3.print();
+
+	cout << "List 4: ";
+	List4.print();
+
+	cout << "List 5: ";
+	List5.print();
+
+	List1.deleteNode(5);
+	List2.deleteNode(13);
+	List3.deleteNode(20);
+	List4.deleteNode(31);
+	List5.deleteNode(49);
+
+	cout << "\nAfter Delete Node:\n\n";
+
+	cout << "List 1: ";
+	List1.print();
+
+	cout << "List 2: ";
+	List2.print();
+
+	cout << "List 3: ";
+	List3.print();
+
+	cout << "List 4: ";
+	List4.print();
+
+	cout << "List 5: ";
+	List5.print();
+
+	cout << "\n========== Linked List Unit Test End ==========\n\n";
 
 	system("pause");
 	system("cls");

@@ -1,11 +1,4 @@
- #pragma once
-#include <iostream>
-#include <cassert>
-#include <fstream>
-
-using std::cin;
-using std::cout;
-using std::ofstream;
+#pragma once
 
 /*=================== Vector Math =====================*/
 
@@ -18,12 +11,12 @@ private:
 public:
 	Vector2D() {};
 
-	Vector2D(float a, float b) 
+	Vector2D(float a, float b)
 	{
 		x = a;
 		y = b;
 	};
-	
+
 	~Vector2D() {};
 
 	float getX()
@@ -40,7 +33,7 @@ public:
 	{
 		if (other.x == x && other.y == y)
 			return true;
-		
+
 		return false;
 	};
 
@@ -342,7 +335,7 @@ private:
 
 public:
 	// default constructor
-	Matrix2D() 
+	Matrix2D()
 	{
 		m_vec2a[0] = 0;
 		m_vec2a[1] = 0;
@@ -354,7 +347,7 @@ public:
 	~Matrix2D() {}
 
 	// constructor that takes in raw float values
-	Matrix2D(float a1, float a2, float b1, float b2) 
+	Matrix2D(float a1, float a2, float b1, float b2)
 	{
 		m_vec2a[0] = a1;
 		m_vec2a[1] = a2;
@@ -391,7 +384,7 @@ public:
 	{
 		float x = other.getX() * this->m_vec2a[0] + other.getX() * this->m_vec2b[0];
 		float y = other.getY() * this->m_vec2a[1] + other.getY() * this->m_vec2b[1];
-		
+
 		Vector2D tmp = Vector2D(x, y);
 
 		return tmp;
@@ -647,7 +640,7 @@ public:
 	}
 
 	Matrix4D SetRotateX(float valueX)
-	{								  
+	{
 		Matrix4D rotationalX = Matrix4D(1, 0, 0, 0, 0, cos(valueX), -sin(valueX), 0, 0, sin(valueX), cos(valueX), 0, 0, 0, 0, 1);
 
 		*this = *this * rotationalX;
