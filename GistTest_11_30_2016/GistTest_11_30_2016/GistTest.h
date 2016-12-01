@@ -121,9 +121,11 @@ public:
 	}
 
 	// Question 6
-	int SwapNum(int a, int b)
+	void SwapNum(int &a, int &b)
 	{
-		return 0;
+		a = a + b;
+		b = a - b;
+		a = a - b;
 	}
 };
 

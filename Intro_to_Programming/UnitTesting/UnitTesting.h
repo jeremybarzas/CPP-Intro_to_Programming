@@ -223,25 +223,105 @@ void Vec3DUnitTest()
 void Vec4DUnitTest()
 {
 	cout << "========== Vector 4D Unit Test ==========\n\n";
+	Vector4D A = Vector4D(1, 2, 3, 4);
+	Vector4D B = Vector4D(5, 6, 7, 8);
 
+	cout << "Vectors to be used:\nA) == <1, 2, 3, 4>\nB) == <5, 6, 7, 8>\n\n";
 
+	/*========== Addition ==========*/
+	cout << "========== Vector 4D Addition ==========\n\n";
+
+	Vector4D Add = A + B;
+
+	cout << "Vector4D Add = A + B;\n\n";
+
+	cout << "Add == " << "<" << Add.getX() << ", " << Add.getY() << ", " << Add.getZ() << ">.\n\n";
+
+	/*========== Subtraction ==========*/
+	cout << "========== Vector 4D Subtraction ==========\n\n";
+
+	Vector4D Sub = A - B;
+
+	cout << "Vector4D Sub = A - B;\n\n";
+
+	cout << "Sub == " << "<" << Sub.getX() << ", " << Sub.getY() << ", " << Sub.getZ() << ">.\n\n";
+
+	/*========== Multiplication ==========*/
+	cout << "========== Vector 4D Multiplication ==========\n\n";
+
+	Vector4D Mult = A * 5;
+
+	cout << "Vector4D Mult = A * 5;\n\n";
+
+	cout << "Mult == " << "<" << Mult.getX() << ", " << Mult.getY() << ", " << Mult.getZ() << ">.\n\n";
+
+	/*========== Magnitude ==========*/
+	cout << "========== Vector 4D Magnitude ==========\n\n";
+
+	cout << "A.Mag();\nB.Mag();\n\n";
+
+	cout << "Magnitude of A: " << A.Mag() << "\n";
+	cout << "Magnitude of B: " << B.Mag() << "\n\n";
+
+	/*========== Normalise ==========*/
+	cout << "========== Vector 4D Normalise ==========\n\n";
+
+	cout << "Vector4D normA = A.Normalise();\nVector3D normB = B.Normalise();\n\n";
+
+	Vector4D normA = A.Normalise();
+	Vector4D normB = B.Normalise();
+
+	cout << "A normalised: <" << normA.getX() << ", " << normA.getY() << ", " << normA.getZ() << ">.\n\n";
+	cout << "B normalised: <" << normB.getX() << ", " << normB.getY() << ", " << normB.getZ() << ">.\n\n";
+
+	/*========== Dot Product ==========*/
+	cout << "========== Vector 4D Dot Product ==========\n\n";
+
+	cout << "float dotP = A.DotProduct(B);\n\n";
+
+	float dotP = A.DotProduct(B);
+
+	cout << "Dot product: " << dotP << "\n\n";
+
+	cout << "========== Vector 3D Unit Test End ==========\n\n";
 	system("pause");
 	system("cls");
 }
 
 void Mat2DUnitTest()
 {
-	cout << "========== Matrix 2D Unit Test ==========\n\n";
+	cout << "========== Matrix 2D Unit Test Start ==========\n\n";
 
 	float Mat2aVec2a[2] = { 1, 2 };
 	float Mat2aVec2b[2] = { 3, 4 };
-	Matrix2D a = Matrix2D(Mat2aVec2a, Mat2aVec2b);
+	Matrix2D A = Matrix2D(Mat2aVec2a, Mat2aVec2b);
 
 	float Mat2bVec2a[2] = { 5, 6 };
 	float Mat2bVec2b[2] = { 7, 8 };
-	Matrix2D b = Matrix2D(Mat2bVec2a, Mat2bVec2b);
+	Matrix2D B = Matrix2D(Mat2bVec2a, Mat2bVec2b);
+	
+	cout << "Matrices to be used:\n\nA): <1, 2>\n    <3, 4>\n\nB): <5, 6>\n    <7, 8>\n\n";
 
-	Matrix2D c = a * b;
+	/*========== Matrix by Matrix Multiplication ==========*/
+	cout << "========== Matrix 2D * Operator for Matrix by Matrix ==========\n\n";
+
+	Matrix2D C = A * B;
+
+	cout << "Matrix2D C = A * B;\n\n";
+
+	cout << "C): <19, 22>\n    <43, 50>\n\n";
+
+	cout << "========== Matrix 2D * Operator for Matrix by Vector ==========\n\n";
+
+	Vector2D Vec2a = Vector2D(3, 4);
+
+	Vector2D Vec2b = A * Vec2a;
+
+	cout << "Vector2D Vec2a = Vector2D(3, 4);\n\nVector2D Vec2b = A * Vec2a;\n\n";
+
+	cout << "Vec2b == <12, 24>\n\n";
+
+	cout << "========== Matrix 2D Unit Test End ==========\n\n";
 
 	system("pause");
 	system("cls");
@@ -249,8 +329,40 @@ void Mat2DUnitTest()
 
 void Mat3DUnitTest()
 {
-	cout << "========== Matrix 3D Unit Test ==========\n\n";
+	cout << "========== Matrix 3D Unit Test Start ==========\n\n";
 
+	float Mat3aVec3a[3] = { 1, 2, 3 };
+	float Mat3aVec3b[3] = { 4, 5, 6 };
+	float Mat3aVec3c[3] = { 7, 8, 9 };
+	Matrix3D A = Matrix3D(Mat3aVec3a, Mat3aVec3b, Mat3aVec3c);
+
+	float Mat3bVec3a[3] = { 10, 11, 12};
+	float Mat3bVec3b[3] = { 13, 14, 15 };
+	float Mat3bVec3c[3] = { 16, 17, 18 };
+	Matrix3D B = Matrix3D(Mat3bVec3a, Mat3bVec3b, Mat3bVec3c);
+
+	cout << "Matrices to be used:\n\nA): <1, 2, 3>\n    <4, 5, 6>\n    <7, 8, 9>\n\nB): <10, 11, 12>\n    <13, 14, 15>\n    <16, 17, 18>\n\n";
+
+	/*========== Matrix by Matrix Multiplication ==========*/
+	cout << "========== Matrix 3D * Operator for Matrix by Matrix ==========\n\n";
+
+	Matrix3D C = A * B;
+
+	cout << "Matrix3D C = A * B;\n\n";
+
+	cout << "C): <84, 90, 96>\n    <201, 216, 231>\n    <318, 342, 366>\n\n";
+
+	cout << "========== Matrix 3D * Operator for Matrix by Vector ==========\n\n";
+
+	Vector3D Vec3a = Vector3D(4, 5, 6);
+
+	Vector3D Vec3b = A * Vec3a;
+
+	cout << "Vector3D Vec3a = Vector3D(4, 5, 6);\n\nVector3D Vec3b = A * Vec3a;\n\n";
+
+	cout << "Vec3b == <48, 75, 108>\n\n";
+
+	cout << "========== Matrix 3D Unit Test End ==========\n\n";
 
 	system("pause");
 	system("cls");
@@ -258,8 +370,42 @@ void Mat3DUnitTest()
 
 void Mat4DUnitTest()
 {
-	cout << "========== Matrix 4D Unit Test ==========\n\n";
+	cout << "========== Matrix 4D Unit Test Start ==========\n\n";
 
+	float Mat4aVec4a[4] = { 1, 2, 3, 4 };
+	float Mat4aVec4b[4] = { 5, 6, 7, 8 };
+	float Mat4aVec4c[4] = { 9, 10, 11, 12 };
+	float Mat4aVec4d[4] = { 13, 14, 15, 16};
+	Matrix4D A = Matrix4D(Mat4aVec4a, Mat4aVec4b, Mat4aVec4c, Mat4aVec4d);
+
+	float Mat4bVec4a[4] = { 17, 18, 19, 20 };
+	float Mat4bVec4b[4] = { 21, 22, 23, 24 };
+	float Mat4bVec4c[4] = { 25, 26, 27, 28 };
+	float Mat4bVec4d[4] = { 29, 30, 31, 32 };
+	Matrix4D B = Matrix4D(Mat4bVec4a, Mat4bVec4b, Mat4bVec4c, Mat4bVec4d);
+
+	cout << "Matrices to be used:\n\nA): <1, 2, 3, 4>\n    <5, 6, 7, 8>\n    <9, 10, 11, 12>\n    <13, 14, 15, 16>\n\nB): <17, 18, 19, 20>\n    <21, 22, 23, 24>\n    <25, 26, 27, 28>\n    <29, 30, 31, 32>\n\n";
+
+	/*========== Matrix by Matrix Multiplication ==========*/
+	cout << "========== Matrix 4D * Operator for Matrix by Matrix ==========\n\n";
+
+	Matrix4D C = A * B;
+
+	cout << "Matrix4D C = A * B;\n\n";
+
+	cout << "C): <250, 260, 270, 296>\n    <850, 884, 918, 1640>\n    <986, 1028, 1070, 1192>\n    <1345, 1412, 1470, 1640>\n\n";
+
+	cout << "========== Matrix 4D * Operator for Matrix by Vector ==========\n\n";
+
+	Vector4D Vec4a = Vector4D(5, 6, 7, 8);
+
+	Vector4D Vec4b = A * Vec4a;
+
+	cout << "Vector4D Vec4a = Vector4D(4, 5, 6);\n\nVector4D Vec4b = A * Vec4a;\n\n";
+
+	cout << "Vec4b == <140, 192, 252, 384>\n\n";
+
+	cout << "========== Matrix 4D Unit Test End ==========\n\n";
 
 	system("pause");
 	system("cls");

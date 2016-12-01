@@ -380,6 +380,7 @@ public:
 		return mult;
 	}
 
+	// overloaded operator for multiplying a matrix by a vector
 	Vector2D operator * (Vector2D other)
 	{
 		float x = other.getX() * this->m_vec2a[0] + other.getX() * this->m_vec2b[0];
@@ -473,6 +474,7 @@ public:
 		return mult;
 	}
 
+	// overloaded operator for multiplying a matrix by a vector
 	Vector3D operator * (Vector3D other)
 	{
 		float x = other.getX() * this->m_vec3a[0] + other.getX() * this->m_vec3b[0] + other.getX() * this->m_vec3c[0];
@@ -600,39 +602,41 @@ public:
 	Matrix4D operator * (Matrix4D other)
 	{
 		float a[4];
-		a[0] = (this->m_vec4a[0] * other.m_vec4a[0]) + (this->m_vec4a[1] * other.m_vec4b[0]) + (this->m_vec4a[2] * other.m_vec4c[0]) + (this->m_vec4a[3] * other.m_vec4c[0]);
-		a[1] = (this->m_vec4a[0] * other.m_vec4a[1]) + (this->m_vec4a[1] * other.m_vec4b[1]) + (this->m_vec4a[2] * other.m_vec4c[1]) + (this->m_vec4a[3] * other.m_vec4c[1]);
-		a[2] = (this->m_vec4a[0] * other.m_vec4a[2]) + (this->m_vec4a[1] * other.m_vec4b[2]) + (this->m_vec4a[2] * other.m_vec4c[2]) + (this->m_vec4a[3] * other.m_vec4c[2]);
-		a[2] = (this->m_vec4a[0] * other.m_vec4a[3]) + (this->m_vec4a[1] * other.m_vec4b[3]) + (this->m_vec4a[2] * other.m_vec4c[3]) + (this->m_vec4a[3] * other.m_vec4c[3]);
+		a[0] = (this->m_vec4a[0] * other.m_vec4a[0]) + (this->m_vec4a[1] * other.m_vec4b[0]) + (this->m_vec4a[2] * other.m_vec4c[0]) + (this->m_vec4a[3] * other.m_vec4d[0]);
+		a[1] = (this->m_vec4a[0] * other.m_vec4a[1]) + (this->m_vec4a[1] * other.m_vec4b[1]) + (this->m_vec4a[2] * other.m_vec4c[1]) + (this->m_vec4a[3] * other.m_vec4d[1]);
+		a[2] = (this->m_vec4a[0] * other.m_vec4a[2]) + (this->m_vec4a[1] * other.m_vec4b[2]) + (this->m_vec4a[2] * other.m_vec4c[2]) + (this->m_vec4a[3] * other.m_vec4d[2]);
+		a[3] = (this->m_vec4a[0] * other.m_vec4a[3]) + (this->m_vec4a[1] * other.m_vec4b[3]) + (this->m_vec4a[2] * other.m_vec4c[3]) + (this->m_vec4a[3] * other.m_vec4d[3]);
 
 		float b[4];
-		a[0] = (this->m_vec4b[0] * other.m_vec4a[0]) + (this->m_vec4b[1] * other.m_vec4b[0]) + (this->m_vec4b[2] * other.m_vec4c[0]) + (this->m_vec4b[3] * other.m_vec4c[0]);
-		a[1] = (this->m_vec4b[0] * other.m_vec4a[1]) + (this->m_vec4b[1] * other.m_vec4b[1]) + (this->m_vec4b[2] * other.m_vec4c[1]) + (this->m_vec4b[3] * other.m_vec4c[1]);
-		a[2] = (this->m_vec4b[0] * other.m_vec4a[2]) + (this->m_vec4b[1] * other.m_vec4b[2]) + (this->m_vec4b[2] * other.m_vec4c[2]) + (this->m_vec4b[3] * other.m_vec4c[2]);
-		a[2] = (this->m_vec4b[0] * other.m_vec4a[3]) + (this->m_vec4b[1] * other.m_vec4b[3]) + (this->m_vec4b[2] * other.m_vec4c[3]) + (this->m_vec4b[3] * other.m_vec4c[3]);
+		b[0] = (this->m_vec4b[0] * other.m_vec4a[0]) + (this->m_vec4b[1] * other.m_vec4b[0]) + (this->m_vec4b[2] * other.m_vec4c[0]) + (this->m_vec4b[3] * other.m_vec4d[0]);
+		b[1] = (this->m_vec4b[0] * other.m_vec4a[1]) + (this->m_vec4b[1] * other.m_vec4b[1]) + (this->m_vec4b[2] * other.m_vec4c[1]) + (this->m_vec4b[3] * other.m_vec4d[1]);
+		b[2] = (this->m_vec4b[0] * other.m_vec4a[2]) + (this->m_vec4b[1] * other.m_vec4b[2]) + (this->m_vec4b[2] * other.m_vec4c[2]) + (this->m_vec4b[3] * other.m_vec4d[2]);
+		b[3] = (this->m_vec4b[0] * other.m_vec4a[3]) + (this->m_vec4b[1] * other.m_vec4b[3]) + (this->m_vec4b[2] * other.m_vec4c[3]) + (this->m_vec4b[3] * other.m_vec4d[3]);
+		
 		float c[4];
-		a[0] = (this->m_vec4c[0] * other.m_vec4a[0]) + (this->m_vec4c[1] * other.m_vec4b[0]) + (this->m_vec4c[2] * other.m_vec4c[0]) + (this->m_vec4c[3] * other.m_vec4c[0]);
-		a[1] = (this->m_vec4c[0] * other.m_vec4a[1]) + (this->m_vec4c[1] * other.m_vec4b[1]) + (this->m_vec4c[2] * other.m_vec4c[1]) + (this->m_vec4c[3] * other.m_vec4c[1]);
-		a[2] = (this->m_vec4c[0] * other.m_vec4a[2]) + (this->m_vec4c[1] * other.m_vec4b[2]) + (this->m_vec4c[2] * other.m_vec4c[2]) + (this->m_vec4c[3] * other.m_vec4c[2]);
-		a[2] = (this->m_vec4c[0] * other.m_vec4a[3]) + (this->m_vec4c[1] * other.m_vec4b[3]) + (this->m_vec4c[2] * other.m_vec4c[3]) + (this->m_vec4c[3] * other.m_vec4c[3]);
+		c[0] = (this->m_vec4c[0] * other.m_vec4a[0]) + (this->m_vec4c[1] * other.m_vec4b[0]) + (this->m_vec4c[2] * other.m_vec4c[0]) + (this->m_vec4c[3] * other.m_vec4d[0]);
+		c[1] = (this->m_vec4c[0] * other.m_vec4a[1]) + (this->m_vec4c[1] * other.m_vec4b[1]) + (this->m_vec4c[2] * other.m_vec4c[1]) + (this->m_vec4c[3] * other.m_vec4d[1]);
+		c[2] = (this->m_vec4c[0] * other.m_vec4a[2]) + (this->m_vec4c[1] * other.m_vec4b[2]) + (this->m_vec4c[2] * other.m_vec4c[2]) + (this->m_vec4c[3] * other.m_vec4d[2]);
+		c[3] = (this->m_vec4c[0] * other.m_vec4a[3]) + (this->m_vec4c[1] * other.m_vec4b[3]) + (this->m_vec4c[2] * other.m_vec4c[3]) + (this->m_vec4c[3] * other.m_vec4d[3]);
 
 		float d[4];
-		a[0] = (this->m_vec4d[0] * other.m_vec4a[0]) + (this->m_vec4d[1] * other.m_vec4b[0]) + (this->m_vec4d[2] * other.m_vec4c[0]) + (this->m_vec4d[3] * other.m_vec4c[0]);
-		a[1] = (this->m_vec4d[0] * other.m_vec4a[1]) + (this->m_vec4d[1] * other.m_vec4b[1]) + (this->m_vec4d[2] * other.m_vec4c[1]) + (this->m_vec4d[3] * other.m_vec4c[1]);
-		a[2] = (this->m_vec4d[0] * other.m_vec4a[2]) + (this->m_vec4d[1] * other.m_vec4b[2]) + (this->m_vec4d[2] * other.m_vec4c[2]) + (this->m_vec4d[3] * other.m_vec4c[2]);
-		a[2] = (this->m_vec4d[0] * other.m_vec4a[3]) + (this->m_vec4d[1] * other.m_vec4b[3]) + (this->m_vec4d[2] * other.m_vec4c[3]) + (this->m_vec4d[3] * other.m_vec4c[3]);
+		d[0] = (this->m_vec4d[0] * other.m_vec4a[0]) + (this->m_vec4d[1] * other.m_vec4b[0]) + (this->m_vec4d[2] * other.m_vec4c[0]) + (this->m_vec4d[3] * other.m_vec4d[0]);
+		d[1] = (this->m_vec4d[0] * other.m_vec4a[1]) + (this->m_vec4d[1] * other.m_vec4b[1]) + (this->m_vec4d[2] * other.m_vec4c[1]) + (this->m_vec4d[3] * other.m_vec4d[1]);
+		d[2] = (this->m_vec4d[0] * other.m_vec4a[2]) + (this->m_vec4d[1] * other.m_vec4b[2]) + (this->m_vec4d[2] * other.m_vec4c[2]) + (this->m_vec4d[3] * other.m_vec4d[2]);
+		d[3] = (this->m_vec4d[0] * other.m_vec4a[3]) + (this->m_vec4d[1] * other.m_vec4b[3]) + (this->m_vec4d[2] * other.m_vec4c[3]) + (this->m_vec4d[3] * other.m_vec4d[3]);
 
 		Matrix4D mult = Matrix4D(a, b, c, d);
 
 		return mult;
 	}
 
+	// overloaded operator for multiplying a matrix by a vector
 	Vector4D operator * (Vector4D other)
 	{
-		float x = other.getX() * this->m_vec4a[0] + other.getX() * this->m_vec4b[0] + other.getX() * this->m_vec4c[0] + other.getX() * this->m_vec4d[0];
-		float y = other.getY() * this->m_vec4a[1] + other.getY() * this->m_vec4b[1] + other.getY() * this->m_vec4c[1] + other.getY() * this->m_vec4d[1];
-		float z = other.getZ() * this->m_vec4a[2] + other.getZ() * this->m_vec4b[2] + other.getZ() * this->m_vec4c[2] + other.getZ() * this->m_vec4d[2];
-		float w = other.getW() * this->m_vec4a[3] + other.getW() * this->m_vec4b[3] + other.getW() * this->m_vec4c[3] + other.getW() * this->m_vec4d[3];
+		float x = (other.getX() * this->m_vec4a[0]) + (other.getX() * this->m_vec4b[0]) + (other.getX() * this->m_vec4c[0]) + (other.getX() * this->m_vec4d[0]);
+		float y = (other.getY() * this->m_vec4a[1]) + (other.getY() * this->m_vec4b[1]) + (other.getY() * this->m_vec4c[1]) + (other.getY() * this->m_vec4d[1]);
+		float z = (other.getZ() * this->m_vec4a[2]) + (other.getZ() * this->m_vec4b[2]) + (other.getZ() * this->m_vec4c[2]) + (other.getZ() * this->m_vec4d[2]);
+		float w = (other.getW() * this->m_vec4a[3]) + (other.getW() * this->m_vec4b[3]) + (other.getW() * this->m_vec4c[3]) + (other.getW() * this->m_vec4d[3]);
 
 		Vector4D tmp = Vector4D(x, y, z, w);
 
