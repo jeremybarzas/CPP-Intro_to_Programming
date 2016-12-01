@@ -490,7 +490,7 @@ public:
 	{
 		Matrix3D rotationalX = Matrix3D(1, 0, 0, 0, cos(valueX), -sin(valueX), 0, sin(valueX), cos(valueX));
 
-		*this = *this * rotationalX;
+		*this = rotationalX * *this;
 
 		return *this;
 	}
@@ -499,7 +499,7 @@ public:
 	{
 		Matrix3D rotationalY = Matrix3D(cos(valueY), 0, sin(valueY), 0, 1, 0, -sin(valueY), 0, cos(valueY));
 
-		*this = *this * rotationalY;
+		*this = rotationalY * *this;
 
 		return *this;
 	}
@@ -508,7 +508,7 @@ public:
 	{
 		Matrix3D rotationalZ = Matrix3D(cos(valueZ), -sin(valueZ), 0, sin(valueZ), cos(valueZ), 0, 0, 0, 1);
 
-		*this = *this * rotationalZ;
+		*this = rotationalZ * *this;
 
 		return *this;
 	}
@@ -647,7 +647,7 @@ public:
 	{
 		Matrix4D rotationalX = Matrix4D(1, 0, 0, 0, 0, cos(valueX), -sin(valueX), 0, 0, sin(valueX), cos(valueX), 0, 0, 0, 0, 1);
 
-		*this = *this * rotationalX;
+		*this =  rotationalX * *this;
 
 		return *this;
 	}
@@ -656,7 +656,7 @@ public:
 	{
 		Matrix4D rotationalY = Matrix4D(cos(valueY), 0, sin(valueY), 0, 0, 1, 0, 0, -sin(valueY), 0, cos(valueY), 0, 0, 0, 0, 1);
 
-		*this = *this * rotationalY;
+		*this = rotationalY * *this;
 
 		return *this;
 	}
@@ -665,7 +665,7 @@ public:
 	{
 		Matrix4D rotationalZ = Matrix4D(cos(valueZ), -sin(valueZ), 0, 0, sin(valueZ), cos(valueZ), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 
-		*this = *this * rotationalZ;
+		*this = rotationalZ * *this;
 
 		return *this;
 	}
