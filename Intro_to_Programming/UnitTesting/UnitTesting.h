@@ -445,7 +445,7 @@ void LinkedListUnitTest()
 
 	cout << "========== Linked List Unit Test Start ==========\n\n";
 	
-	cout << "Lists to be used: \n\n";
+	cout << "Lists to be used, displayed using list.print() function: \n\n";
 
 	cout << "List 1: ";
 	List1.print();
@@ -464,6 +464,8 @@ void LinkedListUnitTest()
 
 	/*========== Linked List Iterator ==========*/
 	cout << "\n========== Linked List Iterator ==========\n\n";
+
+	cout << "Displayed using a for loop to move the iterator:\n\n";
 
 	LinkedListIterator<int> iterator1 = List1.begin();
 

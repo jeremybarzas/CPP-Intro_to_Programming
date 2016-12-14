@@ -57,8 +57,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedList", "LinkedList\Li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Matrices", "Matrices\Matrices.vcxproj", "{95C0B3AA-39BE-48AF-A591-8B254ACA4C62}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VectorMathLibrary", "VectorMathLibrary\VectorMathLibrary.vcxproj", "{664DA66C-535E-4149-970C-ECDE79F442E2}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibrary", "MathLibrary\MathLibrary.vcxproj", "{9EEB6A56-9C33-4A90-8556-EEB535F441EB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTesting", "UnitTesting\UnitTesting.vcxproj", "{6300DA05-155C-4242-8FBF-34F5CC630B9D}"
@@ -70,6 +68,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PathfindingLecture", "PathfindingLecture\PathfindingLecture.vcxproj", "{4B849C24-ED94-4186-B28F-80603F53DD6E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShapeClasses", "ShapeClasses\ShapeClasses.vcxproj", "{674C70F1-669C-4C09-AEAA-3DDF500A59F3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StaticMathLibrary", "StaticMathLibrary\StaticMathLibrary.vcxproj", "{3DC17D94-17DB-4766-9802-3A05017748E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -295,14 +295,6 @@ Global
 		{95C0B3AA-39BE-48AF-A591-8B254ACA4C62}.Release|x64.Build.0 = Release|x64
 		{95C0B3AA-39BE-48AF-A591-8B254ACA4C62}.Release|x86.ActiveCfg = Release|Win32
 		{95C0B3AA-39BE-48AF-A591-8B254ACA4C62}.Release|x86.Build.0 = Release|Win32
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Debug|x64.ActiveCfg = Debug|x64
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Debug|x64.Build.0 = Debug|x64
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Debug|x86.ActiveCfg = Debug|Win32
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Debug|x86.Build.0 = Debug|Win32
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Release|x64.ActiveCfg = Release|x64
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Release|x64.Build.0 = Release|x64
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Release|x86.ActiveCfg = Release|Win32
-		{664DA66C-535E-4149-970C-ECDE79F442E2}.Release|x86.Build.0 = Release|Win32
 		{9EEB6A56-9C33-4A90-8556-EEB535F441EB}.Debug|x64.ActiveCfg = Debug|x64
 		{9EEB6A56-9C33-4A90-8556-EEB535F441EB}.Debug|x64.Build.0 = Debug|x64
 		{9EEB6A56-9C33-4A90-8556-EEB535F441EB}.Debug|x86.ActiveCfg = Debug|Win32
@@ -351,6 +343,14 @@ Global
 		{674C70F1-669C-4C09-AEAA-3DDF500A59F3}.Release|x64.Build.0 = Release|x64
 		{674C70F1-669C-4C09-AEAA-3DDF500A59F3}.Release|x86.ActiveCfg = Release|Win32
 		{674C70F1-669C-4C09-AEAA-3DDF500A59F3}.Release|x86.Build.0 = Release|Win32
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Debug|x64.ActiveCfg = Debug|x64
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Debug|x64.Build.0 = Debug|x64
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Debug|x86.Build.0 = Debug|Win32
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Release|x64.ActiveCfg = Release|x64
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Release|x64.Build.0 = Release|x64
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Release|x86.ActiveCfg = Release|Win32
+		{3DC17D94-17DB-4766-9802-3A05017748E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
