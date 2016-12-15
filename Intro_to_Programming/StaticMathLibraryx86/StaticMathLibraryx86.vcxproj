@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3DC17D94-17DB-4766-9802-3A05017748E4}</ProjectGuid>
+    <ProjectGuid>{9C341C38-706C-47CB-A16D-18405D69905C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>StaticMathLibrary</RootNamespace>
+    <RootNamespace>StaticMathLibraryx86</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,7 +69,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\StaticMathLibraryx64</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -134,10 +139,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\MathLibrary\MathLibrary.h" />
+    <ClInclude Include="StaticMathLibraryx86.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\MathLibrary\MathLibrary.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="StaticMathLibraryx86.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-#include "MathLibrary.h"
+#include "StaticMathLibraryx64.h"
 
 /*=================== Vector2D =====================*/
 
