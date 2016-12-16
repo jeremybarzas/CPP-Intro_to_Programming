@@ -14,11 +14,9 @@ template<typename T>
 class LinkedListIterator
 {
 private:
-
 	Node<T> * current;
 
 public:
-	
 	LinkedListIterator()
 	{
 		this->current = NULL;
@@ -64,13 +62,11 @@ template<typename T>
 class LinkedList
 {
 protected:
-
 	int m_count;
 	Node<T> * first;
 	Node<T> * last;
 
 public:
-	
 	LinkedList() 
 	{
 		first = NULL;
@@ -273,7 +269,6 @@ public:
 	}
 
 private:
-
 	void copyList(const LinkedList<T>& otherList)
 	{
 		Node<T> * nodePtr = otherList.first;
